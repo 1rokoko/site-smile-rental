@@ -1,0 +1,95 @@
+'use client';
+
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Container, Section } from '@/components/layout';
+import { H1, H2, Body, FadeInView } from '@/components/ui';
+import { EXACT_CONTENT } from '@/data/exact-content';
+import { Shield, Video, AlertTriangle } from 'lucide-react';
+import { animations } from '@/lib/animations';
+
+export const Hero: React.FC = () => {
+  const { hero, features } = EXACT_CONTENT;
+
+  return (
+    <Section padding="xl" background="surface">
+      <Container>
+        <div className="text-center max-w-4xl mx-auto">
+          {/* Main Headline */}
+          <FadeInView animation="fadeInUp">
+            <H1 className="mb-6">
+              <span className="text-black">№1 Scooter Rental for </span>
+              <span className="text-orange-500">Safety and Comfort</span>
+            </H1>
+          </FadeInView>
+
+          {/* Price and Bonus */}
+          <FadeInView animation="fadeInUp" delay={0.1}>
+            <div className="mb-8">
+              <H2 className="text-orange-500 mb-2">
+                {hero.priceText}
+              </H2>
+            </div>
+          </FadeInView>
+
+          {/* Warning Alert */}
+          <FadeInView animation="scaleIn" delay={0.2}>
+            <div className="bg-warning/10 border border-warning/20 rounded-xl p-6 mb-12">
+              <div className="flex items-start space-x-3">
+                <AlertTriangle className="w-6 h-6 text-warning flex-shrink-0 mt-1" />
+                <div className="text-left">
+                  <Body className="text-black font-medium">
+                    {hero.warningText}
+                  </Body>
+                </div>
+              </div>
+            </div>
+          </FadeInView>
+
+          {/* Key Features */}
+          <FadeInView animation="fadeInUp" delay={0.3}>
+            <div className="mb-12">
+              <H2 className="mb-8 text-black">
+                {features.title}
+              </H2>
+              
+              <motion.div
+                variants={animations.staggerContainer}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true, margin: "-50px 0px" }}
+                className="grid grid-cols-1 md:grid-cols-2 gap-6"
+              >
+                {features.items.map((feature, index) => {
+                  const icons = [
+                    <Video key="video" className="w-6 h-6" />,
+                    <Shield key="shield" className="w-6 h-6" />,
+                    <Shield key="insurance" className="w-6 h-6" />,
+                    <Shield key="breakdown" className="w-6 h-6" />
+                  ];
+
+                  return (
+                    <motion.div
+                      key={index}
+                      variants={animations.staggerItem}
+                      className="flex items-center space-x-4 p-4 bg-surface-elevated rounded-xl border border-border-light"
+                    >
+                      <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                        {icons[index]}
+                      </div>
+                      <Body className="text-left font-medium text-black">
+                        {feature}
+                      </Body>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+            </div>
+          </FadeInView>
+
+
+        </div>
+      </Container>
+    </Section>
+  );
+};
