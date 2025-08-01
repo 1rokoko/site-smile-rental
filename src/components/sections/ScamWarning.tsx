@@ -10,7 +10,7 @@ export const ScamWarning: React.FC = () => {
   const { scamWarning } = EXACT_CONTENT;
 
   return (
-    <Section padding="lg" background="elevated">
+    <Section padding="md" background="elevated">
       <Container>
         <FadeInView animation="fadeInUp" className="mb-12">
           {/* Header with Warning Triangle */}

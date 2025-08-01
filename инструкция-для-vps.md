@@ -53,7 +53,7 @@ sudo apt install git -y
 cd /var/www
 
 # Клонирование репозитория
-sudo git clone https://github.com/your-username/site-smile-rental.git
+sudo git clone https://github.com/1rokoko/site-smile-rental.git
 
 # Переход в папку проекта
 cd site-smile-rental/smile-rental-modern

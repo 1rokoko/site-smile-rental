@@ -22,7 +22,7 @@ export const EXACT_CONTENT = {
   // Hero Section
   hero: {
     mainHeadline: "№1 Scooter Rental for Safety and Comfort",
-    priceText: "from 250฿ day+ 6000฿ free bonus +",
+    priceText: "from 250฿ day+ 6000฿ free bonus",
     warningText: "Attention There are a lot of scammers on the roads or Phuket. A video recorder saves up to 50,000 baht is mandotary for tourists when driving. Examples of how scammers work"
   },
 

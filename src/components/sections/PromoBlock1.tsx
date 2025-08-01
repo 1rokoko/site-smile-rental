@@ -56,7 +56,7 @@ export const PromoBlock1: React.FC = () => {
   ];
 
   return (
-    <Section padding="xl" background="surface">
+    <Section padding="xl" background="surface" id="bonus-section">
       <Container>
         {/* Main Title */}
         <FadeInView animation="fadeInUp" className="text-center mb-12">

@@ -27,7 +27,7 @@ export const Hero: React.FC = () => {
           <FadeInView animation="fadeInUp" delay={0.1}>
             <div className="mb-8">
               <H2 className="text-orange-500 mb-2">
-                {hero.priceText}
+                from 250฿ day+ <a href="#bonus-section" className="text-orange-500 hover:text-orange-600 underline cursor-pointer">6000฿ free bonus</a>
               </H2>
             </div>
           </FadeInView>
@@ -48,7 +48,7 @@ export const Hero: React.FC = () => {
 
           {/* Key Features */}
           <FadeInView animation="fadeInUp" delay={0.3}>
-            <div className="mb-12">
+            <div className="mb-6">
               <H2 className="mb-8 text-black">
                 {features.title}
               </H2>
