@@ -1,3 +1,10 @@
+# Smile Rental Phuket - Modern Website
+
+✅ **DOMAIN FIXED AND WORKING!**
+- Website: http://smilerentalphuket.com
+- Automated deployment: READY
+- Last updated: August 3, 2025
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
