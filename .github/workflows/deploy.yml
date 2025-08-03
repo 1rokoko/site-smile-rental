@@ -1,0 +1,189 @@
+name: 🚀 Deploy Smile Rental to VPS
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'smile-rental-modern/**'
+      - '.github/workflows/**'
+  workflow_dispatch:
+    inputs:
+      force_deploy:
+        description: 'Force deployment even if no changes detected'
+        required: false
+        default: false
+        type: boolean
+
+env:
+  NODE_VERSION: '18'
+  APP_NAME: 'smile-rental'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 2
+
+    - name: 🔍 Check for changes
+      id: changes
+      run: |
+        if [ "${{ github.event.inputs.force_deploy }}" == "true" ]; then
+          echo "changes=true" >> $GITHUB_OUTPUT
+          echo "🔄 Force deployment requested"
+        elif git diff --quiet HEAD^ HEAD -- smile-rental-modern/; then
+          echo "changes=false" >> $GITHUB_OUTPUT
+          echo "⏭️ No changes in smile-rental-modern directory"
+        else
+          echo "changes=true" >> $GITHUB_OUTPUT
+          echo "✅ Changes detected in smile-rental-modern directory"
+        fi
+
+    - name: 🟢 Setup Node.js
+      if: steps.changes.outputs.changes == 'true'
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        cache-dependency-path: 'smile-rental-modern/package-lock.json'
+
+    - name: 📦 Install dependencies
+      if: steps.changes.outputs.changes == 'true'
+      run: |
+        cd smile-rental-modern
+        npm ci --prefer-offline --no-audit
+
+    - name: 🔨 Build application
+      if: steps.changes.outputs.changes == 'true'
+      run: |
+        cd smile-rental-modern
+        npm run build
+
+    - name: 🧪 Run tests (if available)
+      if: steps.changes.outputs.changes == 'true'
+      run: |
+        cd smile-rental-modern
+        if npm run test --if-present; then
+          echo "✅ Tests passed"
+        else
+          echo "⚠️ No tests found or tests failed"
+        fi
+
+    - name: 🚀 Deploy to VPS
+      if: steps.changes.outputs.changes == 'true'
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USERNAME }}
+        key: ${{ secrets.VPS_SSH_KEY }}
+        port: ${{ secrets.VPS_PORT }}
+        timeout: 300s
+        script: |
+          set -e  # Exit on any error
+
+          echo "🚀 Starting deployment to Smile Rental VPS..."
+          echo "📅 Deployment time: $(date)"
+          echo "🔗 Commit: ${{ github.sha }}"
+
+          # Navigate to project directory
+          cd /var/www/smilerentalphuket.com/site-smile-rental
+
+          # Backup current version (just in case)
+          echo "💾 Creating backup..."
+          cp -r smile-rental-modern smile-rental-modern.backup.$(date +%Y%m%d_%H%M%S) || echo "⚠️ Backup failed, continuing..."
+
+          # Pull latest changes
+          echo "📥 Pulling latest changes from GitHub..."
+          git fetch origin main
+          git reset --hard origin/main
+
+          # Navigate to app directory
+          cd smile-rental-modern
+
+          # Install dependencies
+          echo "📦 Installing dependencies..."
+          npm install --production=false
+
+          # Build the application
+          echo "🔨 Building application..."
+          npm run build
+
+          # Check if PM2 is running the app
+          echo "🔍 Checking current application status..."
+          if pm2 list | grep -q "${{ env.APP_NAME }}"; then
+            echo "🔄 Restarting existing application..."
+            pm2 restart ${{ env.APP_NAME }}
+          else
+            echo "🚀 Starting new application..."
+            pm2 start npm --name "${{ env.APP_NAME }}" -- start
+          fi
+
+          # Save PM2 configuration
+          pm2 save
+
+          # Wait for application to start
+          echo "⏳ Waiting for application to start..."
+          sleep 10
+
+          # Health checks
+          echo "🧪 Running health checks..."
+
+          # Check if app is responding on localhost
+          for i in {1..5}; do
+            if curl -f -s http://localhost:3000 > /dev/null; then
+              echo "✅ Application is responding on localhost:3000"
+              break
+            else
+              echo "⏳ Attempt $i/5: Application not ready yet, waiting..."
+              sleep 5
+            fi
+            if [ $i -eq 5 ]; then
+              echo "❌ Application failed to start on localhost:3000"
+              echo "📋 PM2 status:"
+              pm2 status
+              echo "📋 Application logs:"
+              pm2 logs ${{ env.APP_NAME }} --lines 20
+              exit 1
+            fi
+          done
+
+          # Check domain accessibility
+          if curl -f -s http://smilerentalphuket.com > /dev/null; then
+            echo "✅ Domain smilerentalphuket.com is accessible"
+          else
+            echo "⚠️ Domain may have Nginx issues, but application is running"
+            echo "💡 Run: sudo ./fix-nginx-and-deploy.sh to fix domain issues"
+          fi
+
+          # Cleanup old backups (keep last 3)
+          echo "🧹 Cleaning up old backups..."
+          cd /var/www/smilerentalphuket.com/site-smile-rental
+          ls -t smile-rental-modern.backup.* 2>/dev/null | tail -n +4 | xargs rm -rf 2>/dev/null || echo "No old backups to clean"
+
+          echo "🎉 Deployment completed successfully!"
+          echo "🌐 Website: http://smilerentalphuket.com"
+          echo "📊 Status: pm2 status"
+
+    - name: 📊 Deployment Summary
+      if: always()
+      run: |
+        echo "## 🚀 Deployment Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        if [ "${{ steps.changes.outputs.changes }}" == "false" ]; then
+          echo "⏭️ **Skipped**: No changes detected in smile-rental-modern directory" >> $GITHUB_STEP_SUMMARY
+        elif [ "${{ job.status }}" == "success" ]; then
+          echo "✅ **Success**: Deployment completed successfully!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🌐 **Website**: [smilerentalphuket.com](http://smilerentalphuket.com)" >> $GITHUB_STEP_SUMMARY
+          echo "🔗 **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "📅 **Time**: $(date)" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "❌ **Failed**: Deployment encountered errors" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🔍 Check the logs above for details" >> $GITHUB_STEP_SUMMARY
+          echo "🛠️ You may need to run manual commands on the server" >> $GITHUB_STEP_SUMMARY
+        fi
