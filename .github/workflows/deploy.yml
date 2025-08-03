@@ -4,7 +4,12 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'smile-rental-modern/**'
+      - 'src/**'
+      - 'public/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'next.config.ts'
+      - 'tsconfig.json'
       - '.github/workflows/**'
   workflow_dispatch:
     inputs:
@@ -35,12 +40,12 @@ jobs:
         if [ "${{ github.event.inputs.force_deploy }}" == "true" ]; then
           echo "changes=true" >> $GITHUB_OUTPUT
           echo "🔄 Force deployment requested"
-        elif git diff --quiet HEAD^ HEAD -- smile-rental-modern/; then
+        elif git diff --quiet HEAD^ HEAD -- src/ public/ package.json package-lock.json next.config.ts tsconfig.json; then
           echo "changes=false" >> $GITHUB_OUTPUT
-          echo "⏭️ No changes in smile-rental-modern directory"
+          echo "⏭️ No changes in application files"
         else
           echo "changes=true" >> $GITHUB_OUTPUT
-          echo "✅ Changes detected in smile-rental-modern directory"
+          echo "✅ Changes detected in application files"
         fi
 
     - name: 🟢 Setup Node.js
@@ -49,24 +54,21 @@ jobs:
       with:
         node-version: ${{ env.NODE_VERSION }}
         cache: 'npm'
-        cache-dependency-path: 'smile-rental-modern/package-lock.json'
+        cache-dependency-path: 'package-lock.json'
 
     - name: 📦 Install dependencies
       if: steps.changes.outputs.changes == 'true'
       run: |
-        cd smile-rental-modern
         npm ci --prefer-offline --no-audit
 
     - name: 🔨 Build application
       if: steps.changes.outputs.changes == 'true'
       run: |
-        cd smile-rental-modern
         npm run build
 
     - name: 🧪 Run tests (if available)
       if: steps.changes.outputs.changes == 'true'
       run: |
-        cd smile-rental-modern
         if npm run test --if-present; then
           echo "✅ Tests passed"
         else
@@ -94,15 +96,12 @@ jobs:
 
           # Backup current version (just in case)
           echo "💾 Creating backup..."
-          cp -r smile-rental-modern smile-rental-modern.backup.$(date +%Y%m%d_%H%M%S) || echo "⚠️ Backup failed, continuing..."
+          cp -r .next .next.backup.$(date +%Y%m%d_%H%M%S) 2>/dev/null || echo "⚠️ No .next directory to backup"
 
           # Pull latest changes
           echo "📥 Pulling latest changes from GitHub..."
           git fetch origin main
           git reset --hard origin/main
-
-          # Navigate to app directory
-          cd smile-rental-modern
 
           # Install dependencies
           echo "📦 Installing dependencies..."
@@ -161,8 +160,7 @@ jobs:
 
           # Cleanup old backups (keep last 3)
           echo "🧹 Cleaning up old backups..."
-          cd /var/www/smilerentalphuket.com/site-smile-rental
-          ls -t smile-rental-modern.backup.* 2>/dev/null | tail -n +4 | xargs rm -rf 2>/dev/null || echo "No old backups to clean"
+          ls -t .next.backup.* 2>/dev/null | tail -n +4 | xargs rm -rf 2>/dev/null || echo "No old backups to clean"
 
           echo "🎉 Deployment completed successfully!"
           echo "🌐 Website: http://smilerentalphuket.com"
@@ -174,7 +172,7 @@ jobs:
         echo "## 🚀 Deployment Summary" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         if [ "${{ steps.changes.outputs.changes }}" == "false" ]; then
-          echo "⏭️ **Skipped**: No changes detected in smile-rental-modern directory" >> $GITHUB_STEP_SUMMARY
+          echo "⏭️ **Skipped**: No changes detected in application files" >> $GITHUB_STEP_SUMMARY
         elif [ "${{ job.status }}" == "success" ]; then
           echo "✅ **Success**: Deployment completed successfully!" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
