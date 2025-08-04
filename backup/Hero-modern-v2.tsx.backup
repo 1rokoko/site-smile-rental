@@ -12,7 +12,7 @@ export const Hero: React.FC = () => {
   const { hero, features } = EXACT_CONTENT;
 
   return (
-    <Section padding="lg" background="surface">
+    <Section padding="xl" background="surface">
       <Container>
         <div className="text-center max-w-4xl mx-auto">
           {/* Main Headline */}
@@ -48,7 +48,7 @@ export const Hero: React.FC = () => {
 
           {/* Key Features */}
           <FadeInView animation="fadeInUp" delay={0.3}>
-            <div className="mb-1">
+            <div className="mb-3">
               <H2 className="mb-8 text-black">
                 {features.title}
               </H2>

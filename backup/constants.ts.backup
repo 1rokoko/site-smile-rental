@@ -14,17 +14,17 @@ export const CONTACT_INFO = {
 export const REVIEWS = [
   {
     platform: 'Google',
-    rating: 4.9,
+    rating: 4.8,
     count: 1237,
   },
   {
-    platform: 'TripAdvisor',
-    rating: 4.9,
+    platform: 'hostadvice',
+    rating: 4.6,
     count: 2432,
   },
   {
     platform: 'TrustScore',
-    rating: 4.9,
+    rating: 4.7,
     count: 45793,
   },
 ];

@@ -4,17 +4,17 @@ export const EXACT_CONTENT = {
   reviews: {
     google: {
       platform: "Google",
-      rating: "4.9/5",
+      rating: "4.8/5",
       count: "1 237 reviews"
     },
-    tripadvisor: {
-      platform: "TripAdvisor",
-      rating: "4.9/5",
+    hostadvice: {
+      platform: "hostadvice", 
+      rating: "4.6/5",
       count: "2 432 reviews"
     },
     trustscore: {
       platform: "TrustScore",
-      rating: "4.9",
+      rating: "4.7",
       count: "45,793 reviews"
     }
   },
@@ -22,7 +22,7 @@ export const EXACT_CONTENT = {
   // Hero Section
   hero: {
     mainHeadline: "№1 Scooter Rental for Safety and Comfort",
-    priceText: "from 100฿ day+ 6000฿ free bonus",
+    priceText: "from 250฿ day+ 6000฿ free bonus",
     warningText: "Attention There are a lot of scammers on the roads or Phuket. A video recorder saves up to 50,000 baht is mandotary for tourists when driving. Examples of how scammers work"
   },
 
