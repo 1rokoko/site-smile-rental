@@ -1,3 +1,7 @@
-Server restart trigger - $(date)
+Server restart trigger - EMERGENCY RESTART ATTEMPT #2
 This file is created to trigger GitHub Actions deployment and restart the server.
 Current time: $(Get-Date)
+
+Status: 502 Bad Gateway persists
+Action: Force restart all services
+Attempt: #2
