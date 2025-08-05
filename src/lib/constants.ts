@@ -7,7 +7,7 @@ export const SITE_CONFIG = {
 
 export const CONTACT_INFO = {
   telegram: 'https://t.me/renty_phuket',
-  whatsapp: 'https://wa.me/66626823973',
+  whatsapp: 'https://api.whatsapp.com/send/?phone=66626823973&text&type=phone_number&app_absent=0',
   telegramGroup: 'https://t.me/m/-h547XrYOTA1',
 };
 

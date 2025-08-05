@@ -39,7 +39,13 @@ export const Hero: React.FC = () => {
                 <AlertTriangle className="w-6 h-6 text-warning flex-shrink-0 mt-1" />
                 <div className="text-left">
                   <Body className="text-black font-medium">
-                    {hero.warningText}
+                    {hero.warningText}{' '}
+                    <a
+                      href="#scam-warning-section"
+                      className="text-orange-500 hover:text-orange-600 underline cursor-pointer"
+                    >
+                      Phuket Road Scams: Survival Guide
+                    </a>
                   </Body>
                 </div>
               </div>

@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // output: 'export', // Disabled for dev server
+  output: 'export', // Enabled for static export
   trailingSlash: true,
   basePath: '',
   assetPrefix: '',

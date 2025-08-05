@@ -49,6 +49,26 @@ export const Footer: React.FC = () => {
         </Container>
       </Section>
 
+      {/* Google Maps Section */}
+      <Section padding="lg" background="default">
+        <Container>
+          <FadeInView animation="fadeInUp" className="text-center">
+            <div className="w-full max-w-4xl mx-auto">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1976.1526444613041!2d98.35119000229113!3d7.863085811670397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502fc06398cbf1%3A0xb888b96b4a2d8c1f!2zU21pbGUgU2Nvb3RlciBSZW50YWwgSmIg4oCUINCQ0YDQtdC90LTQsCDRgdC60YPRgtC10YDQvtCy!5e0!3m2!1sru!2sth!4v1754372347430!5m2!1sru!2sth"
+                width="100%"
+                height="450"
+                style={{ border: 0, borderRadius: '12px' }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Smile Scooter Rental Location"
+              />
+            </div>
+          </FadeInView>
+        </Container>
+      </Section>
+
       {/* Main Footer */}
       <Section padding="lg" background="default">
         <Container>
@@ -63,27 +83,9 @@ export const Footer: React.FC = () => {
               <motion.div variants={animations.staggerItem}>
                 <H3 className="mb-4 text-white">Smile Rental Phuket</H3>
                 <Body className="text-gray-300 mb-4">
-                  №1 Scooter Rental for Safety and Comfort in Phuket. 
+                  №1 Scooter Rental for Safety and Comfort in Phuket.
                   Experience the island with confidence and style.
                 </Body>
-                <div className="flex space-x-4">
-                  <a
-                    href={CONTACT_INFO.telegram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-primary-dark transition-colors"
-                  >
-                    <MessageCircle className="w-5 h-5" />
-                  </a>
-                  <a
-                    href={CONTACT_INFO.whatsapp}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 bg-success rounded-full flex items-center justify-center hover:bg-green-600 transition-colors"
-                  >
-                    <Phone className="w-5 h-5" />
-                  </a>
-                </div>
               </motion.div>
 
               {/* Contact Info */}
@@ -92,15 +94,36 @@ export const Footer: React.FC = () => {
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
                     <MessageCircle className="w-5 h-5 text-primary" />
-                    <Body className="text-gray-300">{contact.telegram}</Body>
+                    <a
+                      href="https://t.me/renty_phuket"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-300 hover:text-white transition-colors"
+                    >
+                      {contact.telegram}
+                    </a>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Phone className="w-5 h-5 text-success" />
-                    <Body className="text-gray-300">{contact.whatsapp}</Body>
+                    <a
+                      href="https://api.whatsapp.com/send/?phone=66626823973&text&type=phone_number&app_absent=0"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-300 hover:text-white transition-colors"
+                    >
+                      {contact.whatsapp}
+                    </a>
                   </div>
                   <div className="flex items-center space-x-3">
                     <MapPin className="w-5 h-5 text-warning" />
-                    <Body className="text-gray-300">Phuket, Thailand</Body>
+                    <a
+                      href="https://maps.app.goo.gl/cr9GmJJJmqAwA7Az6"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-300 hover:text-white transition-colors"
+                    >
+                      7 39, Chalong, Mueang Phuket District, Phuket 83000
+                    </a>
                   </div>
                 </div>
               </motion.div>
@@ -150,6 +173,24 @@ export const Footer: React.FC = () => {
             <BodySmall className="text-gray-400 mt-2 md:mt-0">
               Made with ❤️ for safe travels in Phuket
             </BodySmall>
+          </div>
+
+          {/* SEO Text */}
+          <div className="py-4 border-t border-gray-800">
+            <div className="text-xs text-gray-500 leading-relaxed">
+              <p className="mb-2">
+                <strong>Discover Phuket on Two Wheels</strong>
+              </p>
+              <p className="mb-2">
+                Discover Phuket on two wheels with our diverse fleet! Choose urban scooters like Honda Click (125cc/150cc), Yamaha Filano (125cc), or Suzuki Address 125 for city traffic. Prestige riders love Vespa Primavera/Sprint (150cc), while long-distance explorers opt for Honda PCX (160cc) or Yamaha Aerox/NMax (155cc). Beginners enjoy easy rides on Honda Scoopy (110cc) and Honda Air Blade (125cc), and budget travelers pick reliable underbones Honda Wave/Dream (110cc).
+              </p>
+              <p className="mb-2">
+                For adventure seekers: touring bikes Honda CB500X, Kawasaki Versys-X 300, and BMW G310GS conquer mountain roads, while off-road beasts Honda CRF250L/150L and Kawasaki KLX 140 tackle jungle trails. Speed lovers thrill on Kawasaki Ninja 300/400 or Yamaha YZF-R3. Craving retro vibes? Cruise on Royal Enfield Classic 350 or premium Harley-Davidson Street 750.
+              </p>
+              <p>
+                Book online — free delivery to your hotel! All bikes are insured, maintained daily, and include a helmet, lock, and island map. Save up to 20% on weekly rentals. Whether you're chasing waterfalls at Bang Pae or sunset views at Karon, your Phuket adventure starts now!
+              </p>
+            </div>
           </div>
         </Container>
       </div>
