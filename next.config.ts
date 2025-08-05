@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export', // Enabled for static export
   trailingSlash: true,
   basePath: '',
   assetPrefix: '',

@@ -94,6 +94,10 @@ jobs:
           # Navigate to project directory
           cd /var/www/smilerentalphuket.com/site-smile-rental
 
+          # Stop PM2 processes to avoid conflicts
+          echo "🛑 Stopping PM2 processes..."
+          pm2 stop all || echo "⚠️ No PM2 processes to stop"
+
           # Backup current version (just in case)
           echo "💾 Creating backup..."
           cp -r .next .next.backup.$(date +%Y%m%d_%H%M%S) 2>/dev/null || echo "⚠️ No .next directory to backup"
@@ -102,6 +106,16 @@ jobs:
           echo "📥 Pulling latest changes from GitHub..."
           git fetch origin main
           git reset --hard origin/main
+
+          # Fix Next.js configuration for server mode
+          echo "🔧 Fixing Next.js configuration..."
+          if grep -q "output: 'export'" next.config.ts; then
+            echo "⚠️ Found 'output: export' in next.config.ts, removing it..."
+            sed -i "/output: 'export'/d" next.config.ts
+            echo "✅ Next.js configuration fixed for server mode"
+          else
+            echo "✅ Next.js configuration is already correct"
+          fi
 
           # Install dependencies
           echo "📦 Installing dependencies..."
