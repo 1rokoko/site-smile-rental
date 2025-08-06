@@ -6,3 +6,6 @@ export { Badge } from './Badge';
 export { AnimatedCard } from './AnimatedCard';
 export { FadeInView } from './FadeInView';
 export { FloatingContactButtons } from './FloatingContactButtons';
+export { FloatingContactButtonsRu } from './FloatingContactButtonsRu';
+export { LanguageSwitcher } from './LanguageSwitcher';
+export { LanguageSwitcherRu } from './LanguageSwitcherRu';

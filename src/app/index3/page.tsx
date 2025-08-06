@@ -3,7 +3,9 @@ import {
   Header,
   LanguageBar,
   Hero,
-  ScooterGridWithPromo,
+  ScooterGrid,
+  BonusSection,
+  ComparisonSection,
   OwnerTestimonial,
   ScamWarning,
   Footer,
@@ -15,9 +17,11 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <Header />
       <LanguageBar />
-      <main className="space-y-8 md:space-y-12">
+      <main>
         <Hero />
-        <ScooterGridWithPromo />
+        <ScooterGrid />
+        <BonusSection />
+        <ComparisonSection />
         <ScamWarning />
         <OwnerTestimonial />
       </main>

@@ -4,12 +4,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Container, Section } from '@/components/layout';
 import { H1, H2, Body, FadeInView } from '@/components/ui';
-import { EXACT_CONTENT } from '@/data/exact-content';
+import { EXACT_CONTENT_RU } from '@/data/exact-content-ru';
 import { Shield, Video, AlertTriangle } from 'lucide-react';
 import { animations } from '@/lib/animations';
 
-export const Hero: React.FC = () => {
-  const { hero, features } = EXACT_CONTENT;
+export const HeroRu: React.FC = () => {
+  const { hero, features } = EXACT_CONTENT_RU;
 
   return (
     <Section padding="md" background="surface">
@@ -18,8 +18,8 @@ export const Hero: React.FC = () => {
           {/* Main Headline */}
           <FadeInView animation="fadeInUp">
             <H1 className="mb-6">
-              <span className="text-black">№1 Scooter Rental for </span>
-              <span className="text-orange-500">Safety and Comfort</span>
+              <span className="text-black">№1 Аренда скутеров для </span>
+              <span className="text-orange-500">безопасности и комфорта</span>
             </H1>
           </FadeInView>
 
@@ -27,7 +27,7 @@ export const Hero: React.FC = () => {
           <FadeInView animation="fadeInUp" delay={0.1}>
             <div className="mb-8">
               <H2 className="text-black mb-2">
-                from 100฿ day+ <a href="#bonus-section" className="text-orange-500 hover:text-orange-600 underline cursor-pointer">6000฿ free bonus</a>
+                от 100฿ день+ <a href="#bonus-section" className="text-orange-500 hover:text-orange-600 underline cursor-pointer">6000฿ бесплатный бонус</a>
               </H2>
             </div>
           </FadeInView>
@@ -44,7 +44,7 @@ export const Hero: React.FC = () => {
                       href="#scam-warning-section"
                       className="text-orange-500 hover:text-orange-600 underline cursor-pointer"
                     >
-                      Phuket Road Scams: Survival Guide
+                      Дорожные мошенничества Пхукета: Руководство по выживанию
                     </a>
                   </Body>
                 </div>
@@ -92,7 +92,6 @@ export const Hero: React.FC = () => {
               </motion.div>
             </div>
           </FadeInView>
-
 
         </div>
       </Container>

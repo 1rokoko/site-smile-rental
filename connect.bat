@@ -1,0 +1,3 @@
+@echo off
+echo Connecting to server...
+ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@38.180.122.239
