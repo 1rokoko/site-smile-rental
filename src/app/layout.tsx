@@ -75,10 +75,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="preconnect" href="https://274418.selcdn.ru" />
         <link rel="preconnect" href="https://photos.app.goo.gl" />
-        <link rel="dns-prefetch" href="https://274418.selcdn.ru" />
         <link rel="dns-prefetch" href="https://photos.app.goo.gl" />
+        {/* Security headers for Google Ads compliance */}
+        <meta httpEquiv="Content-Security-Policy" content="default-src 'self' https://photos.app.goo.gl https://static.craftum.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://photos.app.goo.gl https://static.craftum.com; connect-src 'self';" />
+        <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
+        <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
