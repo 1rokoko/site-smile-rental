@@ -41,45 +41,45 @@ export const IMAGE_CATALOG = {
     }
   },
 
-  // Scooter Images - SECURITY FIX: Using local images
+  // Scooter Images - SECURITY FIX: Using local images with unique designs
   scooters: {
     nmax: {
-      src: "/images/scooters/nmax.jpg",
+      src: "/images/scooters/nmax.svg",
       alt: "Yamaha NMAX scooter",
       usage: "NMAX scooter product image",
       photoLink: "https://photos.app.goo.gl/jdDkh4icYJpunRi79"
     },
     filano: {
-      src: "/images/scooters/filano.jpg",
+      src: "/images/scooters/filano.svg",
       alt: "Yamaha Filano scooter",
       usage: "Filano scooter product image",
       photoLink: "https://photos.app.goo.gl/aGKH13bWvVe7TiLy5"
     },
     premiumHelmet: {
-      src: "/images/scooters/helmet.jpg",
+      src: "/images/scooters/helmet.svg",
       alt: "Premium helmet",
       usage: "Premium helmet product image"
     },
     gpx150: {
-      src: "/images/scooters/gpx150.jpg",
+      src: "/images/scooters/gpx150.svg",
       alt: "GPX 150cc scooter",
       usage: "GPX 150cc scooter product image",
       photoLink: "https://photos.app.goo.gl/oXwcEEineMZpFLe78"
     },
     gt270: {
-      src: "/images/scooters/gt270.jpg",
+      src: "/images/scooters/gt270.svg",
       alt: "GT 270 ABS scooter",
       usage: "GT 270 ABS scooter product image",
       photoLink: "https://photos.app.goo.gl/d5vNpjEE2otwL8X17"
     },
     bestSeller1: {
-      src: "/images/scooters/bestseller1.jpg",
+      src: "/images/scooters/bestseller1.svg",
       alt: "Best seller scooter model",
       usage: "Best seller scooter product image",
       photoLink: "https://photos.app.goo.gl/e5WNPgSpzRqrQxBs5"
     },
     nmax2: {
-      src: "/images/scooters/nmax2.jpg",
+      src: "/images/scooters/nmax2.svg",
       alt: "Yamaha NMAX scooter variant",
       usage: "NMAX scooter variant product image",
       photoLink: "https://photos.app.goo.gl/mmB2xtFsPNfiVVtb9"
@@ -110,52 +110,52 @@ export const IMAGE_CATALOG = {
     }
   },
 
-  // Additional Scooter Images - SECURITY FIX: Using local images
+  // Additional Scooter Images - SECURITY FIX: Using local images with unique designs
   moreScooters: {
     bestSeller2: {
-      src: "/images/scooters/bestseller2.jpg",
+      src: "/images/scooters/bestseller2.svg",
       alt: "Best seller GPX scooter",
       usage: "Best seller GPX scooter product image",
       photoLink: "https://photos.app.goo.gl/oXwcEEineMZpFLe78"
     },
     gt270Premium: {
-      src: "/images/scooters/gt270-premium.jpg",
+      src: "/images/scooters/gt270-premium.svg",
       alt: "GT 270 ABS premium scooter",
       usage: "GT 270 ABS premium scooter product image",
       photoLink: "https://photos.app.goo.gl/cM5X1EBxGJBHHhjG7"
     },
     bestSeller3: {
-      src: "/images/scooters/bestseller3.jpg",
+      src: "/images/scooters/bestseller3.svg",
       alt: "Best seller 2024 scooter",
       usage: "Best seller 2024 scooter product image",
       photoLink: "https://photos.app.goo.gl/rGfznuCuv9HLSjwT8"
     },
     bestSeller4: {
-      src: "/images/scooters/bestseller4.jpg",
+      src: "/images/scooters/bestseller4.svg",
       alt: "Best seller 2023 scooter",
       usage: "Best seller 2023 scooter product image",
       photoLink: "https://photos.app.goo.gl/xZUiuSkZJYV4XAY59"
     },
     bestSeller5: {
-      src: "/images/scooters/bestseller5.jpg",
+      src: "/images/scooters/bestseller5.svg",
       alt: "Best seller 2024 variant scooter",
       usage: "Best seller 2024 variant scooter product image",
       photoLink: "https://photos.app.goo.gl/J9cW8ojfQYJPPjFJ6"
     },
     bestSeller6: {
-      src: "/images/scooters/bestseller6.jpg",
+      src: "/images/scooters/bestseller6.svg",
       alt: "Best seller premium variant scooter",
       usage: "Best seller premium variant scooter product image",
       photoLink: "https://photos.app.goo.gl/x5PwPevtKgVKB3P98"
     },
     xmax300: {
-      src: "/images/scooters/xmax300.jpg",
+      src: "/images/scooters/xmax300.svg",
       alt: "Yamaha XMAX 300cc ABS scooter",
       usage: "XMAX 300cc ABS premium scooter product image",
       photoLink: "https://photos.app.goo.gl/q4eQ5QABn2bCQ5M49"
     },
     nmaxAbs: {
-      src: "/images/scooters/nmax-abs.jpg",
+      src: "/images/scooters/nmax-abs.svg",
       alt: "Yamaha NMAX ABS scooter",
       usage: "NMAX ABS scooter product image",
       photoLink: "https://photos.app.goo.gl/r9JBHoTcfTs3BpEv9"
