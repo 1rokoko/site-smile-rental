@@ -4,9 +4,30 @@ echo "🚨 EMERGENCY SERVER FIX - Smile Rental Phuket"
 echo "=============================================="
 echo "📅 Fix time: $(date)"
 
+# Create maintenance directory if it doesn't exist
+echo "📁 Creating maintenance directory..."
+mkdir -p /var/www/html
+
 # Enable maintenance mode first
 echo "🟡 Enabling maintenance mode..."
-cp /var/www/smilerentalphuket.com/site-smile-rental/public/maintenance.html /var/www/html/maintenance.html 2>/dev/null || echo "Maintenance file not found"
+cat > /var/www/html/maintenance.html << 'EOF'
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Maintenance - Smile Rental Phuket</title>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: Arial; text-align: center; padding: 50px; }
+        h1 { color: #333; }
+    </style>
+</head>
+<body>
+    <h1>🔧 Site Under Maintenance</h1>
+    <p>We're updating our website. Please check back in a few minutes.</p>
+    <p>Мы обновляем наш сайт. Пожалуйста, зайдите через несколько минут.</p>
+</body>
+</html>
+EOF
 
 # Navigate to correct directory
 echo "📁 Navigating to project directory..."
@@ -19,11 +40,21 @@ pm2 stop smile-rental || echo "App was not running"
 pm2 delete smile-rental || echo "App was not in PM2"
 pm2 kill || echo "PM2 was not running"
 
+# Free up memory
+echo "💾 Freeing up memory..."
+sync
+echo 3 > /proc/sys/vm/drop_caches 2>/dev/null || echo "Cannot clear cache (need root)"
+
 # Clean build artifacts completely
 echo "🧹 Cleaning build artifacts..."
 rm -rf .next
 rm -rf node_modules/.cache
 rm -rf node_modules/.next
+rm -rf node_modules
+
+# Remove conflicting lockfiles
+echo "🔧 Removing conflicting lockfiles..."
+rm -f /var/www/smilerentalphuket.com/package-lock.json
 
 # Pull latest changes
 echo "📥 Pulling latest changes..."
@@ -73,13 +104,13 @@ if [ ! -f "src/components/analytics/index.ts" ]; then
     echo "export { Analytics } from './Analytics';" > src/components/analytics/index.ts
 fi
 
-# Clean install dependencies
+# Clean install dependencies with memory optimization
 echo "📦 Installing dependencies..."
-npm ci --production=false
+NODE_OPTIONS="--max-old-space-size=1024" npm ci --production=false
 
-# Build the application
-echo "🔨 Building application..."
-npm run build
+# Build the application with memory optimization
+echo "🔨 Building application with memory optimization..."
+NODE_OPTIONS="--max-old-space-size=1024" npm run build
 
 if [ $? -eq 0 ]; then
     echo "✅ Build successful!"
