@@ -94,6 +94,11 @@ jobs:
           # Navigate to project directory
           cd /var/www/smilerentalphuket.com/site-smile-rental
 
+          # Enable maintenance page (no 502 for users)
+          echo "🟡 Enabling maintenance page..."
+          cp /var/www/smilerentalphuket.com/site-smile-rental/public/maintenance.html /var/www/html/maintenance.html || true
+          nginx -t && systemctl reload nginx || true
+
           # Stop PM2 processes to avoid conflicts
           echo "🛑 Stopping PM2 processes..."
           pm2 stop all || echo "⚠️ No PM2 processes to stop"
@@ -171,6 +176,11 @@ jobs:
             echo "⚠️ Domain may have Nginx issues, but application is running"
             echo "💡 Run: sudo ./fix-nginx-and-deploy.sh to fix domain issues"
           fi
+
+          # Disable maintenance page after success
+          echo "🟢 Disabling maintenance page..."
+          rm -f /var/www/html/maintenance.html || true
+          nginx -t && systemctl reload nginx || true
 
           # Cleanup old backups (keep last 3)
           echo "🧹 Cleaning up old backups..."

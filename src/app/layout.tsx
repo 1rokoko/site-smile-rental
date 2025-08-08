@@ -81,12 +81,7 @@ export default function RootLayout({
 
         <link rel="preconnect" href="https://photos.app.goo.gl" />
         <link rel="dns-prefetch" href="https://photos.app.goo.gl" />
-        {/* Enhanced Security headers */}
-        <meta httpEquiv="Content-Security-Policy" content="default-src 'self' https://photos.app.goo.gl https://static.craftum.com https://mc.yandex.ru https://www.googletagmanager.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://mc.yandex.ru https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://photos.app.goo.gl https://static.craftum.com https://mc.yandex.ru; connect-src 'self' https://mc.yandex.ru https://www.google-analytics.com; frame-src 'self' https://www.google.com https://maps.google.com;" />
-        <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
-        <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
-        <meta httpEquiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains" />
-        <meta httpEquiv="Cross-Origin-Opener-Policy" content="same-origin" />
+        {/* Security headers are served via Next.js headers (next.config.ts). Meta CSP removed to avoid conflicts. */}
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
