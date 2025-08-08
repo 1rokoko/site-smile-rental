@@ -99,9 +99,18 @@ jobs:
           cp /var/www/smilerentalphuket.com/site-smile-rental/public/maintenance.html /var/www/html/maintenance.html || true
           nginx -t && systemctl reload nginx || true
 
-          # Stop PM2 processes to avoid conflicts
-          echo "🛑 Stopping PM2 processes..."
-          pm2 stop all || echo "⚠️ No PM2 processes to stop"
+          # Prepare Nginx for maintenance and ensure config is correct
+          echo "🛠️ Ensuring Nginx config (maintenance + security headers) is applied..."
+          chmod +x smile-rental-modern/fix-nginx-and-deploy.sh || true
+          sudo ./smile-rental-modern/fix-nginx-and-deploy.sh || ./smile-rental-modern/fix-nginx-and-deploy.sh || true
+
+          # Enable maintenance page (no 502 for users)
+          echo "🟡 Enabling maintenance page..."
+          cp /var/www/smilerentalphuket.com/site-smile-rental/public/maintenance.html /var/www/html/maintenance.html || true
+          nginx -t && systemctl reload nginx || true
+
+          # Keep app running during build; we'll restart after build
+          echo "⏭️ Skipping PM2 stop to minimize downtime"
 
           # Backup current version (just in case)
           echo "💾 Creating backup..."
@@ -133,8 +142,8 @@ jobs:
           # Check if PM2 is running the app
           echo "🔍 Checking current application status..."
           if pm2 list | grep -q "${{ env.APP_NAME }}"; then
-            echo "🔄 Restarting existing application..."
-            pm2 restart ${{ env.APP_NAME }}
+            echo "🔄 Restarting existing application (graceful)..."
+            pm2 restart ${{ env.APP_NAME }} || pm2 start npm --name "${{ env.APP_NAME }}" -- start
           else
             echo "🚀 Starting new application..."
             pm2 start npm --name "${{ env.APP_NAME }}" -- start
