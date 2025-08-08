@@ -41,45 +41,45 @@ export const IMAGE_CATALOG = {
     }
   },
 
-  // Scooter Images - SECURITY FIX: Using local placeholders
+  // Scooter Images - SECURITY FIX: Using local images
   scooters: {
     nmax: {
-      src: "/images/scooters/nmax-placeholder.jpg",
+      src: "/images/scooters/nmax.jpg",
       alt: "Yamaha NMAX scooter",
       usage: "NMAX scooter product image",
       photoLink: "https://photos.app.goo.gl/jdDkh4icYJpunRi79"
     },
     filano: {
-      src: "/images/scooters/filano-placeholder.jpg",
+      src: "/images/scooters/filano.jpg",
       alt: "Yamaha Filano scooter",
       usage: "Filano scooter product image",
       photoLink: "https://photos.app.goo.gl/aGKH13bWvVe7TiLy5"
     },
     premiumHelmet: {
-      src: "/images/scooters/helmet-placeholder.jpg",
+      src: "/images/scooters/helmet.jpg",
       alt: "Premium helmet",
       usage: "Premium helmet product image"
     },
     gpx150: {
-      src: "/images/scooters/gpx150-placeholder.jpg",
+      src: "/images/scooters/gpx150.jpg",
       alt: "GPX 150cc scooter",
       usage: "GPX 150cc scooter product image",
       photoLink: "https://photos.app.goo.gl/oXwcEEineMZpFLe78"
     },
     gt270: {
-      src: "/images/scooters/gt270-placeholder.jpg",
+      src: "/images/scooters/gt270.jpg",
       alt: "GT 270 ABS scooter",
       usage: "GT 270 ABS scooter product image",
       photoLink: "https://photos.app.goo.gl/d5vNpjEE2otwL8X17"
     },
     bestSeller1: {
-      src: "/images/scooters/bestseller1-placeholder.jpg",
+      src: "/images/scooters/bestseller1.jpg",
       alt: "Best seller scooter model",
       usage: "Best seller scooter product image",
       photoLink: "https://photos.app.goo.gl/e5WNPgSpzRqrQxBs5"
     },
     nmax2: {
-      src: "/images/scooters/nmax2-placeholder.jpg",
+      src: "/images/scooters/nmax2.jpg",
       alt: "Yamaha NMAX scooter variant",
       usage: "NMAX scooter variant product image",
       photoLink: "https://photos.app.goo.gl/mmB2xtFsPNfiVVtb9"
@@ -110,52 +110,52 @@ export const IMAGE_CATALOG = {
     }
   },
 
-  // Additional Scooter Images - SECURITY FIX: Using local placeholders
+  // Additional Scooter Images - SECURITY FIX: Using local images
   moreScooters: {
     bestSeller2: {
-      src: "/images/scooters/bestseller2-placeholder.jpg",
+      src: "/images/scooters/bestseller2.jpg",
       alt: "Best seller GPX scooter",
       usage: "Best seller GPX scooter product image",
       photoLink: "https://photos.app.goo.gl/oXwcEEineMZpFLe78"
     },
     gt270Premium: {
-      src: "/images/scooters/gt270-premium-placeholder.jpg",
+      src: "/images/scooters/gt270-premium.jpg",
       alt: "GT 270 ABS premium scooter",
       usage: "GT 270 ABS premium scooter product image",
       photoLink: "https://photos.app.goo.gl/cM5X1EBxGJBHHhjG7"
     },
     bestSeller3: {
-      src: "/images/scooters/bestseller3-placeholder.jpg",
+      src: "/images/scooters/bestseller3.jpg",
       alt: "Best seller 2024 scooter",
       usage: "Best seller 2024 scooter product image",
       photoLink: "https://photos.app.goo.gl/rGfznuCuv9HLSjwT8"
     },
     bestSeller4: {
-      src: "/images/scooters/bestseller4-placeholder.jpg",
+      src: "/images/scooters/bestseller4.jpg",
       alt: "Best seller 2023 scooter",
       usage: "Best seller 2023 scooter product image",
       photoLink: "https://photos.app.goo.gl/xZUiuSkZJYV4XAY59"
     },
     bestSeller5: {
-      src: "/images/scooters/bestseller5-placeholder.jpg",
+      src: "/images/scooters/bestseller5.jpg",
       alt: "Best seller 2024 variant scooter",
       usage: "Best seller 2024 variant scooter product image",
       photoLink: "https://photos.app.goo.gl/J9cW8ojfQYJPPjFJ6"
     },
     bestSeller6: {
-      src: "/images/scooters/bestseller6-placeholder.jpg",
+      src: "/images/scooters/bestseller6.jpg",
       alt: "Best seller premium variant scooter",
       usage: "Best seller premium variant scooter product image",
       photoLink: "https://photos.app.goo.gl/x5PwPevtKgVKB3P98"
     },
     xmax300: {
-      src: "/images/scooters/xmax300-placeholder.jpg",
+      src: "/images/scooters/xmax300.jpg",
       alt: "Yamaha XMAX 300cc ABS scooter",
       usage: "XMAX 300cc ABS premium scooter product image",
       photoLink: "https://photos.app.goo.gl/q4eQ5QABn2bCQ5M49"
     },
     nmaxAbs: {
-      src: "/images/scooters/nmax-abs-placeholder.jpg",
+      src: "/images/scooters/nmax-abs.jpg",
       alt: "Yamaha NMAX ABS scooter",
       usage: "NMAX ABS scooter product image",
       photoLink: "https://photos.app.goo.gl/r9JBHoTcfTs3BpEv9"
@@ -176,10 +176,10 @@ export const IMAGE_CATALOG = {
     }
   },
 
-  // Owner Image - SECURITY FIX: Using local placeholder
+  // Owner Image - SECURITY FIX: Using local image
   owner: {
     alex: {
-      src: "/images/owner/alex-placeholder.jpg",
+      src: "/images/owner/alex.jpg",
       alt: "Alex - Owner of Smile Rental Phuket",
       usage: "Owner profile image"
     }

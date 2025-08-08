@@ -78,7 +78,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://photos.app.goo.gl" />
         <link rel="dns-prefetch" href="https://photos.app.goo.gl" />
         {/* Security headers for Google Ads compliance */}
-        <meta httpEquiv="Content-Security-Policy" content="default-src 'self' https://photos.app.goo.gl https://static.craftum.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://photos.app.goo.gl https://static.craftum.com; connect-src 'self';" />
+        <meta httpEquiv="Content-Security-Policy" content="default-src 'self' https://photos.app.goo.gl https://static.craftum.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://photos.app.goo.gl https://static.craftum.com; connect-src 'self'; frame-src 'self' https://www.google.com https://maps.google.com;" />
         <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
         <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
       </head>
