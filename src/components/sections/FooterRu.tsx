@@ -167,9 +167,16 @@ export const FooterRu: React.FC = () => {
       <div className="border-t border-gray-800">
         <Container>
           <div className="py-6 flex flex-col md:flex-row justify-between items-center">
-            <BodySmall className="text-gray-400">
-              © 2019-2026 Smile Rental Пхукет. Все права защищены.
-            </BodySmall>
+            <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
+              <BodySmall className="text-gray-400">
+                © 2019-2026 Smile Rental Пхукет. Все права защищены.
+              </BodySmall>
+              <div className="flex space-x-4 text-xs">
+                <a href="#" className="text-gray-500 hover:text-white transition-colors">Политика конфиденциальности</a>
+                <a href="#" className="text-gray-500 hover:text-white transition-colors">Политика cookies</a>
+                <a href="#" className="text-gray-500 hover:text-white transition-colors">Политика возврата</a>
+              </div>
+            </div>
             <BodySmall className="text-gray-400 mt-2 md:mt-0">
               Сделано с ❤️ для безопасных путешествий на Пхукете
             </BodySmall>

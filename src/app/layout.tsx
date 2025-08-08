@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@/components/analytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -77,15 +78,18 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://photos.app.goo.gl" />
         <link rel="dns-prefetch" href="https://photos.app.goo.gl" />
-        {/* Security headers for Google Ads compliance */}
-        <meta httpEquiv="Content-Security-Policy" content="default-src 'self' https://photos.app.goo.gl https://static.craftum.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://photos.app.goo.gl https://static.craftum.com; connect-src 'self'; frame-src 'self' https://www.google.com https://maps.google.com;" />
+        {/* Enhanced Security headers */}
+        <meta httpEquiv="Content-Security-Policy" content="default-src 'self' https://photos.app.goo.gl https://static.craftum.com https://mc.yandex.ru https://www.googletagmanager.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://mc.yandex.ru https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://photos.app.goo.gl https://static.craftum.com https://mc.yandex.ru; connect-src 'self' https://mc.yandex.ru https://www.google-analytics.com; frame-src 'self' https://www.google.com https://maps.google.com;" />
         <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
         <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+        <meta httpEquiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains" />
+        <meta httpEquiv="Cross-Origin-Opener-Policy" content="same-origin" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
