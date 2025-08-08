@@ -1,33 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://smilerentalphuket.com/</loc>
-    <lastmod>2024-12-19</lastmod>
+    <lastmod>2025-01-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smilerentalphuket.com/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://smilerentalphuket.com/?lang=ru" />
   </url>
   <url>
-    <loc>https://smilerentalphuket.com/about</loc>
-    <lastmod>2024-12-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://smilerentalphuket.com/contact</loc>
-    <lastmod>2024-12-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://smilerentalphuket.com/gallery</loc>
-    <lastmod>2024-12-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://smilerentalphuket.com/pricing</loc>
-    <lastmod>2024-12-19</lastmod>
+    <loc>https://smilerentalphuket.com/scooter-rental/</loc>
+    <lastmod>2025-01-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://smilerentalphuket.com/scooter-rental/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://smilerentalphuket.com/scooter-rental/?lang=ru" />
+  </url>
+  <url>
+    <loc>https://smilerentalphuket.com/index2/</loc>
+    <lastmod>2025-01-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://smilerentalphuket.com/index3/</loc>
+    <lastmod>2025-01-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://smilerentalphuket.com/privacy-policy/</loc>
+    <lastmod>2025-01-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://smilerentalphuket.com/cookie-policy/</loc>
+    <lastmod>2025-01-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://smilerentalphuket.com/return-policy/</loc>
+    <lastmod>2025-01-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://smilerentalphuket.com/security/</loc>
+    <lastmod>2025-01-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://smilerentalphuket.com/scooter-rental/privacy-policy/</loc>
+    <lastmod>2025-01-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://smilerentalphuket.com/scooter-rental/cookie-policy/</loc>
+    <lastmod>2025-01-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://smilerentalphuket.com/scooter-rental/return-policy/</loc>
+    <lastmod>2025-01-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.2</priority>
   </url>
 </urlset>

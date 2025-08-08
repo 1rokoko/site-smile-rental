@@ -30,23 +30,8 @@ const securityHeaders = [
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=()'
   },
-  {
-    key: 'Content-Security-Policy',
-    value: [
-      "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://maps.googleapis.com https://maps.gstatic.com",
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://maps.gstatic.com",
-      "img-src 'self' data: blob: https://www.google-analytics.com https://maps.gstatic.com https://maps.googleapis.com",
-      "font-src 'self' https://fonts.gstatic.com",
-      "connect-src 'self' https://www.google-analytics.com https://maps.googleapis.com",
-      "frame-src 'self' https://www.google.com https://maps.google.com",
-      "object-src 'none'",
-      "base-uri 'self'",
-      "form-action 'self'",
-      "frame-ancestors 'none'",
-      "upgrade-insecure-requests"
-    ].join('; ')
-  }
+  // CSP is now handled by middleware.ts with nonce support
+  // Removed to avoid conflicts
 ];
 
 const nextConfig: NextConfig = {

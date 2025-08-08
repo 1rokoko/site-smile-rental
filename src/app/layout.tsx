@@ -81,7 +81,7 @@ export default function RootLayout({
 
         <link rel="preconnect" href="https://photos.app.goo.gl" />
         <link rel="dns-prefetch" href="https://photos.app.goo.gl" />
-        {/* Security headers are served via Next.js headers (next.config.ts). Meta CSP removed to avoid conflicts. */}
+        {/* Security headers are served via middleware.ts with enhanced CSP */}
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

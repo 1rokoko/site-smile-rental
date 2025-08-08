@@ -191,6 +191,67 @@ jobs:
           rm -f /var/www/html/maintenance.html || true
           nginx -t && systemctl reload nginx || true
 
+          # Comprehensive post-deployment checks
+          echo "🧪 Running post-deployment security and functionality checks..."
+
+          # Check HTTPS redirect
+          echo "🔒 Testing HTTPS redirect..."
+          if curl -I http://smilerentalphuket.com 2>/dev/null | grep -q "301\|302"; then
+            echo "✅ HTTP to HTTPS redirect working"
+          else
+            echo "⚠️ HTTP to HTTPS redirect may not be working"
+          fi
+
+          # Check HTTPS response
+          echo "🔒 Testing HTTPS response..."
+          if curl -fsSL https://smilerentalphuket.com > /dev/null 2>&1; then
+            echo "✅ HTTPS site is accessible"
+          else
+            echo "⚠️ HTTPS site may have issues"
+          fi
+
+          # Check security headers
+          echo "🛡️ Testing security headers..."
+          HEADERS=$(curl -I https://smilerentalphuket.com 2>/dev/null || curl -I http://smilerentalphuket.com 2>/dev/null)
+
+          if echo "$HEADERS" | grep -q "Strict-Transport-Security"; then
+            echo "✅ HSTS header present"
+          else
+            echo "⚠️ HSTS header missing"
+          fi
+
+          if echo "$HEADERS" | grep -q "Content-Security-Policy"; then
+            echo "✅ CSP header present"
+          else
+            echo "⚠️ CSP header missing"
+          fi
+
+          if echo "$HEADERS" | grep -q "X-Frame-Options"; then
+            echo "✅ X-Frame-Options header present"
+          else
+            echo "⚠️ X-Frame-Options header missing"
+          fi
+
+          # Check for common vulnerabilities
+          echo "🔍 Checking for common issues..."
+          RESPONSE=$(curl -s https://smilerentalphuket.com || curl -s http://smilerentalphuket.com)
+
+          if echo "$RESPONSE" | grep -qi "error\|exception\|stack trace"; then
+            echo "⚠️ Potential error messages exposed"
+          else
+            echo "✅ No obvious error messages exposed"
+          fi
+
+          # Test key pages
+          echo "📄 Testing key pages..."
+          for page in "" "scooter-rental/" "privacy-policy/" "security/"; do
+            if curl -f -s "https://smilerentalphuket.com/$page" > /dev/null 2>&1; then
+              echo "✅ Page /$page is accessible"
+            else
+              echo "⚠️ Page /$page may have issues"
+            fi
+          done
+
           # Cleanup old backups (keep last 3)
           echo "🧹 Cleaning up old backups..."
           ls -t .next.backup.* 2>/dev/null | tail -n +4 | xargs rm -rf 2>/dev/null || echo "No old backups to clean"
