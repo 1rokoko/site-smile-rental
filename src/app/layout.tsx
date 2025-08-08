@@ -76,6 +76,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Google Site Verification */}
+        <meta name="google-site-verification" content="YxLY-d5B7WPjkgGfePklJ_tu64TDvkj_xQy2RW8SajM" />
+
         <link rel="preconnect" href="https://photos.app.goo.gl" />
         <link rel="dns-prefetch" href="https://photos.app.goo.gl" />
         {/* Enhanced Security headers */}
