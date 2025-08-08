@@ -181,6 +181,24 @@ export const FooterRu: React.FC = () => {
               Сделано с ❤️ для безопасных путешествий на Пхукете
             </BodySmall>
           </div>
+
+          {/* SEO Text - Russian */}
+          <div className="py-4 border-t border-gray-800">
+            <div className="text-xs text-gray-500 leading-relaxed">
+              <p className="mb-2">
+                <strong>Откройте Пхукет на двух колесах</strong>
+              </p>
+              <p className="mb-2">
+                Откройте Пхукет на двух колесах с нашим разнообразным автопарком! Выбирайте городские скутеры Honda Click (125cc/150cc), Yamaha Filano (125cc) или Suzuki Address 125 для городского трафика. Престижные райдеры любят Vespa Primavera/Sprint (150cc), а путешественники на дальние расстояния выбирают Honda PCX (160cc) или Yamaha Aerox/NMax (155cc). Новички наслаждаются легкой ездой на Honda Scoopy (110cc) и Honda Air Blade (125cc), а бюджетные путешественники выбирают надежные Honda Wave/Dream (110cc).
+              </p>
+              <p className="mb-2">
+                Для искателей приключений: туристические мотоциклы Honda CB500X, Kawasaki Versys-X 300 и BMW G310GS покоряют горные дороги, а внедорожные звери Honda CRF250L/150L и Kawasaki KLX 140 справляются с джунглевыми тропами. Любители скорости получают удовольствие от Kawasaki Ninja 300/400 или Yamaha YZF-R3. Хотите ретро-атмосферу? Прокатитесь на Royal Enfield Classic 350 или премиальном Harley-Davidson Street 750.
+              </p>
+              <p>
+                Бронируйте онлайн — бесплатная доставка в ваш отель! Все мотоциклы застрахованы, обслуживаются ежедневно и включают шлем, замок и карту острова. Экономьте до 20% при недельной аренде. Независимо от того, гонитесь ли вы за водопадами в Банг Пае или закатами в Кароне, ваше приключение на Пхукете начинается прямо сейчас!
+              </p>
+            </div>
+          </div>
         </Container>
       </div>
     </footer>
