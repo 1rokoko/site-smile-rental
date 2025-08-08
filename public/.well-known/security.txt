@@ -1,0 +1,11 @@
+Contact: mailto:admin@smilerentalphuket.com
+Expires: 2025-12-31T23:59:59.000Z
+Encryption: https://smilerentalphuket.com/pgp-key.txt
+Preferred-Languages: en, ru, th
+Canonical: https://smilerentalphuket.com/.well-known/security.txt
+Policy: https://smilerentalphuket.com/security-policy
+Hiring: https://smilerentalphuket.com/careers
+
+# Security Policy for Smile Rental Phuket
+# We take security seriously and appreciate responsible disclosure
+# Please report security vulnerabilities to admin@smilerentalphuket.com

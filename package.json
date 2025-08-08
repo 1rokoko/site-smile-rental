@@ -6,7 +6,12 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "troubleshoot:add": "node scripts/auto-troubleshoot-updater.js add",
+    "troubleshoot:solve": "node scripts/auto-troubleshoot-updater.js solve",
+    "troubleshoot:check": "node scripts/auto-troubleshoot-updater.js check",
+    "deploy:check": "npm run troubleshoot:check && npm run build",
+    "postdeploy": "npm run troubleshoot:check"
   },
   "dependencies": {
     "@types/prettier": "^2.7.3",
