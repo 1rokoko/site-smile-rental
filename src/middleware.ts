@@ -1,24 +1,9 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { randomBytes } from 'crypto'
 
 export function middleware(request: NextRequest) {
-  // Generate nonce for CSP
-  const nonce = randomBytes(16).toString('base64')
-
-  // Clone the request headers and add nonce
-  const requestHeaders = new Headers(request.headers)
-  requestHeaders.set('x-nonce', nonce)
-
-  // Add security headers
-  const response = NextResponse.next({
-    request: {
-      headers: requestHeaders,
-    },
-  })
-
-  // Add nonce to response headers for components to use
-  response.headers.set('x-nonce', nonce)
+  // Simple security headers without nonce for now
+  const response = NextResponse.next()
 
   // Additional security headers for Google Ads compliance
   response.headers.set('X-Robots-Tag', 'index, follow')
@@ -56,23 +41,11 @@ export function middleware(request: NextRequest) {
     console.log(`Suspicious user agent detected: ${userAgent}`)
   }
 
-  // Enhanced CSP - strict but compatible with GA
-  const csp = [
-    "default-src 'self'",
-    "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://maps.googleapis.com https://maps.gstatic.com",
-    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://maps.gstatic.com",
-    "img-src 'self' data: blob: https://www.google-analytics.com https://maps.gstatic.com https://maps.googleapis.com https://photos.app.goo.gl https://static.craftum.com",
-    "font-src 'self' https://fonts.gstatic.com",
-    "connect-src 'self' https://www.google-analytics.com https://maps.googleapis.com",
-    "frame-src 'self' https://www.google.com https://maps.google.com",
-    "object-src 'none'",
-    "base-uri 'self'",
-    "form-action 'self'",
-    "frame-ancestors 'none'",
-    "upgrade-insecure-requests"
-  ].join('; ')
-
-  response.headers.set('Content-Security-Policy', csp)
+  // Basic security headers
+  response.headers.set('X-Frame-Options', 'SAMEORIGIN')
+  response.headers.set('X-Content-Type-Options', 'nosniff')
+  response.headers.set('X-XSS-Protection', '1; mode=block')
+  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
 
   // Rate limiting headers
   response.headers.set('X-RateLimit-Limit', '1000')
@@ -84,13 +57,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     */
     '/((?!api|_next/static|_next/image|favicon.ico).*)',
   ],
 }
