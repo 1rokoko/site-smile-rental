@@ -172,9 +172,9 @@ export const FooterRu: React.FC = () => {
                 © 2019-2026 Smile Rental Пхукет. Все права защищены.
               </BodySmall>
               <div className="flex space-x-4 text-xs">
-                <a href="#" className="text-gray-500 hover:text-white transition-colors">Политика конфиденциальности</a>
-                <a href="#" className="text-gray-500 hover:text-white transition-colors">Политика cookies</a>
-                <a href="#" className="text-gray-500 hover:text-white transition-colors">Политика возврата</a>
+                <a href="/scooter-rental/privacy-policy" className="text-gray-500 hover:text-white transition-colors">Политика конфиденциальности</a>
+                <a href="/scooter-rental/cookie-policy" className="text-gray-500 hover:text-white transition-colors">Политика cookies</a>
+                <a href="/scooter-rental/return-policy" className="text-gray-500 hover:text-white transition-colors">Политика возврата</a>
               </div>
             </div>
             <BodySmall className="text-gray-400 mt-2 md:mt-0">
