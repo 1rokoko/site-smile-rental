@@ -1,0 +1,3 @@
+@echo off
+echo Connecting to server...
+ssh root@smilerentalphuket.com
