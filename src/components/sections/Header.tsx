@@ -37,7 +37,9 @@ export const Header: React.FC = () => {
                 alt="Trustpilot Reviews"
                 width={80}
                 height={24}
-                priority
+                loading="lazy"
+                decoding="async"
+                sizes="80px"
                 className="object-contain"
               />
             </div>
