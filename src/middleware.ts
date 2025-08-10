@@ -71,9 +71,9 @@ export function middleware(request: NextRequest) {
   return response
 }
 
-// Temporarily disable middleware to fix crypto issue
-// export const config = {
-//   matcher: [
-//     '/((?!api|_next/static|_next/image|favicon.ico).*)',
-//   ],
-// }
+export const config = {
+  matcher: [
+    // Avoid static assets and API to reduce overhead
+    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+  ],
+}
