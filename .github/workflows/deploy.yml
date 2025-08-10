@@ -94,6 +94,13 @@ jobs:
           # Navigate to project directory
           cd /var/www/smilerentalphuket.com/site-smile-rental
 
+          # Emergency cleanup: Remove any stuck maintenance pages first
+          echo "🧹 Emergency cleanup: removing any stuck maintenance pages..."
+          rm -f /var/www/html/maintenance.html || true
+          rm -f /var/www/smilerentalphuket.com/maintenance.html || true
+          nginx -t && systemctl reload nginx || true
+          sleep 2
+
           # Enable maintenance page (no 502 for users)
           echo "🟡 Enabling maintenance page..."
           cp public/maintenance.html /var/www/html/maintenance.html || true
@@ -188,6 +195,7 @@ jobs:
           # Disable maintenance page after success
           echo "🟢 Disabling maintenance page..."
           rm -f /var/www/html/maintenance.html || true
+          rm -f /var/www/smilerentalphuket.com/maintenance.html || true
           nginx -t && systemctl reload nginx || true
 
           # Comprehensive post-deployment checks

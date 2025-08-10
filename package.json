@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start -p 3000",
     "lint": "next lint",
@@ -14,6 +14,7 @@
     "postdeploy": "npm run troubleshoot:check"
   },
   "dependencies": {
+    "@playwright/test": "^1.54.2",
     "@types/prettier": "^2.7.3",
     "clsx": "^2.1.1",
     "eslint-config-prettier": "^10.1.8",
@@ -21,6 +22,7 @@
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.535.0",
     "next": "15.4.5",
+    "playwright": "^1.54.2",
     "prettier": "^3.6.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",

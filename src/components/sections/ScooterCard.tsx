@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Card, CardContent, Badge, BodySmall } from '@/components/ui';
 import { ScooterModel } from '@/types';
@@ -54,12 +53,11 @@ export const ScooterCard: React.FC<ScooterCardProps> = ({ scooter, delay = 0 }) 
 
           {/* Scooter Image */}
           <div className="relative h-48 md:h-56 bg-gray-50">
-            <Image
+            <img
               src={scooter.image}
               alt={`${scooter.name} scooter`}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
         </div>

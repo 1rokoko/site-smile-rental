@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# Восстановление сайта в dev-режиме
+PASSWORD="925LudK9Bv"
+SERVER="38.180.122.239"
+USER="root"
+
+echo "RESTORING SITE IN DEV MODE..."
+echo "================================"
+
+# Функция для выполнения SSH команд
+execute_ssh() {
+    local command="$1"
+    local description="$2"
+    
+    if [ -n "$description" ]; then
+        echo "$description"
+    fi
+    
+    # Используем sshpass для автоматического ввода пароля
+    if command -v sshpass >/dev/null 2>&1; then
+        sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "$USER@$SERVER" "$command"
+    else
+        # Если sshpass недоступен, используем expect
+        expect -c "
+            spawn ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USER@$SERVER \"$command\"
+            expect \"password:\"
+            send \"$PASSWORD\r\"
+            expect eof
+        "
+    fi
+    
+    echo "Command completed"
+    echo ""
+}
+
+# 1. Проверка PM2
+echo "1. Checking PM2..."
+execute_ssh "pm2 list" "Checking PM2 processes"
+
+# 2. Удаление старых процессов
+echo "2. Deleting old processes..."
+execute_ssh "pm2 delete all || echo 'No processes to delete'" "Deleting all PM2 processes"
+
+# 3. Переход в директорию и запуск dev
+echo "3. Starting dev server..."
+execute_ssh "cd /var/www/smilerentalphuket.com/site-smile-rental && pm2 start npm --name smile-rental-dev -- run dev" "Starting dev server"
+
+# 4. Сохранение PM2
+echo "4. Saving PM2..."
+execute_ssh "pm2 save" "Saving PM2 configuration"
+
+# 5. Ждем
+echo "5. Waiting 10 seconds for startup..."
+sleep 10
+
+# 6. Проверка локального доступа
+echo "6. Checking local access..."
+execute_ssh "curl -I http://localhost:3000" "Checking localhost:3000"
+
+# 7. Перезагрузка Nginx
+echo "7. Reloading Nginx..."
+execute_ssh "systemctl reload nginx" "Reloading Nginx"
+
+# 8. Проверка домена
+echo "8. Checking domain..."
+execute_ssh "curl -I https://smilerentalphuket.com" "Checking domain"
+
+echo "RESTORATION COMPLETED!"
+echo "Site should be available at: https://smilerentalphuket.com"

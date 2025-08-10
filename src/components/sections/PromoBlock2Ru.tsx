@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import { Container, Section } from '@/components/layout';
 import { H2, FadeInView } from '@/components/ui';
 import { Star } from 'lucide-react';
@@ -17,12 +16,11 @@ export const PromoBlock2Ru: React.FC = () => {
               {/* Helmet Image */}
               <div className="flex-shrink-0">
                 <div className="relative w-32 h-32 md:w-40 md:h-40">
-                  <Image
+                  <img
                     src={IMAGE_CATALOG.scooters.premiumHelmet.src}
                     alt="Премиум шлем"
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 768px) 128px, 160px"
+                    className="w-full h-full object-contain"
+                    loading="lazy"
                   />
                 </div>
               </div>

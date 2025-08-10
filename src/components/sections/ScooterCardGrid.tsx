@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ScooterModel } from '@/types';
 import { Star, Award } from 'lucide-react';
@@ -46,12 +45,11 @@ export const ScooterCardGrid: React.FC<ScooterCardGridProps> = ({ scooter, delay
 
         {/* Scooter Image */}
         <div className="relative h-48 sm:h-56 md:h-64 bg-gray-50">
-          <Image
+          <img
             src={scooter.image}
             alt={`${scooter.name} scooter`}
-            fill
-            className="object-cover"
-            sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+            className="w-full h-full object-cover"
+            loading="lazy"
           />
         </div>
 

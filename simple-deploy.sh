@@ -54,29 +54,25 @@ execute_ssh "cd /var/www/smilerentalphuket.com/site-smile-rental && pwd" "Пер
 execute_ssh "cd /var/www/smilerentalphuket.com/site-smile-rental && git status" "Проверяем статус Git"
 execute_ssh "cd /var/www/smilerentalphuket.com/site-smile-rental && git pull origin main" "Обновляем код из GitHub"
 
-# 4. Переход в папку приложения и сборка
-echo "4️⃣ СБОРКА ПРИЛОЖЕНИЯ"
-execute_ssh "cd /var/www/smilerentalphuket.com/site-smile-rental/smile-rental-modern && npm install" "Устанавливаем зависимости"
-execute_ssh "cd /var/www/smilerentalphuket.com/site-smile-rental/smile-rental-modern && npm run build" "Собираем проект"
-
-# 5. Запуск приложения
-echo "5️⃣ ЗАПУСК ПРИЛОЖЕНИЯ"
-execute_ssh "pm2 stop smile-rental || echo 'Приложение не было запущено'" "Останавливаем старое приложение"
-execute_ssh "cd /var/www/smilerentalphuket.com/site-smile-rental/smile-rental-modern && pm2 start npm --name smile-rental -- start" "Запускаем новое приложение"
+# 4. Запуск в dev режиме
+echo "4️⃣ ЗАПУСК В DEV РЕЖИМЕ"
+execute_ssh "pm2 delete all || echo 'Нет процессов для удаления'" "Удаляем все процессы"
+execute_ssh "cd /var/www/smilerentalphuket.com/site-smile-rental && pm2 start 'npm run dev' --name smile-rental-dev" "Запускаем dev сервер"
 execute_ssh "pm2 save" "Сохраняем конфигурацию PM2"
 
-# 6. Проверка работы
-echo "6️⃣ ПРОВЕРКА РАБОТЫ"
-echo "Ждем 5 секунд для запуска приложения..."
-sleep 5
+# 5. Проверка работы
+echo "5️⃣ ПРОВЕРКА РАБОТЫ"
+echo "Ждем 10 секунд для запуска приложения..."
+sleep 10
 execute_ssh "curl -I http://localhost:3000" "Проверяем локальный доступ"
-execute_ssh "curl -I http://smilerentalphuket.com" "Проверяем доступ по домену"
+execute_ssh "systemctl reload nginx" "Перезагружаем Nginx"
+execute_ssh "curl -I https://smilerentalphuket.com" "Проверяем доступ по домену"
 
-# 7. Финальный статус
-echo "7️⃣ ФИНАЛЬНЫЙ СТАТУС"
+# 6. Финальный статус
+echo "6️⃣ ФИНАЛЬНЫЙ СТАТУС"
 execute_ssh "pm2 list" "Статус PM2"
 execute_ssh "systemctl status nginx --no-pager -l | head -5" "Статус Nginx"
 
-echo "🎉 РАЗВЕРТЫВАНИЕ ЗАВЕРШЕНО!"
-echo "Сайт должен быть доступен по адресу: http://smilerentalphuket.com"
+echo "🎉 DEV СЕРВЕР ЗАПУЩЕН!"
+echo "Сайт должен быть доступен по адресу: https://smilerentalphuket.com"
 echo ""

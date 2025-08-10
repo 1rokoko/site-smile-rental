@@ -1,0 +1,19 @@
+925LudK9Bv
+pm2 list
+echo "=== PM2 STATUS CHECKED ==="
+pm2 delete all
+cd /var/www/smilerentalphuket.com/site-smile-rental
+pm2 start 'npm run dev' --name smile-rental-dev --watch
+pm2 save
+echo "=== PM2 RESTARTED ==="
+cat /etc/nginx/sites-available/smilerentalphuket.com
+echo "=== NGINX CONFIG CHECKED ==="
+nginx -t
+systemctl restart nginx
+echo "=== NGINX RESTARTED ==="
+curl -I http://localhost:3000
+echo "=== LOCAL TEST DONE ==="
+curl -I http://smilerentalphuket.com
+echo "=== DOMAIN TEST DONE ==="
+pm2 logs smile-rental-dev --lines 10
+exit

@@ -13,24 +13,43 @@ $cmd1 = "cd /var/www/smilerentalphuket.com/site-smile-rental && git pull origin 
 echo $SERVER_PASSWORD | ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP $cmd1
 
 Write-Host ""
-Write-Host "Step 2: Installing dependencies..." -ForegroundColor Cyan
-$cmd2 = "cd /var/www/smilerentalphuket.com/site-smile-rental && npm install"
+Write-Host "Step 2: Checking current status..." -ForegroundColor Cyan
+$cmd2 = "pm2 list"
 echo $SERVER_PASSWORD | ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP $cmd2
 
 Write-Host ""
-Write-Host "Step 3: Building production version..." -ForegroundColor Cyan
-$cmd3 = "cd /var/www/smilerentalphuket.com/site-smile-rental && npm run build"
+Write-Host "Step 3: Deleting old processes..." -ForegroundColor Cyan
+$cmd3 = "pm2 delete all"
 echo $SERVER_PASSWORD | ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP $cmd3
 
 Write-Host ""
-Write-Host "Step 4: Restarting PM2 processes..." -ForegroundColor Cyan
-$cmd4 = "pm2 restart smile-rental"
+Write-Host "Step 4: Starting dev server..." -ForegroundColor Cyan
+$cmd4 = "cd /var/www/smilerentalphuket.com/site-smile-rental && pm2 start 'npm run dev' --name smile-rental-dev"
 echo $SERVER_PASSWORD | ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP $cmd4
 
 Write-Host ""
-Write-Host "Step 5: Checking website status..." -ForegroundColor Cyan
-$cmd5 = "curl -I http://localhost:3000"
+Write-Host "Step 5: Saving PM2 configuration..." -ForegroundColor Cyan
+$cmd5 = "pm2 save"
 echo $SERVER_PASSWORD | ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP $cmd5
+
+Write-Host ""
+Write-Host "Step 6: Waiting 10 seconds for startup..." -ForegroundColor Yellow
+Start-Sleep -Seconds 10
+
+Write-Host ""
+Write-Host "Step 7: Checking local server..." -ForegroundColor Cyan
+$cmd6 = "curl -I http://localhost:3000"
+echo $SERVER_PASSWORD | ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP $cmd6
+
+Write-Host ""
+Write-Host "Step 8: Reloading Nginx..." -ForegroundColor Cyan
+$cmd7 = "systemctl reload nginx"
+echo $SERVER_PASSWORD | ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP $cmd7
+
+Write-Host ""
+Write-Host "Step 9: Checking domain..." -ForegroundColor Cyan
+$cmd8 = "curl -I https://smilerentalphuket.com"
+echo $SERVER_PASSWORD | ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP $cmd8
 
 Write-Host ""
 Write-Host "✅ DEPLOYMENT COMPLETED!" -ForegroundColor Green

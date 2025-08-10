@@ -1,4 +1,54 @@
 # URGENT DIRECT DEPLOYMENT SCRIPT - BYPASS GITHUB
+# Автоматический ввод пароля для SSH
+$SERVER_IP = "38.180.122.239"
+$SERVER_USER = "root"
+$SERVER_PASSWORD = "925LudK9Bv"
+$SERVER_PATH = "/var/www/smilerentalphuket.com/site-smile-rental"
+
+Write-Host "🚨 СРОЧНОЕ РАЗВЕРТЫВАНИЕ - АВТОМАТИЧЕСКИЙ ВВОД ПАРОЛЯ" -ForegroundColor Red
+Write-Host "🎯 Сервер: $SERVER_IP" -ForegroundColor Yellow
+Write-Host ""
+
+# Функция для выполнения SSH команд с автоматическим вводом пароля
+function Run-SSHCommand {
+    param($command)
+    Write-Host "🔧 Выполняем: $command" -ForegroundColor Cyan
+
+    # Используем plink для автоматического ввода пароля
+    $result = echo $SERVER_PASSWORD | plink -ssh -batch -pw $SERVER_PASSWORD $SERVER_USER@$SERVER_IP $command
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "❌ Ошибка выполнения команды" -ForegroundColor Red
+    }
+    return $result
+}
+
+Write-Host "Шаг 1: Останавливаем PM2..." -ForegroundColor Cyan
+Run-SSHCommand "pm2 stop all; pm2 delete all"
+
+Write-Host ""
+Write-Host "Шаг 2: Проверяем сборку..." -ForegroundColor Cyan
+Run-SSHCommand "cd $SERVER_PATH && ls -la .next/BUILD_ID 2>/dev/null || echo 'BUILD_ID не найден'"
+
+Write-Host ""
+Write-Host "Шаг 3: Пересобираем приложение..." -ForegroundColor Cyan
+Run-SSHCommand "cd $SERVER_PATH && npm run build"
+
+Write-Host ""
+Write-Host "Шаг 4: Запускаем PM2 из правильной директории..." -ForegroundColor Cyan
+Run-SSHCommand "cd $SERVER_PATH && pm2 start npm --name smile-rental -- start"
+
+Write-Host ""
+Write-Host "Шаг 5: Проверяем статус..." -ForegroundColor Cyan
+Run-SSHCommand "pm2 status"
+
+Write-Host ""
+Write-Host "Шаг 6: Тестируем доступность..." -ForegroundColor Cyan
+Run-SSHCommand "curl -I http://localhost:3000"
+Run-SSHCommand "curl -I http://smilerentalphuket.com"
+
+Write-Host ""
+Write-Host "🎉 РАЗВЕРТЫВАНИЕ ЗАВЕРШЕНО!" -ForegroundColor Green
+Write-Host "🌐 Сайт: http://smilerentalphuket.com" -ForegroundColor Yellow
 # Deploys files directly to server via SCP
 $SERVER_IP = "38.180.122.239"
 $SERVER_USER = "root"
