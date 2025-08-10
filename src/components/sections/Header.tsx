@@ -30,6 +30,17 @@ export const Header: React.FC = () => {
               </h1>
               <p className="text-sm text-text-secondary">Phuket</p>
             </div>
+            {/* Trustpilot badge for mobile (restored) */}
+            <div className="sm:hidden ml-2">
+              <Image
+                src="/images/trustpilot-reviews.png"
+                alt="Trustpilot Reviews"
+                width={80}
+                height={24}
+                priority
+                className="object-contain"
+              />
+            </div>
           </motion.div>
 
           {/* Reviews Section - Centered */}
