@@ -9,6 +9,9 @@ import {
   Footer,
 } from '@/components/sections';
 import { FloatingContactButtons } from '@/components/ui';
+export const dynamic = 'force-static';
+export const revalidate = 3600;
+
 
 export default function Home() {
   return (
