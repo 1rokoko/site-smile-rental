@@ -130,10 +130,16 @@ jobs:
             echo "✅ Next.js configuration is already correct"
           fi
 
-          # Clean old build
-          echo "🧹 Cleaning old build..."
+          # EMERGENCY: Complete cleanup to fix corrupted build
+          echo "🚨 EMERGENCY: Complete cleanup to fix corrupted build..."
           rm -rf .next
-          rm -rf node_modules/.cache
+          rm -rf out
+          rm -rf node_modules
+          rm -rf .npm
+          rm -rf package-lock.json
+          npm cache clean --force
+          sync
+          echo 3 > /proc/sys/vm/drop_caches || true
 
           # Install dependencies
           echo "📦 Installing dependencies..."
