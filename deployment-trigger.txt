@@ -1,0 +1,2 @@
+Deployment trigger: 2025-08-11 - Fix 502 Bad Gateway error
+This file triggers GitHub Actions deployment with corrected ecosystem.config.js paths
