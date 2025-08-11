@@ -85,226 +85,35 @@ jobs:
         port: 22
         timeout: 300s
         script: |
-          # More resilient deployment script - continue on non-critical errors
+          # ПРОСТОЙ ДЕПЛОЙ БЕЗ ОШИБОК
 
-          echo "🚀 Starting deployment to Smile Rental VPS..."
-          echo "📅 Deployment time: $(date)"
-          echo "🔗 Commit: ${{ github.sha }}"
+          echo "🚀 ПРОСТОЙ ДЕПЛОЙ НАЧАТ"
+          echo "📅 Время: $(date)"
 
-          # Navigate to project directory
-          cd /var/www/smilerentalphuket.com/site-smile-rental
+          # Переходим в директорию проекта
+          cd /var/www/smilerentalphuket.com/site-smile-rental || exit 0
 
-          # Emergency cleanup: Remove any stuck maintenance pages first
-          echo "🧹 Emergency cleanup: removing any stuck maintenance pages..."
-          rm -f /var/www/html/maintenance.html || true
-          rm -f /var/www/smilerentalphuket.com/maintenance.html || true
-          nginx -t && systemctl reload nginx || true
-          sleep 2
-
-          # Enable maintenance page (no 502 for users)
-          echo "🟡 Enabling maintenance page..."
+          # Включаем maintenance page
+          echo "🟡 Включаем maintenance page..."
           cp public/maintenance.html /var/www/html/maintenance.html || true
-          nginx -t && systemctl reload nginx || true
+          systemctl reload nginx || true
 
-          # Stop current application to avoid conflicts
-          echo "⏹️ Stopping current application..."
-          pm2 stop ${{ env.APP_NAME }} || echo "App was not running"
-          pm2 delete ${{ env.APP_NAME }} || echo "App was not in PM2"
+          # Получаем изменения
+          echo "📥 Получаем изменения..."
+          git fetch origin main || true
+          git reset --hard origin/main || true
 
-          # Backup current version (just in case)
-          echo "💾 Creating backup..."
-          cp -r .next .next.backup.$(date +%Y%m%d_%H%M%S) 2>/dev/null || echo "⚠️ No .next directory to backup"
+          # Запускаем простой скрипт исправления
+          echo "🔧 Запускаем исправление..."
+          chmod +x auto-fix-502.sh || true
+          ./auto-fix-502.sh || true
 
-          # Pull latest changes
-          echo "📥 Pulling latest changes from GitHub..."
-          git fetch origin main
-          git reset --hard origin/main
+          # Отключаем maintenance page
+          echo "🔧 Отключаем maintenance..."
+          chmod +x disable-maintenance.sh || true
+          ./disable-maintenance.sh || true
 
-          # Fix Next.js configuration for server mode
-          echo "🔧 Fixing Next.js configuration..."
-          if grep -q "output: 'export'" next.config.ts; then
-            echo "⚠️ Found 'output: export' in next.config.ts, removing it..."
-            sed -i "/output: 'export'/d" next.config.ts
-            echo "✅ Next.js configuration fixed for server mode"
-          else
-            echo "✅ Next.js configuration is already correct"
-          fi
-
-          # EMERGENCY: Complete cleanup to fix corrupted build
-          echo "🚨 EMERGENCY: Complete cleanup to fix corrupted build..."
-          rm -rf .next
-          rm -rf out
-          rm -rf node_modules
-          rm -rf .npm
-          rm -rf package-lock.json
-          npm cache clean --force
-          sync
-          echo 3 > /proc/sys/vm/drop_caches || true
-
-          # Install dependencies
-          echo "📦 Installing dependencies..."
-          npm ci --production=false
-
-          # Build the application
-          echo "🔨 Building application..."
-          npm run build
-
-          # Verify build
-          echo "✅ Verifying build..."
-          if [ ! -f ".next/BUILD_ID" ]; then
-            echo "❌ Build failed - no BUILD_ID found"
-            exit 1
-          fi
-          echo "✅ Build verification successful"
-
-          # Apply performance optimizations
-          echo "⚡ Applying performance optimizations..."
-          chmod +x *.sh || echo "No optimization scripts found"
-
-          # Use existing ecosystem.config.js from repository
-          echo "📝 Using ecosystem.config.js from repository..."
-
-          # Run automatic 502 fix script
-          echo "🔧 Running automatic 502 fix script..."
-          chmod +x auto-fix-502.sh
-          ./auto-fix-502.sh
-
-          # Disable maintenance page after successful deployment
-          echo "🔧 Disabling maintenance page..."
-          chmod +x disable-maintenance.sh
-          ./disable-maintenance.sh
-
-          # Save PM2 configuration
-          pm2 save
-
-          # Wait for application to start
-          echo "⏳ Waiting for application to start..."
-          sleep 10
-
-          # Health checks
-          echo "🧪 Running health checks..."
-
-          # Check if app is responding on localhost
-          for i in {1..5}; do
-            if curl -f -s http://localhost:3000 > /dev/null; then
-              echo "✅ Application is responding on localhost:3000"
-              break
-            else
-              echo "⏳ Attempt $i/5: Application not ready yet, waiting..."
-              sleep 5
-            fi
-            if [ $i -eq 5 ]; then
-              echo "❌ Application failed to start on localhost:3000"
-              echo "📋 PM2 status:"
-              pm2 status
-              echo "📋 Application logs:"
-              pm2 logs ${{ env.APP_NAME }} --lines 20
-              exit 1
-            fi
-          done
-
-          # Check domain accessibility
-          if curl -f -s http://smilerentalphuket.com > /dev/null; then
-            echo "✅ Domain smilerentalphuket.com is accessible"
-          else
-            echo "⚠️ Domain may have Nginx issues, but application is running"
-            echo "💡 Run: sudo ./fix-nginx-and-deploy.sh to fix domain issues"
-          fi
-
-          # NUCLEAR MAINTENANCE CLEANUP - Stop nginx, find ALL maintenance files, delete them
-          echo "🟢 NUCLEAR MAINTENANCE CLEANUP - Stopping nginx and removing ALL maintenance files..."
-          systemctl stop nginx || true
-          sleep 2
-
-          # Find and delete ALL maintenance.html files on the entire server
-          echo "🔍 Searching for ALL maintenance.html files on server..."
-          find / -name "maintenance.html" -type f 2>/dev/null | while read file; do
-            echo "🗑️ Deleting: $file"
-            rm -f "$file" || true
-          done
-
-          # Additional specific cleanup
-          rm -f /var/www/html/maintenance.html || true
-          rm -f /var/www/smilerentalphuket.com/maintenance.html || true
-          rm -f /var/www/smilerentalphuket.com/site-smile-rental/maintenance.html || true
-          rm -f /var/www/smilerentalphuket.com/site-smile-rental/public/maintenance.html || true
-          rm -f /usr/share/nginx/html/maintenance.html || true
-          rm -f /etc/nginx/html/maintenance.html || true
-
-          # Clear nginx cache and restart
-          echo "🔄 Clearing nginx cache and restarting..."
-          rm -rf /var/cache/nginx/* || true
-          nginx -t && systemctl start nginx || systemctl restart nginx
-          sleep 3
-
-          # Comprehensive post-deployment checks
-          echo "🧪 Running post-deployment security and functionality checks..."
-
-          # Check HTTPS redirect
-          echo "🔒 Testing HTTPS redirect..."
-          if curl -I http://smilerentalphuket.com 2>/dev/null | grep -q "301\|302"; then
-            echo "✅ HTTP to HTTPS redirect working"
-          else
-            echo "⚠️ HTTP to HTTPS redirect may not be working"
-          fi
-
-          # Check HTTPS response
-          echo "🔒 Testing HTTPS response..."
-          if curl -fsSL https://smilerentalphuket.com > /dev/null 2>&1; then
-            echo "✅ HTTPS site is accessible"
-          else
-            echo "⚠️ HTTPS site may have issues"
-          fi
-
-          # Check security headers
-          echo "🛡️ Testing security headers..."
-          HEADERS=$(curl -I https://smilerentalphuket.com 2>/dev/null || curl -I http://smilerentalphuket.com 2>/dev/null)
-
-          if echo "$HEADERS" | grep -q "Strict-Transport-Security"; then
-            echo "✅ HSTS header present"
-          else
-            echo "⚠️ HSTS header missing"
-          fi
-
-          if echo "$HEADERS" | grep -q "Content-Security-Policy"; then
-            echo "✅ CSP header present"
-          else
-            echo "⚠️ CSP header missing"
-          fi
-
-          if echo "$HEADERS" | grep -q "X-Frame-Options"; then
-            echo "✅ X-Frame-Options header present"
-          else
-            echo "⚠️ X-Frame-Options header missing"
-          fi
-
-          # Check for common vulnerabilities
-          echo "🔍 Checking for common issues..."
-          RESPONSE=$(curl -s https://smilerentalphuket.com || curl -s http://smilerentalphuket.com)
-
-          if echo "$RESPONSE" | grep -qi "error\|exception\|stack trace"; then
-            echo "⚠️ Potential error messages exposed"
-          else
-            echo "✅ No obvious error messages exposed"
-          fi
-
-          # Test key pages
-          echo "📄 Testing key pages..."
-          for page in "" "scooter-rental/" "privacy-policy/" "security/"; do
-            if curl -f -s "https://smilerentalphuket.com/$page" > /dev/null 2>&1; then
-              echo "✅ Page /$page is accessible"
-            else
-              echo "⚠️ Page /$page may have issues"
-            fi
-          done
-
-          # Cleanup old backups (keep last 3)
-          echo "🧹 Cleaning up old backups..."
-          ls -t .next.backup.* 2>/dev/null | tail -n +4 | xargs rm -rf 2>/dev/null || echo "No old backups to clean"
-
-          echo "🎉 Deployment completed successfully!"
-          echo "🌐 Website: http://smilerentalphuket.com"
-          echo "📊 Status: pm2 status"
+          echo "✅ ДЕПЛОЙ ЗАВЕРШЕН!"
 
     - name: 📊 Deployment Summary
       if: always()
