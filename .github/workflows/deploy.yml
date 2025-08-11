@@ -198,14 +198,31 @@ jobs:
             echo "💡 Run: sudo ./fix-nginx-and-deploy.sh to fix domain issues"
           fi
 
-          # Disable maintenance page after success (AGGRESSIVE CLEANUP)
-          echo "🟢 Disabling maintenance page..."
+          # NUCLEAR MAINTENANCE CLEANUP - Stop nginx, find ALL maintenance files, delete them
+          echo "🟢 NUCLEAR MAINTENANCE CLEANUP - Stopping nginx and removing ALL maintenance files..."
+          systemctl stop nginx || true
+          sleep 2
+
+          # Find and delete ALL maintenance.html files on the entire server
+          echo "🔍 Searching for ALL maintenance.html files on server..."
+          find / -name "maintenance.html" -type f 2>/dev/null | while read file; do
+            echo "🗑️ Deleting: $file"
+            rm -f "$file" || true
+          done
+
+          # Additional specific cleanup
           rm -f /var/www/html/maintenance.html || true
           rm -f /var/www/smilerentalphuket.com/maintenance.html || true
           rm -f /var/www/smilerentalphuket.com/site-smile-rental/maintenance.html || true
           rm -f /var/www/smilerentalphuket.com/site-smile-rental/public/maintenance.html || true
-          find /var/www -name "maintenance.html" -delete 2>/dev/null || true
-          nginx -t && systemctl reload nginx || true
+          rm -f /usr/share/nginx/html/maintenance.html || true
+          rm -f /etc/nginx/html/maintenance.html || true
+
+          # Clear nginx cache and restart
+          echo "🔄 Clearing nginx cache and restarting..."
+          rm -rf /var/cache/nginx/* || true
+          nginx -t && systemctl start nginx || systemctl restart nginx
+          sleep 3
 
           # Comprehensive post-deployment checks
           echo "🧪 Running post-deployment security and functionality checks..."
