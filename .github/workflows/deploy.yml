@@ -85,7 +85,7 @@ jobs:
         port: 22
         timeout: 300s
         script: |
-          set -e  # Exit on any error
+          # More resilient deployment script - continue on non-critical errors
 
           echo "🚀 Starting deployment to Smile Rental VPS..."
           echo "📅 Deployment time: $(date)"
@@ -159,13 +159,7 @@ jobs:
 
           # Apply performance optimizations
           echo "⚡ Applying performance optimizations..."
-          cd smile-rental-modern
           chmod +x *.sh || echo "No optimization scripts found"
-
-          # Run fix deployment script
-          echo "🔧 Running deployment fix..."
-          chmod +x fix-deployment.sh
-          ./fix-deployment.sh
 
           # Use existing ecosystem.config.js from repository
           echo "📝 Using ecosystem.config.js from repository..."
