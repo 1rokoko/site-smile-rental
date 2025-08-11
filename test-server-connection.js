@@ -15,7 +15,7 @@ exec('ping -n 1 38.180.122.239', (error, stdout, stderr) => {
   exec('ssh -o ConnectTimeout=10 -o StrictHostKeyChecking=no root@38.180.122.239 "echo SSH connection successful"', (error, stdout, stderr) => {
     if (error) {
       console.log('❌ SSH connection failed:', error.message);
-      console.log('💡 You need to manually connect with password: 925LudK9Bv');
+      console.log('💡 You need to manually connect with password: [REMOVED]');
     } else {
       console.log('✅ SSH connection successful');
       console.log('Output:', stdout);

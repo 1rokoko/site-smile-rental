@@ -14,7 +14,7 @@ try {
 # Server connection details
 $serverIP = "38.180.122.239"
 $username = "root"
-$password = "925LudK9Bv"
+$password = "[REMOVED]"
 
 Write-Host "`n🔧 Step 2: Connecting to server for emergency fix..." -ForegroundColor Cyan
 Write-Host "Server: $serverIP" -ForegroundColor Yellow

@@ -3,7 +3,7 @@ echo Direct SSH Fix for 502 Error
 echo =============================
 echo.
 echo Connecting to server...
-echo Password: 925LudK9Bv
+echo Password: [REMOVED]
 echo.
 
 ssh root@38.180.122.239

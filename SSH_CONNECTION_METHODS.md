@@ -2,7 +2,7 @@
 
 ## Problem Statement
 - **Target Server**: root@38.180.122.239
-- **Password**: 925LudK9Bv
+- **Password**: [REMOVED]
 - **Goal**: Automate SSH connection without manual password input
 - **Command to Execute**: `pm2 delete all && cd /var/www/smilerentalphuket.com/site-smile-rental && pm2 start 'npm run dev' --name smile-rental-dev && pm2 save`
 - **Issue Duration**: 6+ hours
@@ -58,12 +58,12 @@
 
 #### 4.1 Basic Echo Pipe
 - **Status**: ❌ FAILED
-- **Command**: `echo 925LudK9Bv | ssh root@38.180.122.239 "command"`
+- **Command**: `echo [REMOVED] | ssh root@38.180.122.239 "command"`
 - **Error**: Still prompts for password, echo doesn't work with SSH
 
 #### 4.2 Batch File with Parentheses
 - **Status**: ❌ FAILED
-- **Command**: `(echo 925LudK9Bv) | ssh ...`
+- **Command**: `(echo [REMOVED]) | ssh ...`
 - **Error**: Same issue, SSH doesn't read from stdin for password
 
 ### 5. PowerShell Write-Output Method ❌ FAILED
@@ -84,7 +84,7 @@
   ```
   ssh root@38.180.122.239 "command"
   # Wait for password prompt
-  # Send: 925LudK9Bv
+  # Send: [REMOVED]
   ```
 - **Result**: Commands execute successfully
 - **Issue**: Requires manual intervention for each command
@@ -137,7 +137,7 @@
 ssh root@38.180.122.239 "pm2 delete all && cd /var/www/smilerentalphuket.com/site-smile-rental && pm2 start 'npm run dev' --name smile-rental-dev && pm2 save"
 
 # Wait for password prompt, then send:
-925LudK9Bv
+[REMOVED]
 ```
 
 #### Results

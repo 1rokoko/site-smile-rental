@@ -2,7 +2,7 @@
 
 **Дата:** 9 августа 2025  
 **Сервер:** root@38.180.122.239  
-**Метод SSH:** Method 6.1 (Interactive SSH) с паролем 925LudK9Bv  
+**Метод SSH:** Method 6.1 (Interactive SSH) с паролем [REMOVED]  
 
 ## ✅ УСПЕШНО ВЫПОЛНЕНО
 

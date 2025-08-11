@@ -5,7 +5,7 @@ echo ========================================
 echo.
 
 echo Step 1: Connecting to server...
-echo Password will be required: 925LudK9Bv
+echo Password will be required: [REMOVED]
 echo.
 
 echo Executing fix commands on server...

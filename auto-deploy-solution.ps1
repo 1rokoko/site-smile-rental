@@ -76,7 +76,7 @@ echo "=== РАЗВЕРТЫВАНИЕ ЗАВЕРШЕНО ==="
     Write-Host ""
     Write-Host "1. Подключитесь к серверу:" -ForegroundColor White
     Write-Host "   ssh root@38.180.122.239" -ForegroundColor Cyan
-    Write-Host "   (пароль: 925LudK9Bv)" -ForegroundColor Gray
+    Write-Host "   (пароль: [REMOVED])" -ForegroundColor Gray
     Write-Host ""
     Write-Host "2. Скопируйте и выполните команды:" -ForegroundColor White
     Write-Host "   cd /var/www/smilerentalphuket.com/site-smile-rental/smile-rental-modern" -ForegroundColor Cyan

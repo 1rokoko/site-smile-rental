@@ -1,7 +1,7 @@
 # Simple Server Diagnostics using Working SSH Method
 $SERVER_IP = "38.180.122.239"
 $SERVER_USER = "root"
-$SERVER_PASSWORD = "925LudK9Bv"
+$SERVER_PASSWORD = "[REMOVED]"
 
 Write-Host "RUNNING SERVER DIAGNOSTICS..." -ForegroundColor Green
 Write-Host "Using confirmed working SSH Method 6.1" -ForegroundColor Cyan

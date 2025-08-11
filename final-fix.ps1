@@ -1,7 +1,7 @@
 # Final fix script - based on working deploy-to-server.ps1
 $SERVER_IP = "38.180.122.239"
 $SERVER_USER = "root"
-$SERVER_PASSWORD = "925LudK9Bv"
+$SERVER_PASSWORD = "[REMOVED]"
 
 Write-Host "RESTORING SITE IN DEV MODE..." -ForegroundColor Green
 Write-Host ""

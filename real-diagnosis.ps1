@@ -28,7 +28,7 @@ foreach ($item in $commands) {
     
     try {
         $process = [System.Diagnostics.Process]::Start($psi)
-        $process.StandardInput.WriteLine("925LudK9Bv")
+        $process.StandardInput.WriteLine("[REMOVED]")
         $process.StandardInput.Close()
         
         if ($process.WaitForExit(15000)) {

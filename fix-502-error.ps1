@@ -12,7 +12,7 @@ Write-Host ""
 
 Write-Host "1. Connect to server:" -ForegroundColor Cyan
 Write-Host "   ssh root@38.180.122.239" -ForegroundColor White
-Write-Host "   Password: 925LudK9Bv" -ForegroundColor Gray
+Write-Host "   Password: [REMOVED]" -ForegroundColor Gray
 Write-Host ""
 
 Write-Host "2. Check PM2 status:" -ForegroundColor Cyan

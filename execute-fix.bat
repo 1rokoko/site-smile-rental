@@ -4,7 +4,7 @@ echo NODE.JS DEPLOYMENT FIX - MANUAL EXECUTION
 echo ========================================
 echo.
 echo This script will execute the fix commands one by one.
-echo You will need to enter the password: 925LudK9Bv
+echo You will need to enter the password: [REMOVED]
 echo for each command when prompted.
 echo.
 pause

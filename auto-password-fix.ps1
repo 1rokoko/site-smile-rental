@@ -1,9 +1,9 @@
 # Automatic server fix with password auto-input
-# Password: 925LudK9Bv (hardcoded for automation)
+# Password: [REMOVED] (hardcoded for automation)
 
 $SERVER_IP = "38.180.122.239"
 $SERVER_USER = "root"
-$SERVER_PASSWORD = "925LudK9Bv"
+$SERVER_PASSWORD = "[REMOVED]"
 
 function Run-SSHCommand {
     param([string]$Command)
@@ -46,7 +46,7 @@ function Run-SSHCommand {
     return $output
 }
 
-Write-Host "AUTO-FIXING SERVER (Password: 925LudK9Bv)" -ForegroundColor Cyan
+Write-Host "AUTO-FIXING SERVER (Password: [REMOVED])" -ForegroundColor Cyan
 Write-Host "Server: $SERVER_IP" -ForegroundColor Yellow
 Write-Host ""
 

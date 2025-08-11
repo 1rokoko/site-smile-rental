@@ -1,7 +1,7 @@
 @echo off
 echo AUTOMATED SSH FIX...
 
-set PASSWORD=925LudK9Bv
+set PASSWORD=[REMOVED]
 set SERVER=38.180.122.239
 set USER=root
 

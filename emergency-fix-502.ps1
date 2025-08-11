@@ -3,7 +3,7 @@ Write-Host "🔧 EMERGENCY FIX: Resolving 502 Bad Gateway error" -ForegroundColo
 
 $serverIP = "38.180.122.239"
 $username = "root"
-$password = "925LudK9Bv"
+$password = "[REMOVED]"
 
 # Commands to execute on server
 $commands = @"

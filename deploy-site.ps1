@@ -1,5 +1,5 @@
 # Server deployment script
-$password = "925LudK9Bv"
+$password = "[REMOVED]"
 $server = "38.180.122.239"
 $user = "root"
 

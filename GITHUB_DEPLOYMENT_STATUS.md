@@ -11,7 +11,7 @@
 ### 2. Credentials Retrieved from .env.local
 - **Server IP**: 38.180.122.239
 - **Username**: root
-- **Password**: 925LudK9Bv (automatically retrieved)
+- **Password**: [REMOVED] (automatically retrieved)
 - **Status**: ✅ Credentials loaded successfully
 
 ### 3. Deployment Workflow Available
@@ -39,7 +39,7 @@ Since the automated deployment is taking longer than expected, here's the manual
 ### Step 1: Connect to Server
 ```bash
 ssh root@38.180.122.239
-# Password: 925LudK9Bv
+# Password: [REMOVED]
 ```
 
 ### Step 2: Navigate and Deploy

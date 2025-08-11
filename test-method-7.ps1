@@ -1,7 +1,7 @@
 # Method 7: PowerShell Credential Objects
 $SERVER_IP = "38.180.122.239"
 $SERVER_USER = "root"
-$SERVER_PASSWORD = "925LudK9Bv"
+$SERVER_PASSWORD = "[REMOVED]"
 
 Write-Host "Testing Method 7: PowerShell Credential Objects" -ForegroundColor Green
 

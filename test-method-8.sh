@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Method 8: Git Bash with expect-like functionality
-PASSWORD="925LudK9Bv"
+PASSWORD="[REMOVED]"
 SERVER="38.180.122.239"
 USER="root"
 

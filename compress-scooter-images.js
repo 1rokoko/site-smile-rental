@@ -54,7 +54,7 @@ async function compressScooterImages() {
   for (const file of imageFiles) {
     const inputPath = path.join(scootersDir, file);
 
-    const savings = await compressImage(inputPath, 75); // Качество 75%
+    const savings = await compressImage(inputPath, 50); // Качество 50% для максимальной экономии
     totalSavings += savings;
   }
   

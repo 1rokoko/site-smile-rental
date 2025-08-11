@@ -32,7 +32,7 @@ foreach ($cmd in $sshCommands) {
 
 Write-Host "`nNow launching interactive SSH session..." -ForegroundColor Yellow
 Write-Host "You will need to:" -ForegroundColor Red
-Write-Host "1. Enter password: 925LudK9Bv" -ForegroundColor Red
+Write-Host "1. Enter password: [REMOVED]" -ForegroundColor Red
 Write-Host "2. Execute the commands above manually" -ForegroundColor Red
 
 # Launch SSH session

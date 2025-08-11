@@ -11,7 +11,7 @@
 ### Вариант 1: Автоматическое подключение
 ```bash
 ssh root@38.180.122.239
-# Пароль: 925LudK9Bv
+# Пароль: [REMOVED]
 ```
 
 После подключения выполните:
@@ -95,4 +95,4 @@ pm2 save
 
 - GitHub репозиторий: https://github.com/1rokoko/site-smile-rental
 - Сайт: http://smilerentalphuket.com
-- Сервер: 38.180.122.239 (root/925LudK9Bv)
+- Сервер: 38.180.122.239 (root/[REMOVED])

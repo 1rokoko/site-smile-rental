@@ -12,7 +12,7 @@
 ### Step 1: Connect to server
 ```bash
 ssh root@38.180.122.239
-# Enter password: 925LudK9Bv
+# Enter password: [REMOVED]
 ```
 
 ### Step 2: Check and restart PM2

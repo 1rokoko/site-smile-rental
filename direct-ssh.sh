@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Direct SSH with password - no expect needed
-PASSWORD="925LudK9Bv"
+PASSWORD="[REMOVED]"
 SERVER="38.180.122.239"
 USER="root"
 

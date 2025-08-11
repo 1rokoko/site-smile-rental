@@ -18,64 +18,64 @@ Execute these commands using SSH Method 6.1 (manual password entry):
 ```bash
 # 1. Kill all hanging Node.js processes
 ssh root@38.180.122.239 "pkill -f node; pkill -f npm"
-# Password: 925LudK9Bv
+# Password: [REMOVED]
 
 # 2. Kill PM2 daemon completely
 ssh root@38.180.122.239 "pm2 kill"
-# Password: 925LudK9Bv
+# Password: [REMOVED]
 
 # 3. Clear system memory caches (from emergency memory fix commit)
 ssh root@38.180.122.239 "sync && echo 3 > /proc/sys/vm/drop_caches"
-# Password: 925LudK9Bv
+# Password: [REMOVED]
 
 # 4. Clear NPM cache
 ssh root@38.180.122.239 "npm cache clean --force"
-# Password: 925LudK9Bv
+# Password: [REMOVED]
 ```
 
 ### Phase 2: Project Cleanup
 ```bash
 # 5. Remove corrupted build artifacts
 ssh root@38.180.122.239 "cd /var/www/smilerentalphuket.com/site-smile-rental && rm -rf .next .next.backup.* node_modules/.cache"
-# Password: 925LudK9Bv
+# Password: [REMOVED]
 ```
 
 ### Phase 3: Memory-Optimized Restart
 ```bash
 # 6. Test Node.js functionality
 ssh root@38.180.122.239 "node -e 'console.log(\"Node.js working:\", process.version)'"
-# Password: 925LudK9Bv
+# Password: [REMOVED]
 
 # 7. Install dependencies with memory limit (from memory fix commits)
 ssh root@38.180.122.239 "cd /var/www/smilerentalphuket.com/site-smile-rental && NODE_OPTIONS='--max-old-space-size=2048' npm install"
-# Password: 925LudK9Bv
+# Password: [REMOVED]
 
 # 8. Start application in development mode with memory limit
 ssh root@38.180.122.239 "cd /var/www/smilerentalphuket.com/site-smile-rental && NODE_OPTIONS='--max-old-space-size=2048' pm2 start npm --name smile-rental-dev -- run dev"
-# Password: 925LudK9Bv
+# Password: [REMOVED]
 
 # 9. Save PM2 configuration
 ssh root@38.180.122.239 "pm2 save"
-# Password: 925LudK9Bv
+# Password: [REMOVED]
 
 # 10. Reload Nginx
 ssh root@38.180.122.239 "systemctl reload nginx"
-# Password: 925LudK9Bv
+# Password: [REMOVED]
 ```
 
 ### Phase 4: Verification
 ```bash
 # 11. Check PM2 status
 ssh root@38.180.122.239 "pm2 list"
-# Password: 925LudK9Bv
+# Password: [REMOVED]
 
 # 12. Test local connectivity
 ssh root@38.180.122.239 "curl -I http://localhost:3000"
-# Password: 925LudK9Bv
+# Password: [REMOVED]
 
 # 13. Test domain access
 ssh root@38.180.122.239 "curl -I https://smilerentalphuket.com"
-# Password: 925LudK9Bv
+# Password: [REMOVED]
 ```
 
 ## Alternative Solutions if Primary Fails
@@ -84,21 +84,21 @@ ssh root@38.180.122.239 "curl -I https://smilerentalphuket.com"
 ```bash
 # Reinstall Node.js using NodeSource repository
 ssh root@38.180.122.239 "curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt-get install -y nodejs"
-# Password: 925LudK9Bv
+# Password: [REMOVED]
 ```
 
 ### Option B: If Memory Issues Persist
 ```bash
 # Create swap file for additional memory
 ssh root@38.180.122.239 "fallocate -l 2G /swapfile && chmod 600 /swapfile && mkswap /swapfile && swapon /swapfile"
-# Password: 925LudK9Bv
+# Password: [REMOVED]
 ```
 
 ### Option C: If Build Process Fails
 ```bash
 # Use pre-built static export
 ssh root@38.180.122.239 "cd /var/www/smilerentalphuket.com/site-smile-rental && npm run build:static"
-# Password: 925LudK9Bv
+# Password: [REMOVED]
 ```
 
 ## Long-term Preventive Measures

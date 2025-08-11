@@ -16,7 +16,7 @@
 
 ```bash
 ssh root@38.180.122.239
-# Введите пароль: 925LudK9Bv
+# Введите пароль: [REMOVED]
 
 # Создайте SSH ключи
 ssh-keygen -t rsa -b 4096 -C "github-actions@smilerentalphuket.com" -f ~/.ssh/github_actions_key -N ""

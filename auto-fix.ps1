@@ -1,7 +1,7 @@
 # Automated SSH fix using Write-Output
 $SERVER_IP = "38.180.122.239"
 $SERVER_USER = "root"
-$SERVER_PASSWORD = "925LudK9Bv"
+$SERVER_PASSWORD = "[REMOVED]"
 
 Write-Host "AUTOMATED SSH CONNECTION - FIXING SITE..." -ForegroundColor Green
 

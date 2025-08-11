@@ -1,4 +1,4 @@
-925LudK9Bv
+[REMOVED]
 pm2 list
 echo "=== PM2 STATUS CHECKED ==="
 pm2 delete all

@@ -1,7 +1,7 @@
 # Автоматическое восстановление сайта в dev-режиме
 $SERVER_IP = "38.180.122.239"
 $SERVER_USER = "root"
-$SERVER_PASSWORD = "925LudK9Bv"
+$SERVER_PASSWORD = "[REMOVED]"
 
 Write-Host "🚀 ВОССТАНОВЛЕНИЕ САЙТА В DEV-РЕЖИМЕ..." -ForegroundColor Green
 Write-Host "Server: $SERVER_IP" -ForegroundColor Cyan

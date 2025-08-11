@@ -11,7 +11,7 @@ Write-Host ""
 
 $server = "38.180.122.239"
 $user = "root"
-$password = "925LudK9Bv"
+$password = "[REMOVED]"
 
 Write-Host "1. CHECKING SERVER CONNECTIVITY..." -ForegroundColor Yellow
 try {

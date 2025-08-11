@@ -35,7 +35,7 @@ if (Test-Path $keyPath) {
 } else {
     Write-Host "SSH key not found. Manual connection needed:" -ForegroundColor Yellow
     Write-Host "ssh root@$server" -ForegroundColor Cyan
-    Write-Host "Password: 925LudK9Bv" -ForegroundColor Gray
+    Write-Host "Password: [REMOVED]" -ForegroundColor Gray
 }
 
 Write-Host ""

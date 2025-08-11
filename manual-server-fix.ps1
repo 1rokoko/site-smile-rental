@@ -3,7 +3,7 @@ Write-Host "🔧 MANUAL SERVER FIX: Resolving 502 Bad Gateway" -ForegroundColor 
 
 $serverIP = "38.180.122.239"
 $username = "root"
-$password = "925LudK9Bv"
+$password = "[REMOVED]"
 
 Write-Host "Step 1: Connecting to server and diagnosing issue..." -ForegroundColor Cyan
 

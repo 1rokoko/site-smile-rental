@@ -35,25 +35,25 @@
 ### Шаг 1: Проверить PM2 статус
 ```bash
 ssh root@38.180.122.239 "pm2 list"
-# Пароль: 925LudK9Bv
+# Пароль: [REMOVED]
 ```
 
 ### Шаг 2: Перезапустить приложение правильно
 ```bash
 ssh root@38.180.122.239 "pm2 delete all && cd /var/www/smilerentalphuket.com/site-smile-rental && pm2 start 'npm run dev' --name smile-rental-dev"
-# Пароль: 925LudK9Bv
+# Пароль: [REMOVED]
 ```
 
 ### Шаг 3: Проверить локальный доступ
 ```bash
 ssh root@38.180.122.239 "curl -I http://localhost:3000"
-# Пароль: 925LudK9Bv
+# Пароль: [REMOVED]
 ```
 
 ### Шаг 4: Если приложение работает локально, перезапустить Nginx
 ```bash
 ssh root@38.180.122.239 "systemctl restart nginx"
-# Пароль: 925LudK9Bv
+# Пароль: [REMOVED]
 ```
 
 ### Шаг 5: Финальный тест

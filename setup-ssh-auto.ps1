@@ -7,7 +7,7 @@ $keyName = "smile_rental_key"
 $keyPath = "$sshDir\$keyName"
 $server = "38.180.122.239"
 $user = "root"
-$password = "925LudK9Bv"
+$password = "[REMOVED]"
 
 # Step 1: Generate SSH key if it doesn't exist
 if (-not (Test-Path "$keyPath")) {

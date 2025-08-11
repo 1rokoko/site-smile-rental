@@ -72,7 +72,7 @@ $sshCommands | Out-File -FilePath "auto-fix-commands.txt" -Encoding ASCII
 
 Write-Host "SSH commands created. Manual execution required:" -ForegroundColor Yellow
 Write-Host "1. Run: ssh root@38.180.122.239" -ForegroundColor Cyan
-Write-Host "2. Enter password: 925LudK9Bv" -ForegroundColor Cyan
+Write-Host "2. Enter password: [REMOVED]" -ForegroundColor Cyan
 Write-Host "3. Copy and paste commands from auto-fix-commands.txt" -ForegroundColor Cyan
 
 Write-Host "`n=== DIAGNOSTIC COMPLETE ===" -ForegroundColor Green

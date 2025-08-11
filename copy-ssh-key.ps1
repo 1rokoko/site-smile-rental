@@ -2,7 +2,7 @@
 $keyPath = "$env:USERPROFILE\.ssh\smile_rental_key.pub"
 $server = "38.180.122.239"
 $user = "root"
-$password = "925LudK9Bv"
+$password = "[REMOVED]"
 
 Write-Host "Copying SSH public key to server..." -ForegroundColor Green
 

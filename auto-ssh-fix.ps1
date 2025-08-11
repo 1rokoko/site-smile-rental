@@ -5,7 +5,7 @@ Write-Host "=== AUTOMATED SSH FIX ATTEMPT ===" -ForegroundColor Green
 
 # Create a PowerShell script that will handle SSH interaction
 $sshScript = @'
-$password = "925LudK9Bv"
+$password = "[REMOVED]"
 $commands = @(
     "pm2 delete all",
     "cd /var/www/smilerentalphuket.com/site-smile-rental",

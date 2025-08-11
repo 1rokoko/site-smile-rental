@@ -1,7 +1,7 @@
 # PowerShell Process-based SSH automation
 $SERVER_IP = "38.180.122.239"
 $SERVER_USER = "root"
-$SERVER_PASSWORD = "925LudK9Bv"
+$SERVER_PASSWORD = "[REMOVED]"
 
 Write-Host "PROCESS-BASED SSH AUTOMATION..." -ForegroundColor Green
 

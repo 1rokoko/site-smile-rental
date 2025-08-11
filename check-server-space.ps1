@@ -1,5 +1,5 @@
 # Проверка места на сервере и очистка
-$password = "925LudK9Bv"
+$password = "[REMOVED]"
 
 Write-Host "🔍 ПРОВЕРКА МЕСТА НА СЕРВЕРЕ" -ForegroundColor Yellow
 Write-Host ""

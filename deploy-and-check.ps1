@@ -1,5 +1,5 @@
 # Полный скрипт развертывания и проверки сайта
-$password = "925LudK9Bv"
+$password = "[REMOVED]"
 $server = "38.180.122.239"
 $user = "root"
 

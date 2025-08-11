@@ -15,7 +15,7 @@ class ServerMonitor {
         this.serverConfig = {
             host: '38.180.122.239',
             user: 'root',
-            password: '925LudK9Bv',
+            password: '[REMOVED]',
             projectPath: '/var/www/smilerentalphuket.com/site-smile-rental'
         };
         this.siteUrls = [

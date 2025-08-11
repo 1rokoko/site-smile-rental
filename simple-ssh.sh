@@ -6,7 +6,7 @@ echo "Server: root@38.180.122.239"
 echo "Password will be entered automatically"
 
 # Execute commands via SSH
-sshpass -p '925LudK9Bv' ssh -o StrictHostKeyChecking=no root@38.180.122.239 << 'EOF'
+sshpass -p '[REMOVED]' ssh -o StrictHostKeyChecking=no root@38.180.122.239 << 'EOF'
 echo "=== CONNECTED TO SERVER ==="
 echo "=== CHECKING PM2 STATUS ==="
 pm2 list

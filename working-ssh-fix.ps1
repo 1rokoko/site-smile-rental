@@ -1,7 +1,7 @@
 # Working SSH Fix - Method that actually works
 $SERVER_IP = "38.180.122.239"
 $SERVER_USER = "root"
-$SERVER_PASSWORD = "925LudK9Bv"
+$SERVER_PASSWORD = "[REMOVED]"
 
 Write-Host "EXECUTING WORKING SSH FIX..." -ForegroundColor Green
 Write-Host "This method uses the proven manual approach but automated" -ForegroundColor Cyan

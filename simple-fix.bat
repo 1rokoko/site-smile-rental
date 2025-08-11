@@ -7,7 +7,7 @@ curl -I https://smilerentalphuket.com
 echo.
 
 echo Step 2: Connecting to server...
-echo Password: 925LudK9Bv
+echo Password: [REMOVED]
 ssh root@38.180.122.239 "cd /var/www/smilerentalphuket.com/site-smile-rental && pm2 delete all && npm run build && pm2 start ecosystem.config.js && pm2 status"
 
 echo.

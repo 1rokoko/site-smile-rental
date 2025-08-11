@@ -55,7 +55,7 @@ export const Footer: React.FC = () => {
           <FadeInView animation="fadeInUp" className="text-center">
             <div className="w-full max-w-4xl mx-auto">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1976.1526444613041!2d98.35119000229113!3d7.863085811670397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502fc06398cbf1%3A0xb888b96b4a2d8c1f!2zU21pbGUgU2Nvb3RlciBSZW50YWwgSmIg4oCUINCQ0YDQtdC90LTQsCDRgdC60YPRgtC10YDQvtCy!5e0!3m2!1sru!2sth!4v1754372347430!5m2!1sru!2sth"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.307022925415!2d98.34871311196726!3d7.862903792126352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502fc06398cbf1%3A0xb888b96b4a2d8c1f!2zU21pbGUgU2Nvb3RlciBSZW50YWwgSmIg4oCUINCQ0YDQtdC90LTQsCDRgdC60YPRgtC10YDQvtCy!5e0!3m2!1sru!2sth!4v1754930859552!5m2!1sru!2sth"
                 width="100%"
                 height="450"
                 style={{ border: 0, borderRadius: '12px' }}
@@ -182,20 +182,20 @@ export const Footer: React.FC = () => {
             </BodySmall>
           </div>
 
-          {/* SEO Text */}
-          <div className="py-4 border-t border-gray-800">
-            <div className="text-xs text-gray-500 leading-relaxed">
-              <p className="mb-2">
-                <strong>Discover Phuket on Two Wheels</strong>
+          {/* SEO Text - Компактный и читаемый */}
+          <div className="py-3 border-t border-gray-800">
+            <div className="text-xs text-gray-300 leading-relaxed max-w-4xl mx-auto">
+              <p className="mb-1">
+                <strong className="text-gray-200">Smile Rental Phuket</strong> — №1 Scooter Rental for Safety and Comfort in Phuket. Experience the island with confidence and style.
               </p>
-              <p className="mb-2">
-                Discover Phuket on two wheels with our diverse fleet! Choose urban scooters like Honda Click (125cc/150cc), Yamaha Filano (125cc), or Suzuki Address 125 for city traffic. Prestige riders love Vespa Primavera/Sprint (150cc), while long-distance explorers opt for Honda PCX (160cc) or Yamaha Aerox/NMax (155cc). Beginners enjoy easy rides on Honda Scoopy (110cc) and Honda Air Blade (125cc), and budget travelers pick reliable underbones Honda Wave/Dream (110cc).
+              <p className="mb-1">
+                <strong className="text-gray-200">Our Fleet:</strong> Honda Click/PCX, Yamaha Filano/NMax, Vespa Primavera, BMW G310GS, Kawasaki Ninja, Royal Enfield Classic. All bikes insured, maintained daily.
               </p>
-              <p className="mb-2">
-                For adventure seekers: touring bikes Honda CB500X, Kawasaki Versys-X 300, and BMW G310GS conquer mountain roads, while off-road beasts Honda CRF250L/150L and Kawasaki KLX 140 tackle jungle trails. Speed lovers thrill on Kawasaki Ninja 300/400 or Yamaha YZF-R3. Craving retro vibes? Cruise on Royal Enfield Classic 350 or premium Harley-Davidson Street 750.
+              <p className="mb-1">
+                <strong className="text-gray-200">Adventures Included:</strong> Food tours to best cafes • Photo tours to ideal locations • Family entertainment for everyone
               </p>
               <p>
-                Book online — free delivery to your hotel! All bikes are insured, maintained daily, and include a helmet, lock, and island map. Save up to 20% on weekly rentals. Whether you're chasing waterfalls at Bang Pae or sunset views at Karon, your Phuket adventure starts now!
+                <strong className="text-gray-200">Location:</strong> 7/39, Chalong, Mueang Phuket District, Phuket 83000 • Free delivery to your hotel • Save up to 20% on weekly rentals
               </p>
             </div>
           </div>

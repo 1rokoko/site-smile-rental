@@ -11,7 +11,7 @@ function Execute-SSHCommand {
     # Create temporary file with password and command
     $tempFile = "temp-ssh-cmd.txt"
     @"
-925LudK9Bv
+[REMOVED]
 $command
 exit
 "@ | Out-File -FilePath $tempFile -Encoding ASCII

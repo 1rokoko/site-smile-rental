@@ -1,7 +1,7 @@
 # Method 9b: PuTTY plink with host key acceptance
 $SERVER_IP = "38.180.122.239"
 $SERVER_USER = "root"
-$SERVER_PASSWORD = "925LudK9Bv"
+$SERVER_PASSWORD = "[REMOVED]"
 
 Write-Host "Testing Method 9b: PuTTY plink with host key acceptance" -ForegroundColor Green
 

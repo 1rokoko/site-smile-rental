@@ -1,7 +1,7 @@
 # СРОЧНОЕ РАЗВЕРТЫВАНИЕ С АВТОМАТИЧЕСКИМ ПАРОЛЕМ
 $SERVER_IP = "38.180.122.239"
 $SERVER_USER = "root"
-$SERVER_PASSWORD = "925LudK9Bv"
+$SERVER_PASSWORD = "[REMOVED]"
 $SERVER_PATH = "/var/www/smilerentalphuket.com/site-smile-rental"
 
 Write-Host "🚨 СРОЧНОЕ РАЗВЕРТЫВАНИЕ" -ForegroundColor Red

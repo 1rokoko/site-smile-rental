@@ -2,7 +2,7 @@
 
 **Дата:** 9 августа 2025  
 **Сервер:** root@38.180.122.239  
-**SSH метод:** Method 6.1 (Interactive SSH) с паролем 925LudK9Bv  
+**SSH метод:** Method 6.1 (Interactive SSH) с паролем [REMOVED]  
 **Цель:** Устранение блокировок для запуска smilerentalphuket.com  
 
 ## ✅ ВЫПОЛНЕННАЯ ДИАГНОСТИКА

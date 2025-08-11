@@ -1,7 +1,7 @@
 # Check server directory structure
 $SERVER_IP = "38.180.122.239"
 $SERVER_USER = "root"
-$SERVER_PASSWORD = "925LudK9Bv"
+$SERVER_PASSWORD = "[REMOVED]"
 
 Write-Host "Checking server directory structure..." -ForegroundColor Yellow
 

@@ -1,7 +1,7 @@
 # Method 9c: PuTTY plink with registry host key bypass
 $SERVER_IP = "38.180.122.239"
 $SERVER_USER = "root"
-$SERVER_PASSWORD = "925LudK9Bv"
+$SERVER_PASSWORD = "[REMOVED]"
 
 Write-Host "Testing Method 9c: PuTTY plink with registry bypass" -ForegroundColor Green
 

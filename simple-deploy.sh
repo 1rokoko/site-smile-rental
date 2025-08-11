@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Простой скрипт развертывания с автоматическим вводом пароля
-PASSWORD="925LudK9Bv"
+PASSWORD="[REMOVED]"
 SERVER="38.180.122.239"
 USER="root"
 

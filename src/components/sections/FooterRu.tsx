@@ -55,7 +55,7 @@ export const FooterRu: React.FC = () => {
           <FadeInView animation="fadeInUp" className="text-center">
             <div className="w-full max-w-4xl mx-auto">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1976.1526444613041!2d98.35119000229113!3d7.863085811670397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502fc06398cbf1%3A0xb888b96b4a2d8c1f!2zU21pbGUgU2Nvb3RlciBSZW50YWwgSmIg4oCUINCQ0YDQtdC90LTQsCDRgdC60YPRgtC10YDQvtCy!5e0!3m2!1sru!2sth!4v1754372347430!5m2!1sru!2sth"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.307022925415!2d98.34871311196726!3d7.862903792126352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30502fc06398cbf1%3A0xb888b96b4a2d8c1f!2zU21pbGUgU2Nvb3RlciBSZW50YWwgSmIg4oCUINCQ0YDQtdC90LTQsCDRgdC60YPRgtC10YDQvtCy!5e0!3m2!1sru!2sth!4v1754930859552!5m2!1sru!2sth"
                 width="100%"
                 height="450"
                 style={{ border: 0, borderRadius: '12px' }}
@@ -182,20 +182,20 @@ export const FooterRu: React.FC = () => {
             </BodySmall>
           </div>
 
-          {/* SEO Text - Russian */}
-          <div className="py-4 border-t border-gray-800">
-            <div className="text-xs text-gray-500 leading-relaxed">
-              <p className="mb-2">
-                <strong>Откройте Пхукет на двух колесах</strong>
+          {/* SEO Text - Компактный и читаемый */}
+          <div className="py-3 border-t border-gray-800">
+            <div className="text-xs text-gray-300 leading-relaxed max-w-4xl mx-auto">
+              <p className="mb-1">
+                <strong className="text-gray-200">Smile Rental Phuket</strong> — №1 Аренда скутеров для безопасности и комфорта на Пхукете. Исследуйте остров с уверенностью и стилем.
               </p>
-              <p className="mb-2">
-                Откройте Пхукет на двух колесах с нашим разнообразным автопарком! Выбирайте городские скутеры Honda Click (125cc/150cc), Yamaha Filano (125cc) или Suzuki Address 125 для городского трафика. Престижные райдеры любят Vespa Primavera/Sprint (150cc), а путешественники на дальние расстояния выбирают Honda PCX (160cc) или Yamaha Aerox/NMax (155cc). Новички наслаждаются легкой ездой на Honda Scoopy (110cc) и Honda Air Blade (125cc), а бюджетные путешественники выбирают надежные Honda Wave/Dream (110cc).
+              <p className="mb-1">
+                <strong className="text-gray-200">Наш автопарк:</strong> Honda Click/PCX, Yamaha Filano/NMax, Vespa Primavera, BMW G310GS, Kawasaki Ninja, Royal Enfield Classic. Все мотоциклы застрахованы, обслуживаются ежедневно.
               </p>
-              <p className="mb-2">
-                Для искателей приключений: туристические мотоциклы Honda CB500X, Kawasaki Versys-X 300 и BMW G310GS покоряют горные дороги, а внедорожные звери Honda CRF250L/150L и Kawasaki KLX 140 справляются с джунглевыми тропами. Любители скорости получают удовольствие от Kawasaki Ninja 300/400 или Yamaha YZF-R3. Хотите ретро-атмосферу? Прокатитесь на Royal Enfield Classic 350 или премиальном Harley-Davidson Street 750.
+              <p className="mb-1">
+                <strong className="text-gray-200">Приключения включены:</strong> Гастрономические туры по лучшим кафе • Фото-туры в идеальные места • Семейные развлечения для всех
               </p>
               <p>
-                Бронируйте онлайн — бесплатная доставка в ваш отель! Все мотоциклы застрахованы, обслуживаются ежедневно и включают шлем, замок и карту острова. Экономьте до 20% при недельной аренде. Независимо от того, гонитесь ли вы за водопадами в Банг Пае или закатами в Кароне, ваше приключение на Пхукете начинается прямо сейчас!
+                <strong className="text-gray-200">Адрес:</strong> 7/39, Чалонг, Муанг Пхукет, Пхукет 83000 • Бесплатная доставка в отель • Скидка до 20% при недельной аренде
               </p>
             </div>
           </div>

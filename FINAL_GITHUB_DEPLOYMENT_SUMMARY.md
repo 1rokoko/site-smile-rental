@@ -15,7 +15,7 @@
 - **Source**: `.env.local` file (as required)
 - **Server**: 38.180.122.239
 - **User**: root
-- **Password**: 925LudK9Bv
+- **Password**: [REMOVED]
 - **Status**: ✅ Automatically loaded without user input
 
 ### 3. Deployment Successfully Triggered
