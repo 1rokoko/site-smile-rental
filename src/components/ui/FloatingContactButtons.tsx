@@ -28,7 +28,7 @@ export const FloatingContactButtons: React.FC = () => {
         transition={{ delay: 0.5, duration: 0.6 }}
       >
         <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-        <span className="font-medium text-base sm:text-lg text-white">Телеграм</span>
+        <span className="font-medium text-base sm:text-lg text-white">Telegram</span>
       </motion.button>
 
       {/* WhatsApp Button */}
@@ -42,7 +42,7 @@ export const FloatingContactButtons: React.FC = () => {
         transition={{ delay: 0.7, duration: 0.6 }}
       >
         <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-        <span className="font-medium text-base sm:text-lg text-white">Ватсапп</span>
+        <span className="font-medium text-base sm:text-lg text-white">WhatsApp</span>
       </motion.button>
     </div>
   );
