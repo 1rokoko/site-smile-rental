@@ -157,9 +157,42 @@ jobs:
           fi
           echo "✅ Build verification successful"
 
-          # Start application on port 3000
-          echo "🚀 Starting application on port 3000..."
-          pm2 start npm --name "${{ env.APP_NAME }}" -- start
+          # Apply performance optimizations
+          echo "⚡ Applying performance optimizations..."
+          cd smile-rental-modern
+          chmod +x *.sh || echo "No optimization scripts found"
+
+          # Create optimized PM2 ecosystem config if it doesn't exist
+          if [ ! -f "ecosystem.config.js" ]; then
+            echo "📝 Creating optimized PM2 configuration..."
+            cat > ecosystem.config.js << 'EOFPM2'
+          module.exports = {
+            apps: [{
+              name: 'smile-rental',
+              script: 'npm',
+              args: 'start',
+              cwd: '/var/www/smilerentalphuket.com/site-smile-rental/smile-rental-modern',
+              instances: 'max',
+              exec_mode: 'cluster',
+              max_memory_restart: '512M',
+              node_args: '--max-old-space-size=512',
+              autorestart: true,
+              watch: false,
+              max_restarts: 10,
+              min_uptime: '10s',
+              env: {
+                NODE_ENV: 'production',
+                PORT: 3000,
+                NODE_OPTIONS: '--max-old-space-size=512'
+              }
+            }]
+          };
+          EOFPM2
+          fi
+
+          # Start application with optimized PM2 configuration
+          echo "🚀 Starting application with PM2 cluster mode..."
+          pm2 start ecosystem.config.js
 
           # Save PM2 configuration
           pm2 save
