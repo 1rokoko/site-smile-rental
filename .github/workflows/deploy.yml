@@ -170,17 +170,10 @@ jobs:
           # Use existing ecosystem.config.js from repository
           echo "📝 Using ecosystem.config.js from repository..."
 
-          # Force stop all existing processes
-          echo "🛑 Force stopping all existing processes..."
-          pm2 delete all || echo "No PM2 processes to stop"
-          pkill -f node || echo "No Node processes to kill"
-
-          # Kill anything on port 3000
-          fuser -k 3000/tcp || echo "Port 3000 is free"
-
-          # Start application with PM2
-          echo "🚀 Starting application with PM2..."
-          pm2 start ecosystem.config.js
+          # Run automatic 502 fix script
+          echo "🔧 Running automatic 502 fix script..."
+          chmod +x auto-fix-502.sh
+          ./auto-fix-502.sh
 
           # Save PM2 configuration
           pm2 save

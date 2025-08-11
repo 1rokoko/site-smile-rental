@@ -1,0 +1,8 @@
+TRIGGER: Fix Next.js path issue
+=============================
+
+Timestamp: 2025-08-11 14:35:00
+Issue: "sh: 1: next: not found" error in PM2 logs
+Fix: Updated ecosystem.config.js to use correct Next.js path
+
+This file triggers GitHub Actions deployment with Next.js path fix.
