@@ -1,0 +1,35 @@
+ВЫПОЛНИ ЭТИ КОМАНДЫ НА СЕРВЕРЕ ПО ПОРЯДКУ:
+
+1. Подключись к серверу:
+ssh root@38.180.122.239
+Пароль: 925LudK9Bv
+
+2. Проверь что запущено:
+pm2 status
+ps aux | grep node
+netstat -tlnp | grep :3000
+
+3. Проверь логи PM2:
+pm2 logs --lines 20
+
+4. Перейди в директорию проекта:
+cd /var/www/smilerentalphuket.com/site-smile-rental
+pwd
+ls -la
+
+5. Проверь package.json:
+cat package.json | grep scripts -A 10
+
+6. Попробуй запустить вручную:
+npm start
+
+7. Если не работает, попробуй:
+node server.js
+
+8. Если нет server.js, попробуй:
+npx next start
+
+9. Проверь что слушается на портах:
+netstat -tlnp
+
+ОТПРАВЬ МНЕ РЕЗУЛЬТАТ КАЖДОЙ КОМАНДЫ!
