@@ -73,7 +73,7 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Avoid static assets and API to reduce overhead
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    // TEMPORARILY DISABLED - Avoid static assets and API to reduce overhead
+    // '/((?!api|_next/static|_next/image|favicon.ico).*)',
   ],
 }

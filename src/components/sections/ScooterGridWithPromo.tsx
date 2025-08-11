@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Container, Section, Grid } from '@/components/layout';
-import { H2, FadeInView } from '@/components/ui';
 import { ScooterCardGrid } from './ScooterCardGrid';
 import { PromoBlock1 } from './PromoBlock1';
 import { PromoBlock2 } from './PromoBlock2';

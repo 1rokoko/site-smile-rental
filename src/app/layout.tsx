@@ -81,6 +81,12 @@ export default function RootLayout({
 
         <link rel="preconnect" href="https://photos.app.goo.gl" />
         <link rel="dns-prefetch" href="https://photos.app.goo.gl" />
+
+        {/* Resource preloading for critical assets */}
+        <link rel="preload" href="/images/scooters/nmax.jpg" as="image" type="image/jpeg" />
+        <link rel="preload" href="/images/scooters/filano.jpg" as="image" type="image/jpeg" />
+        <link rel="modulepreload" href="/_next/static/chunks/main-app.js" />
+
         {/* Security headers are served via middleware.ts with enhanced CSP */}
       </head>
       <body

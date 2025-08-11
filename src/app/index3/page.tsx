@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import dynamic from 'next/dynamic';
 import {
   Header,
   LanguageBar,
@@ -10,7 +13,15 @@ import {
   ScamWarning,
   Footer,
 } from '@/components/sections';
-import { FloatingContactButtons } from '@/components/ui';
+
+// Dynamic import for non-critical components
+const FloatingContactButtons = dynamic(
+  () => import('@/components/ui/FloatingContactButtons').then(mod => ({ default: mod.FloatingContactButtons })),
+  {
+    ssr: false,
+    loading: () => null
+  }
+);
 
 export default function Home() {
   return (

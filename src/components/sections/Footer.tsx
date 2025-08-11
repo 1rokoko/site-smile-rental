@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Container, Section, Grid } from '@/components/layout';
-import { H3, Body, BodySmall, Button, FadeInView } from '@/components/ui';
+import { H3, Body, BodySmall, FadeInView } from '@/components/ui';
 import { EXACT_CONTENT } from '@/data/exact-content';
 import { CONTACT_INFO } from '@/lib/constants';
 import { MessageCircle, Phone, MapPin } from 'lucide-react';
