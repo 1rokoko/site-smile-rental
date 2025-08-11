@@ -1,7 +1,7 @@
 module.exports = {
   apps: [{
     name: 'smile-rental',
-    script: 'node_modules/.bin/next',
+    script: '/var/www/smilerentalphuket.com/site-smile-rental/node_modules/.bin/next',
     args: 'start -p 3000',
     cwd: '/var/www/smilerentalphuket.com/site-smile-rental',
     instances: 1,

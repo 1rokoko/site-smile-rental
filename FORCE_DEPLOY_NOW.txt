@@ -1,0 +1,18 @@
+FORCE DEPLOYMENT TRIGGER
+========================
+
+Timestamp: 2025-08-11 15:05:00
+Trigger ID: FORCE_502_FIX_v2
+
+CRITICAL ISSUE:
+- PM2 запущен но не слушает порт 3000
+- curl localhost:3000 = Connection refused  
+- Нужна диагностика PM2 логов и пересборка
+
+ACTIONS REQUIRED:
+1. Проверить PM2 логи
+2. Пересобрать приложение
+3. Запустить с абсолютными путями
+4. Проверить порт 3000
+
+This file forces GitHub Actions workflow execution with enhanced auto-fix-502.sh script.
