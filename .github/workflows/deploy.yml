@@ -175,6 +175,11 @@ jobs:
           chmod +x auto-fix-502.sh
           ./auto-fix-502.sh
 
+          # Disable maintenance page after successful deployment
+          echo "🔧 Disabling maintenance page..."
+          chmod +x disable-maintenance.sh
+          ./disable-maintenance.sh
+
           # Save PM2 configuration
           pm2 save
 
