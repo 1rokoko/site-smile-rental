@@ -16,8 +16,6 @@ const nextConfig = {
   compress: true,
   // Настройки для статических файлов
   trailingSlash: false,
-  // Настройки для сборки
-  swcMinify: true,
 }
 
 module.exports = nextConfig
