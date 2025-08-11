@@ -1,0 +1,19 @@
+DEPLOYMENT TRIGGER - 502 BAD GATEWAY FIX
+========================================
+
+Timestamp: 2025-08-11 14:00:00
+Issue: 502 Bad Gateway error on https://smilerentalphuket.com
+Root Cause: PM2 cluster mode incompatibility with Next.js
+
+FIXES APPLIED:
+1. ✅ Simplified ecosystem.config.js (removed cluster mode)
+2. ✅ Updated GitHub Actions workflow (force kill processes)
+3. ✅ Added force-start.sh script for manual recovery
+4. ✅ Direct Next.js binary execution in PM2
+
+EXPECTED RESULT:
+- Site should load without 502 error
+- PM2 process should run in fork mode (single instance)
+- Application should respond on port 3000
+
+This file triggers GitHub Actions deployment with all fixes applied.

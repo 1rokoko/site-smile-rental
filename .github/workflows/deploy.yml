@@ -167,36 +167,19 @@ jobs:
           chmod +x fix-deployment.sh
           ./fix-deployment.sh
 
-          # Create optimized PM2 ecosystem config if it doesn't exist
-          if [ ! -f "ecosystem.config.js" ]; then
-            echo "📝 Creating optimized PM2 configuration..."
-            cat > ecosystem.config.js << 'EOFPM2'
-          module.exports = {
-            apps: [{
-              name: 'smile-rental',
-              script: 'npm',
-              args: 'start',
-              cwd: '/var/www/smilerentalphuket.com/site-smile-rental',
-              instances: 'max',
-              exec_mode: 'cluster',
-              max_memory_restart: '512M',
-              node_args: '--max-old-space-size=512',
-              autorestart: true,
-              watch: false,
-              max_restarts: 10,
-              min_uptime: '10s',
-              env: {
-                NODE_ENV: 'production',
-                PORT: 3000,
-                NODE_OPTIONS: '--max-old-space-size=512'
-              }
-            }]
-          };
-          EOFPM2
-          fi
+          # Use existing ecosystem.config.js from repository
+          echo "📝 Using ecosystem.config.js from repository..."
 
-          # Start application with optimized PM2 configuration
-          echo "🚀 Starting application with PM2 cluster mode..."
+          # Force stop all existing processes
+          echo "🛑 Force stopping all existing processes..."
+          pm2 delete all || echo "No PM2 processes to stop"
+          pkill -f node || echo "No Node processes to kill"
+
+          # Kill anything on port 3000
+          fuser -k 3000/tcp || echo "Port 3000 is free"
+
+          # Start application with PM2
+          echo "🚀 Starting application with PM2..."
           pm2 start ecosystem.config.js
 
           # Save PM2 configuration
