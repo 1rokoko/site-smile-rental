@@ -198,10 +198,13 @@ jobs:
             echo "💡 Run: sudo ./fix-nginx-and-deploy.sh to fix domain issues"
           fi
 
-          # Disable maintenance page after success
+          # Disable maintenance page after success (AGGRESSIVE CLEANUP)
           echo "🟢 Disabling maintenance page..."
           rm -f /var/www/html/maintenance.html || true
           rm -f /var/www/smilerentalphuket.com/maintenance.html || true
+          rm -f /var/www/smilerentalphuket.com/site-smile-rental/maintenance.html || true
+          rm -f /var/www/smilerentalphuket.com/site-smile-rental/public/maintenance.html || true
+          find /var/www -name "maintenance.html" -delete 2>/dev/null || true
           nginx -t && systemctl reload nginx || true
 
           # Comprehensive post-deployment checks
