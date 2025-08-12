@@ -52,7 +52,7 @@ export function middleware(request: NextRequest) {
     "default-src 'self'",
     "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://maps.googleapis.com https://maps.gstatic.com",
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://maps.gstatic.com",
-    "img-src 'self' data: blob: https://www.google-analytics.com https://maps.gstatic.com https://maps.googleapis.com https://photos.app.goo.gl https://static.craftum.com",
+    "img-src 'self' data: blob: https://www.google-analytics.com https://maps.gstatic.com https://maps.googleapis.com https://photos.app.goo.gl",
     "font-src 'self' https://fonts.gstatic.com",
     "connect-src 'self' https://www.google-analytics.com https://maps.googleapis.com",
     "frame-src 'self' https://www.google.com https://maps.google.com",

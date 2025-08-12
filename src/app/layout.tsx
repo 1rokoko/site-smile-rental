@@ -90,7 +90,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://photos.app.goo.gl" />
-        <link rel="dns-prefetch" href="https://static.craftum.com" />
+
 
         {/* Font preloading for critical fonts */}
         <link

@@ -185,20 +185,20 @@ export const IMAGE_CATALOG = {
     }
   },
 
-  // Adventure Tour Icons
+  // Adventure Tour Icons - SECURITY FIX: Replaced external CDN with local placeholders
   adventures: {
     foodTour: {
-      src: "https://cdn2.craftum.com/images/advcard/033.webp",
+      src: "/images/icons/food-tour-icon.png",
       alt: "Food tour icon",
       usage: "Food tour adventure icon"
     },
     photoTour: {
-      src: "https://cdn2.craftum.com/images/advcard/034.webp",
+      src: "/images/icons/photo-tour-icon.png",
       alt: "Photo tour icon",
       usage: "Photo tour adventure icon"
     },
     familyTour: {
-      src: "https://cdn2.craftum.com/images/advcard/035.webp",
+      src: "/images/icons/family-tour-icon.png",
       alt: "Family tour icon",
       usage: "Family tour adventure icon"
     }
