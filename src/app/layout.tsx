@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Analytics } from "@/components/analytics";
 import { SecureCSSLoader } from "@/components/layout/SecureCSSLoader";
+import { SecurityValidator } from "@/components/layout/SecurityValidator";
 
 // SECURITY FIX: Using system fonts instead of external Google Fonts
 // This eliminates 404 errors and potential "hacked site" flags from Google Ads
@@ -73,6 +74,9 @@ export default function RootLayout({
         {/* Google Site Verification */}
         <meta name="google-site-verification" content="YxLY-d5B7WPjkgGfePklJ_tu64TDvkj_xQy2RW8SajM" />
 
+        {/* SECURITY FIX: Content Security Policy for Google Ads compliance */}
+        <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https: http:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com; frame-src 'self' https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self';" />
+
         {/* Critical resource hints for external domains - SECURITY FIX: Removed Google Fonts */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
@@ -92,6 +96,7 @@ export default function RootLayout({
         className="antialiased font-system"
       >
         <SecureCSSLoader />
+        <SecurityValidator />
         {children}
         <Analytics />
       </body>

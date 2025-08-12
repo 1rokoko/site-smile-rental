@@ -75,6 +75,8 @@ const nextConfig: NextConfig = {
     // Temporarily disabled due to critters dependency issue
     // optimizeCss: true,
     gzipSize: true,
+    // SECURITY FIX: Enable strict mode for better security
+    strictNextHead: true,
   },
 
   // Webpack optimizations for better performance
@@ -119,6 +121,9 @@ const nextConfig: NextConfig = {
             },
           },
         },
+        // SECURITY FIX: Minimize bundle size and potential security issues
+        usedExports: true,
+        sideEffects: false,
       };
     }
     return config;
@@ -189,7 +194,13 @@ const nextConfig: NextConfig = {
   compiler: {
     // Remove console logs in production for cleaner code
     removeConsole: process.env.NODE_ENV === 'production',
+    // Remove React DevTools and data-testid attributes in production
+    reactRemoveProperties: process.env.NODE_ENV === 'production',
   },
+
+
+
+
 
 };
 
