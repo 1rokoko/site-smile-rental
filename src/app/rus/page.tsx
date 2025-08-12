@@ -1,5 +1,5 @@
 // Ultra-minimal Russian landing page for Google Ads compliance
-// No analytics scripts, no dynamic injection, no complex widgets
+// Strict: no scripts, no dynamic injection, no external links
 
 import React from 'react';
 import Link from 'next/link';
@@ -28,27 +28,65 @@ export default function RusHome() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
             <div className="border rounded p-4">
               <h3 className="font-medium">Yamaha NMAX</h3>
-              <p className="text-sm mt-1">от 250฿/день • 150cc • комфорт и безопасность</p>
+              <p className="text-sm mt-1">150cc • от 250฿/день</p>
+              <p className="text-sm">Комфорт: мягкая подвеска, высокий уровень безопасности</p>
+              <p className="text-sm">Идеален для: города и средних расстояний</p>
             </div>
             <div className="border rounded p-4">
-              <h3 className="font-medium">Honda Click</h3>
-              <p className="text-sm mt-1">от 220฿/день • 125cc • экономичный и удобный</p>
+              <h3 className="font-medium">Honda Click 125</h3>
+              <p className="text-sm mt-1">125cc • от 220฿/день</p>
+              <p className="text-sm">Экономичный, лёгкий в управлении, надёжный</p>
+              <p className="text-sm">Идеален для: новичков и повседневных поездок</p>
+            </div>
+            <div className="border rounded p-4">
+              <h3 className="font-medium">Honda PCX</h3>
+              <p className="text-sm mt-1">150cc • от 280฿/день</p>
+              <p className="text-sm">Удобная посадка, увеличенный багажный отсек</p>
+              <p className="text-sm">Идеален для: комфортных поездок и пары</p>
+            </div>
+            <div className="border rounded p-4">
+              <h3 className="font-medium">Yamaha Filano</h3>
+              <p className="text-sm mt-1">125cc • от 230฿/день</p>
+              <p className="text-sm">Стильный, манёвренный, низкий расход топлива</p>
+              <p className="text-sm">Идеален для: города, шопинга, пляжей</p>
+            </div>
+            <div className="border rounded p-4">
+              <h3 className="font-medium">GPX 150cc</h3>
+              <p className="text-sm mt-1">150cc • от 240฿/день</p>
+              <p className="text-sm">Баланс мощности и экономичности</p>
+              <p className="text-sm">Идеален для: уверенной динамичной езды</p>
+            </div>
+            <div className="border rounded p-4">
+              <h3 className="font-medium">Yamaha XMAX 300</h3>
+              <p className="text-sm mt-1">300cc • от 680฿/день</p>
+              <p className="text-sm">Мощный, устойчивый, увеличенная безопасность</p>
+              <p className="text-sm">Идеален для: дальних поездок и трассы</p>
             </div>
           </div>
         </section>
 
         <section>
+          <h2 className="text-xl font-semibold">Как арендовать</h2>
+          <ol className="list-decimal pl-6 mt-2 space-y-1 text-sm">
+            <li>Выберите модель, срок и дату.</li>
+            <li>Подготовьте паспорт и права категории A/А1 (или международные). </li>
+            <li>Согласуйте время и место подачи скутера.</li>
+            <li>Получите скутер, осмотрите и подпишите простую форму.</li>
+          </ol>
+        </section>
+
+        <section>
           <h2 className="text-xl font-semibold">Контакты</h2>
-          <ul className="mt-2 space-y-1">
-            <li>Telegram: <a href="https://t.me/renty_phuket" className="text-blue-600 underline" rel="noopener noreferrer" target="_blank">@renty_phuket</a></li>
-            <li>WhatsApp: <a href="https://api.whatsapp.com/send/?phone=66626823973&text&type=phone_number&app_absent=0" className="text-blue-600 underline" rel="noopener noreferrer" target="_blank">написать</a></li>
-            <li>Адрес: <a href="https://maps.app.goo.gl/cr9GmJJJmqAwA7Az6" className="text-blue-600 underline" rel="noopener noreferrer" target="_blank">7/39, Chalong, Phuket</a></li>
+          <ul className="mt-2 space-y-1 text-sm">
+            <li>Telegram: @renty_phuket</li>
+            <li>WhatsApp: +66 62 682 3973</li>
+            <li>Адрес: 7/39, Chalong, Phuket</li>
           </ul>
         </section>
 
         <section>
           <h2 className="text-xl font-semibold">Полезные ссылки</h2>
-          <ul className="list-disc pl-6 mt-2 space-y-1">
+          <ul className="list-disc pl-6 mt-2 space-y-1 text-sm">
             <li><Link href="/privacy-policy" className="text-blue-600 underline">Политика конфиденциальности</Link></li>
             <li><Link href="/cookie-policy" className="text-blue-600 underline">Политика cookies</Link></li>
             <li><Link href="/return-policy" className="text-blue-600 underline">Политика возврата</Link></li>
