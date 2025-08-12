@@ -4,15 +4,15 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { MessageCircle, Phone } from 'lucide-react';
 import { CONTACT_INFO } from '@/lib/constants';
-import { safeWindowOpen } from '@/utils/cn';
+import { handleContactClick } from '@/utils/secure-window';
 
 export const FloatingContactButtons: React.FC = () => {
   const handleTelegramClick = () => {
-    safeWindowOpen(CONTACT_INFO.telegram, '_blank');
+    handleContactClick('telegram', CONTACT_INFO.telegram);
   };
 
   const handleWhatsAppClick = () => {
-    safeWindowOpen(CONTACT_INFO.whatsapp, '_blank');
+    handleContactClick('whatsapp', CONTACT_INFO.whatsapp);
   };
 
   return (

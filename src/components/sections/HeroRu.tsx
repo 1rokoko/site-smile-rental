@@ -16,12 +16,10 @@ export const HeroRu: React.FC = () => {
       <Container>
         <div className="text-center max-w-4xl mx-auto">
           {/* Main Headline */}
-          <FadeInView animation="fadeInUp">
-            <H1 className="mb-6">
-              <span className="text-black">№1 Аренда скутеров для </span>
-              <span className="text-orange-500">безопасности и комфорта</span>
-            </H1>
-          </FadeInView>
+          <H1 className="mb-6">
+            <span className="text-black">№1 Аренда скутеров для </span>
+            <span className="text-orange-500">безопасности и комфорта</span>
+          </H1>
 
           {/* Price and Bonus */}
           <FadeInView animation="fadeInUp" delay={0.1}>

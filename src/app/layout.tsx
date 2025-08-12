@@ -1,16 +1,21 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Analytics } from "@/components/analytics/Analytics";
+import { Analytics } from "@/components/analytics";
+import { SecureCSSLoader } from "@/components/layout/SecureCSSLoader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -79,19 +84,41 @@ export default function RootLayout({
         {/* Google Site Verification */}
         <meta name="google-site-verification" content="YxLY-d5B7WPjkgGfePklJ_tu64TDvkj_xQy2RW8SajM" />
 
-        <link rel="preconnect" href="https://photos.app.goo.gl" />
+        {/* Critical resource hints for external domains */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://photos.app.goo.gl" />
+        <link rel="dns-prefetch" href="https://static.craftum.com" />
 
-        {/* Resource preloading for critical assets */}
-        <link rel="preload" href="/images/scooters/nmax.jpg" as="image" type="image/jpeg" />
-        <link rel="preload" href="/images/scooters/filano.jpg" as="image" type="image/jpeg" />
-        <link rel="modulepreload" href="/_next/static/chunks/main-app.js" />
-
+        {/* Font preloading for critical fonts */}
+        <link
+          rel="preload"
+          href="/_next/static/media/geist-sans-latin-400-normal.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/_next/static/media/geist-sans-latin-700-normal.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
         {/* Security headers are served via middleware.ts with enhanced CSP */}
-      </head>
+      
+        {/* Critical CSS will be injected securely via client-side script */}
+        {/* This approach eliminates dangerouslySetInnerHTML for Google Ads compliance */}
+
+        {/* Non-critical CSS loading moved to secure client-side utilities */}
+        {/* This eliminates the dangerouslySetInnerHTML script for Google Ads compliance */}
+</head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <SecureCSSLoader />
         {children}
         <Analytics />
       </body>

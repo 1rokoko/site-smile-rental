@@ -12,16 +12,14 @@ export const Hero: React.FC = () => {
   const { hero, features } = EXACT_CONTENT;
 
   return (
-    <Section padding="md" background="surface">
+    <Section padding="md" background="surface" className="hero-section">
       <Container>
-        <div className="text-center max-w-4xl mx-auto">
+        <div className="text-center max-w-4xl mx-auto transform-gpu">
           {/* Main Headline */}
-          <FadeInView animation="fadeInUp">
-            <H1 className="mb-6">
-              <span className="text-black">№1 Scooter Rental for </span>
-              <span className="text-orange-500">Safety and Comfort</span>
-            </H1>
-          </FadeInView>
+          <H1 className="mb-6">
+            <span className="text-black">№1 Scooter Rental for </span>
+            <span className="text-orange-500">Safety and Comfort</span>
+          </H1>
 
           {/* Price and Bonus */}
           <FadeInView animation="fadeInUp" delay={0.1}>

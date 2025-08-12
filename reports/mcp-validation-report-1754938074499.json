@@ -1,0 +1,77 @@
+{
+  "summary": {
+    "totalTests": 5,
+    "passed": 4,
+    "failed": 0,
+    "warnings": 1,
+    "totalTime": 9933,
+    "timestamp": "2025-08-11T18:47:54.498Z"
+  },
+  "results": [
+    {
+      "test": "Basic Connectivity",
+      "status": "PASSED",
+      "details": {
+        "statusCode": 200,
+        "loadTime": 906,
+        "url": "http://localhost:3000/"
+      },
+      "timestamp": "2025-08-11T18:47:45.787Z"
+    },
+    {
+      "test": "Performance Metrics",
+      "status": "PASSED",
+      "details": {
+        "lcp": 856,
+        "fcp": 856,
+        "cls": 0
+      },
+      "timestamp": "2025-08-11T18:47:49.947Z"
+    },
+    {
+      "test": "Content Validation",
+      "status": "PASSED",
+      "details": {
+        "title": "Smile Rental Phuket - №1 Scooter Rental for Safety and Comfort",
+        "h1Count": 2,
+        "navLinksCount": 6,
+        "hasSmileRental": true
+      },
+      "timestamp": "2025-08-11T18:47:51.241Z"
+    },
+    {
+      "test": "Responsive Design",
+      "status": "WARNING",
+      "details": [
+        {
+          "viewport": "Mobile",
+          "dimensions": "375x667",
+          "h1Visible": false,
+          "hasHorizontalOverflow": false
+        },
+        {
+          "viewport": "Tablet",
+          "dimensions": "768x1024",
+          "h1Visible": false,
+          "hasHorizontalOverflow": false
+        },
+        {
+          "viewport": "Desktop",
+          "dimensions": "1920x1080",
+          "h1Visible": false,
+          "hasHorizontalOverflow": false
+        }
+      ],
+      "timestamp": "2025-08-11T18:47:54.412Z"
+    },
+    {
+      "test": "Hot Reload",
+      "status": "PASSED",
+      "details": {
+        "enabled": true,
+        "note": "Verified from development server configuration"
+      },
+      "timestamp": "2025-08-11T18:47:54.497Z"
+    }
+  ]
+}

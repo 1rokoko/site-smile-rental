@@ -1,11 +1,6 @@
 import type { NextConfig } from "next";
 
-// Bundle analyzer for performance optimization
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
-
-// Security Headers for Google Ads compliance
+// Enhanced Security Headers for Google Ads compliance
 const securityHeaders = [
   {
     key: 'X-DNS-Prefetch-Control',
@@ -29,14 +24,42 @@ const securityHeaders = [
   },
   {
     key: 'Referrer-Policy',
-    value: 'origin-when-cross-origin'
+    value: 'strict-origin-when-cross-origin'
   },
   {
     key: 'Permissions-Policy',
-    value: 'camera=(), microphone=(), geolocation=()'
+    value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()'
   },
-  // CSP is now handled by middleware.ts with nonce support
-  // Removed to avoid conflicts
+  {
+    key: 'Content-Security-Policy',
+    value: [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      "font-src 'self' https://fonts.gstatic.com data:",
+      "img-src 'self' data: blob: https: http:",
+      "media-src 'self' data: blob:",
+      "connect-src 'self' https://www.google-analytics.com https://cloudflareinsights.com https://api.whatsapp.com",
+      "frame-src 'self' https://www.google.com",
+      "object-src 'none'",
+      "base-uri 'self'",
+      "form-action 'self'",
+      "frame-ancestors 'self'",
+      "upgrade-insecure-requests"
+    ].join('; ')
+  },
+  {
+    key: 'Cross-Origin-Embedder-Policy',
+    value: 'unsafe-none'
+  },
+  {
+    key: 'Cross-Origin-Opener-Policy',
+    value: 'same-origin-allow-popups'
+  },
+  {
+    key: 'Cross-Origin-Resource-Policy',
+    value: 'cross-origin'
+  }
 ];
 
 const nextConfig: NextConfig = {
@@ -49,12 +72,15 @@ const nextConfig: NextConfig = {
   // Performance optimizations
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
+    // Temporarily disabled due to critters dependency issue
+    // optimizeCss: true,
+    gzipSize: true,
   },
 
-  // Webpack optimizations
+  // Webpack optimizations for better performance
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
-      // Optimize chunks for better caching
+      // Optimize chunks for better caching and loading
       config.optimization = {
         ...config.optimization,
         splitChunks: {
@@ -91,23 +117,14 @@ const nextConfig: NextConfig = {
               priority: 20,
               maxSize: 244000,
             },
-            react: {
-              test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
-              name: 'react',
-              chunks: 'all',
-              priority: 30,
-              maxSize: 244000,
-            },
           },
         },
-        usedExports: true,
-        sideEffects: false,
       };
     }
     return config;
   },
 
-  // Security headers
+  // Security and performance headers
   async headers() {
     return [
       {
@@ -119,7 +136,6 @@ const nextConfig: NextConfig = {
         source: '/_next/static/:path*',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-          { key: 'Content-Encoding', value: 'gzip' },
         ],
       },
       {
@@ -127,14 +143,6 @@ const nextConfig: NextConfig = {
         source: '/images/:path*',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=604800, stale-while-revalidate=86400' },
-        ],
-      },
-      {
-        // Compression for JavaScript and CSS
-        source: '/:path*\\.(js|css|json|xml|txt)',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=86400' },
-          { key: 'Content-Encoding', value: 'gzip' },
         ],
       },
     ];
@@ -184,4 +192,4 @@ const nextConfig: NextConfig = {
 
 };
 
-export default withBundleAnalyzer(nextConfig);
+export default nextConfig;
