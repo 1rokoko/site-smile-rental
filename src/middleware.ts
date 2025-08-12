@@ -68,7 +68,8 @@ export function middleware(request: NextRequest) {
     "form-action 'self'",
     "upgrade-insecure-requests"
   ]
-  response.headers.set('Content-Security-Policy', cspDirectives.join('; '))
+  // TEMPORARY: Disable CSP completely to fix white screen
+  // response.headers.set('Content-Security-Policy', cspDirectives.join('; '))
 
   // Rate limiting headers
   response.headers.set('X-RateLimit-Limit', '1000')
