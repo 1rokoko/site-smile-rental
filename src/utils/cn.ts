@@ -6,11 +6,11 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /**
- * Safely opens a URL in a new window/tab
- * Prevents hydration errors by checking for window availability
+ * GOOGLE ADS FIX: Disabled window opening functionality
+ * This function has been disabled to prevent Google Ads from flagging
+ * window.open() as suspicious behavior
  */
 export function safeWindowOpen(url: string, target: string = '_blank'): void {
-  if (typeof window !== 'undefined') {
-    window.open(url, target);
-  }
+  console.warn('⚠️ Window opening disabled for Google Ads compliance');
+  console.log(`Attempted to open URL: ${url} (blocked for compliance)`);
 }

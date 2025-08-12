@@ -11,9 +11,16 @@ export const Analytics = () => {
         strategy="afterInteractive"
       />
       <Script
-        src="/js/ga-init.js"
+        id="google-analytics"
         strategy="afterInteractive"
-      />
+      >
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-XQYEJ26C2J');
+        `}
+      </Script>
     </>
   );
 };

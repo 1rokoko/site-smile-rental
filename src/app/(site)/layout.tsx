@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "../globals.css";
+import "../critical.css"; // GOOGLE ADS FIX: Static CSS instead of dynamic injection
 import { Analytics } from "@/components/analytics";
-import { SecureCSSLoader } from "@/components/layout/SecureCSSLoader";
 import { SecurityValidator } from "@/components/layout/SecurityValidator";
 
 export const metadata: Metadata = {
@@ -19,8 +19,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://www.google-analytics.com" />
       </head>
       <body className="antialiased font-system">
-        {/* Keep enhanced site features on main site */}
-        <SecureCSSLoader />
+        {/* GOOGLE ADS FIX: Removed SecureCSSLoader to eliminate dynamic CSS injection */}
         <SecurityValidator />
         {children}
         <Analytics />

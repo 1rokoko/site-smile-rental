@@ -1,13 +1,5 @@
-/**
- * Security-compliant critical CSS loader
- * Replaces dangerouslySetInnerHTML with safer alternatives
- * Google Ads compliant implementation with CSP support
- */
-
-import { injectSecureStyle } from './csp-nonce';
-
-export const CRITICAL_CSS = `
 /* Critical CSS for above-the-fold content */
+/* GOOGLE ADS FIX: Static CSS file instead of dynamic injection */
 /* Reset and base styles */
 *,::before,::after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}
 ::before,::after{--tw-content:''}
@@ -71,7 +63,7 @@ h1{font-size:2.25rem;line-height:2.5rem;font-weight:700;color:var(--color-text-p
 .min-h-screen{min-height:100vh}
 .bg-background{background-color:var(--color-surface)}
 .space-y-8>:not([hidden])~:not([hidden]){margin-top:2rem}
-@media (min-width:768px){.md\\:space-y-12>:not([hidden])~:not([hidden]){margin-top:3rem}}
+@media (min-width:768px){.md\:space-y-12>:not([hidden])~:not([hidden]){margin-top:3rem}}
 
 /* Header styles */
 .sticky{position:sticky}
@@ -107,8 +99,8 @@ h1{font-size:2.25rem;line-height:2.5rem;font-weight:700;color:var(--color-text-p
 
 /* Hide elements that are not critical */
 .hidden{display:none}
-@media (min-width:640px){.sm\\:block{display:block}}
-@media (min-width:640px){.sm\\:hidden{display:none}}
+@media (min-width:640px){.sm\:block{display:block}}
+@media (min-width:640px){.sm\:hidden{display:none}}
 
 /* CSS Containment for performance */
 .container{contain:layout style}
@@ -123,33 +115,3 @@ h1{font-size:2.25rem;line-height:2.5rem;font-weight:700;color:var(--color-text-p
 .will-change-opacity{will-change:opacity}
 .transform-gpu{transform:translateZ(0)}
 .backface-hidden{backface-visibility:hidden}
-`;
-
-/**
- * GOOGLE ADS FIX: Disabled dynamic CSS injection
- * Critical CSS is now loaded via static import in layout.tsx
- */
-export function injectCriticalCSS(): void {
-  console.warn('⚠️ Dynamic CSS injection disabled for Google Ads compliance');
-  // Function disabled - critical CSS loaded via static import
-}
-
-/**
- * GOOGLE ADS FIX: Disabled dynamic CSS loading
- * This function has been disabled to prevent Google Ads from flagging
- * dynamic DOM manipulation as suspicious behavior
- */
-export function loadNonCriticalCSS(href: string): void {
-  console.warn('⚠️ Dynamic CSS loading disabled for Google Ads compliance');
-  // Function disabled - use static CSS imports instead
-  // Original implementation removed: createElement, appendChild
-}
-
-/**
- * GOOGLE ADS FIX: Disabled dynamic CSS initialization
- * CSS is now loaded via static imports in layout.tsx
- */
-export function initializeSecureCSS(): void {
-  console.warn('⚠️ Dynamic CSS initialization disabled for Google Ads compliance');
-  // Function disabled - CSS loaded via static imports
-}

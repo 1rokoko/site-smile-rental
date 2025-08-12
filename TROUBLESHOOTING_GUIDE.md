@@ -141,6 +141,44 @@ ssh root@38.180.122.239 "cd /var/www/smilerentalphuket.com/site-smile-rental && 
 ssh root@38.180.122.239 "cd /var/www/smilerentalphuket.com/site-smile-rental && npm run build && pm2 restart smile-rental"
 ```
 
+## 🚨 НОВАЯ ПРОБЛЕМА: Localhost:3000 не запускается (РЕШЕНО)
+**Дата:** 2025-08-12
+**Симптомы:** ERR_CONNECTION_REFUSED при попытке открыть http://localhost:3000
+
+### Причина проблемы:
+1. **Middleware принудительно перенаправляет HTTP на HTTPS** - блокирует localhost
+2. **Сервер показывает "Ready", но порт не слушается** - процесс зависает
+3. **Нужен полный перезапуск сервера** после изменений middleware
+
+### ✅ Решение:
+```bash
+# 1. Исправить middleware для localhost
+# В src/middleware.ts изменить строку 23-28:
+# БЫЛО:
+if (request.nextUrl.protocol === 'http:') {
+  return NextResponse.redirect(`https://${request.nextUrl.hostname}...`)
+}
+
+# СТАЛО:
+if (request.nextUrl.protocol === 'http:' && request.nextUrl.hostname !== 'localhost' && request.nextUrl.hostname !== '127.0.0.1') {
+  return NextResponse.redirect(`https://${request.nextUrl.hostname}...`)
+}
+
+# 2. Полностью перезапустить сервер
+kill-process [terminal_id]
+npm run dev
+
+# 3. Проверить что порт слушается
+netstat -ano | findstr :3000
+
+# 4. Проверить соединение
+Test-NetConnection -ComputerName localhost -Port 3000
+```
+
+**Статус:** ✅ Решено - localhost:3000 работает корректно
+
+---
+
 ## 🔄 СТАНДАРТНЫЙ ПРОЦЕСС ДЕПЛОЯ
 
 ### 1. Локальная подготовка

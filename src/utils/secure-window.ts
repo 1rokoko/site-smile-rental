@@ -29,18 +29,10 @@ export function secureWindowOpen(url: string, target: string = '_blank'): boolea
       'popup=yes'
     ].join(',');
 
-    // Open window with security features
-    const newWindow = window.open(url, target, windowFeatures);
-
-    // Additional security: Clear opener reference
-    if (newWindow) {
-      newWindow.opener = null;
-      console.log(`✅ Securely opened URL: ${url}`);
-      return true;
-    } else {
-      console.warn('Failed to open window - popup blocked?');
-      return false;
-    }
+    // GOOGLE ADS FIX: Disabled window.open() to prevent suspicious behavior flags
+    console.warn('⚠️ Window opening disabled for Google Ads compliance');
+    console.log(`Attempted to open URL: ${url} (blocked for compliance)`);
+    return false;
   } catch (error) {
     console.error('Error in secureWindowOpen:', error);
     return false;
@@ -107,15 +99,10 @@ export function secureNavigate(url: string, replace: boolean = false): boolean {
       return false;
     }
 
-    // Use secure navigation
-    if (replace) {
-      window.location.replace(url);
-    } else {
-      window.location.href = url;
-    }
-
-    console.log(`✅ Securely navigated to: ${url}`);
-    return true;
+    // GOOGLE ADS FIX: Disabled location manipulation to prevent suspicious behavior flags
+    console.warn('⚠️ Navigation disabled for Google Ads compliance');
+    console.log(`Attempted to navigate to: ${url} (blocked for compliance)`);
+    return false;
   } catch (error) {
     console.error('Error in secureNavigate:', error);
     return false;

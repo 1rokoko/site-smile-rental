@@ -4,7 +4,6 @@
  * Google Ads compliant implementation
  */
 
-import React from 'react';
 import dynamic from 'next/dynamic';
 import { ComponentType, ReactElement } from 'react';
 
@@ -51,17 +50,11 @@ export function createSecureDynamicComponent<T extends ComponentType<unknown>>(
           return { default: fallback };
         }
 
-        // Return error component
+        // GOOGLE ADS FIX: Return simple error message instead of dynamic DOM creation
         return {
           default: () => {
-            return React.createElement('div',
-              { className: "p-4 text-red-600 bg-red-50 rounded-lg" },
-              React.createElement('p', null, `Failed to load component: ${componentPath}`),
-              React.createElement('p',
-                { className: "text-sm mt-2" },
-                `Error: ${error instanceof Error ? error.message : 'Unknown error'}`
-              )
-            );
+            console.error(`Failed to load component: ${componentPath}`, error);
+            return null; // Return null instead of creating DOM elements
           }
         };
       }
@@ -69,10 +62,9 @@ export function createSecureDynamicComponent<T extends ComponentType<unknown>>(
     {
       ssr,
       loading: loading || (() => {
-        return React.createElement('div',
-          { className: "animate-pulse bg-gray-100 rounded-lg h-32 flex items-center justify-center" },
-          React.createElement('span', { className: "text-gray-500" }, 'Loading...')
-        );
+        // GOOGLE ADS FIX: Return null instead of creating DOM elements
+        console.log('Loading component...');
+        return null;
       })
     }
   );
@@ -131,13 +123,9 @@ export const SecureDynamicComponents = {
     {
       ssr: true,
       loading: () => {
-        return React.createElement('div',
-          { className: "h-96 animate-pulse bg-gray-100 rounded-lg mx-4 md:mx-8" },
-          React.createElement('div',
-            { className: "flex items-center justify-center h-full" },
-            React.createElement('div', { className: "text-gray-500" }, 'Loading scooters...')
-          )
-        );
+        // GOOGLE ADS FIX: Return null instead of creating DOM elements
+        console.log('Loading ScooterGridWithPromo component...');
+        return null;
       }
     }
   ),
@@ -150,9 +138,9 @@ export const SecureDynamicComponents = {
     {
       ssr: true,
       loading: () => {
-        return React.createElement('div',
-          { className: "h-48 animate-pulse bg-orange-50 rounded-lg mx-4 md:mx-8" }
-        );
+        // GOOGLE ADS FIX: Return null instead of creating DOM elements
+        console.log('Loading ScamWarning component...');
+        return null;
       }
     }
   ),
@@ -165,9 +153,9 @@ export const SecureDynamicComponents = {
     {
       ssr: true,
       loading: () => {
-        return React.createElement('div',
-          { className: "h-64 animate-pulse bg-blue-50 rounded-lg mx-4 md:mx-8" }
-        );
+        // GOOGLE ADS FIX: Return null instead of creating DOM elements
+        console.log('Loading OwnerTestimonial component...');
+        return null;
       }
     }
   ),
@@ -191,9 +179,9 @@ export const SecureDynamicComponents = {
     {
       ssr: true,
       loading: () => {
-        return React.createElement('div',
-          { className: "h-32 animate-pulse bg-gray-100 rounded-lg mx-4 md:mx-8" }
-        );
+        // GOOGLE ADS FIX: Return null instead of creating DOM elements
+        console.log('Loading Footer component...');
+        return null;
       }
     }
   )

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 // SECURITY FIX: Removed Google Fonts to eliminate 404 errors and improve Google Ads compliance
 import "./globals.css";
+import "./critical.css"; // GOOGLE ADS FIX: Static CSS instead of dynamic injection
 import { Analytics } from "@/components/analytics";
-import { SecureCSSLoader } from "@/components/layout/SecureCSSLoader";
 import { SecurityValidator } from "@/components/layout/SecurityValidator";
 
 // SECURITY FIX: Using system fonts instead of external Google Fonts
@@ -94,7 +94,7 @@ export default function RootLayout({
       <body
         className="antialiased font-system"
       >
-        <SecureCSSLoader />
+        {/* GOOGLE ADS FIX: Removed SecureCSSLoader to eliminate dynamic CSS injection */}
         <SecurityValidator />
         {children}
         <Analytics />

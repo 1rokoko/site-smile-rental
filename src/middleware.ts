@@ -9,20 +9,18 @@ export function middleware(request: NextRequest) {
   response.headers.set('X-Robots-Tag', 'index, follow')
   response.headers.set('X-Permitted-Cross-Domain-Policies', 'none')
   response.headers.set('Cross-Origin-Embedder-Policy', 'unsafe-none')
-  response.headers.set('Cross-Origin-Opener-Policy', 'same-origin')
+  response.headers.set('Cross-Origin-Opener-Policy', 'same-origin-allow-popups')
   response.headers.set('Cross-Origin-Resource-Policy', 'cross-origin')
 
-  // Prevent clickjacking
+  // Critical security headers
   response.headers.set('X-Frame-Options', 'SAMEORIGIN')
-  
-  // MIME type sniffing protection
   response.headers.set('X-Content-Type-Options', 'nosniff')
-  
-  // XSS protection
   response.headers.set('X-XSS-Protection', '1; mode=block')
+  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
+  response.headers.set('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload')
 
-  // Force HTTPS
-  if (request.nextUrl.protocol === 'http:') {
+  // Force HTTPS (disabled for localhost development)
+  if (request.nextUrl.protocol === 'http:' && request.nextUrl.hostname !== 'localhost' && request.nextUrl.hostname !== '127.0.0.1') {
     return NextResponse.redirect(
       `https://${request.nextUrl.hostname}${request.nextUrl.pathname}${request.nextUrl.search}`,
       301
@@ -40,12 +38,6 @@ export function middleware(request: NextRequest) {
     // Allow legitimate crawlers but be cautious with others
     console.log(`Suspicious user agent detected: ${userAgent}`)
   }
-
-  // Basic security headers
-  response.headers.set('X-Frame-Options', 'SAMEORIGIN')
-  response.headers.set('X-Content-Type-Options', 'nosniff')
-  response.headers.set('X-XSS-Protection', '1; mode=block')
-  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
 
   // SECURITY FIX: Permissions Policy for Google Ads compliance (removed 'speaker' feature)
   response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=()')
@@ -81,7 +73,7 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // TEMPORARILY DISABLED - Avoid static assets and API to reduce overhead
-    // '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    // Apply middleware to all routes except static assets and API routes
+    '/((?!api|_next/static|_next/image|favicon.ico).*)',
   ],
 }

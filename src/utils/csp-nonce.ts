@@ -53,71 +53,23 @@ export function createSecureStyle(content: string, nonce?: string): string {
 }
 
 /**
- * CSP-compliant inline script injection for client-side
- * Replaces dangerouslySetInnerHTML with secure alternatives
+ * GOOGLE ADS FIX: Removed dynamic script injection
+ * This function has been disabled to prevent Google Ads from flagging
+ * dynamic DOM manipulation as suspicious behavior
  */
 export function injectSecureScript(content: string, id?: string): void {
-  // Only run on client side
-  if (typeof window === 'undefined') return;
-
-  try {
-    // Check if script already exists
-    if (id && document.getElementById(id)) {
-      return;
-    }
-
-    // Create script element using standard DOM methods
-    const scriptElement = document.createElement('script');
-    if (id) {
-      scriptElement.id = id;
-    }
-    scriptElement.type = 'text/javascript';
-
-    // Use textContent instead of innerHTML for security
-    scriptElement.textContent = content;
-
-    // Append to head
-    const head = document.head || document.getElementsByTagName('head')[0];
-    head.appendChild(scriptElement);
-
-    console.log('✅ Secure script injected:', id || 'anonymous');
-  } catch (error) {
-    console.error('❌ Failed to inject secure script:', error);
-  }
+  console.warn('⚠️ Dynamic script injection disabled for Google Ads compliance');
+  // Function disabled - use static script files instead
 }
 
 /**
- * CSP-compliant inline style injection for client-side
- * Replaces dangerouslySetInnerHTML with secure alternatives
+ * GOOGLE ADS FIX: Removed dynamic style injection
+ * This function has been disabled to prevent Google Ads from flagging
+ * dynamic DOM manipulation as suspicious behavior
  */
 export function injectSecureStyle(content: string, id?: string): void {
-  // Only run on client side
-  if (typeof window === 'undefined') return;
-
-  try {
-    // Check if style already exists
-    if (id && document.getElementById(id)) {
-      return;
-    }
-
-    // Create style element using standard DOM methods
-    const styleElement = document.createElement('style');
-    if (id) {
-      styleElement.id = id;
-    }
-    styleElement.type = 'text/css';
-
-    // Use textContent instead of innerHTML for security
-    styleElement.textContent = content;
-
-    // Append to head
-    const head = document.head || document.getElementsByTagName('head')[0];
-    head.appendChild(styleElement);
-
-    console.log('✅ Secure style injected:', id || 'anonymous');
-  } catch (error) {
-    console.error('❌ Failed to inject secure style:', error);
-  }
+  console.warn('⚠️ Dynamic style injection disabled for Google Ads compliance');
+  // Function disabled - use static CSS files instead
 }
 
 /**
