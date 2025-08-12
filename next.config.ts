@@ -28,15 +28,15 @@ const securityHeaders = [
   },
   {
     key: 'Permissions-Policy',
-    value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()'
+    value: 'camera=(), microphone=(), geolocation=(), payment=()'
   },
   {
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com",
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-      "font-src 'self' https://fonts.gstatic.com data:",
+      "style-src 'self' 'unsafe-inline'",
+      "font-src 'self' data:",
       "img-src 'self' data: blob: https: http:",
       "media-src 'self' data: blob:",
       "connect-src 'self' https://www.google-analytics.com https://cloudflareinsights.com https://api.whatsapp.com",
@@ -69,9 +69,9 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
 
-  // Performance optimizations
+  // Performance optimizations and security enhancements
   experimental: {
-    optimizePackageImports: ['lucide-react', 'framer-motion'],
+    optimizePackageImports: ['lucide-react', 'framer-motion', '@/components', '@/utils'],
     // Temporarily disabled due to critters dependency issue
     // optimizeCss: true,
     gzipSize: true,
@@ -183,6 +183,12 @@ const nextConfig: NextConfig = {
       },
 
     ],
+  },
+
+  // SECURITY FIX: Enhanced settings for Google Ads compliance
+  compiler: {
+    // Remove console logs in production for cleaner code
+    removeConsole: process.env.NODE_ENV === 'production',
   },
 
 };

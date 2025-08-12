@@ -74,6 +74,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* SECURITY FIX: System font class for Google Ads compliance */
+.font-system {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
 /* Fix for anchor links with sticky header */
 [id] {
   scroll-margin-top: 100px;

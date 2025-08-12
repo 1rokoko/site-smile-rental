@@ -1,22 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+// SECURITY FIX: Removed Google Fonts to eliminate 404 errors and improve Google Ads compliance
 import "./globals.css";
 import { Analytics } from "@/components/analytics";
 import { SecureCSSLoader } from "@/components/layout/SecureCSSLoader";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap",
-  preload: true,
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-  preload: false,
-});
+// SECURITY FIX: Using system fonts instead of external Google Fonts
+// This eliminates 404 errors and potential "hacked site" flags from Google Ads
 
 export const metadata: Metadata = {
   title: "Smile Rental Phuket - №1 Scooter Rental for Safety and Comfort",
@@ -84,29 +73,13 @@ export default function RootLayout({
         {/* Google Site Verification */}
         <meta name="google-site-verification" content="YxLY-d5B7WPjkgGfePklJ_tu64TDvkj_xQy2RW8SajM" />
 
-        {/* Critical resource hints for external domains */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Critical resource hints for external domains - SECURITY FIX: Removed Google Fonts */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://photos.app.goo.gl" />
 
-
-        {/* Font preloading for critical fonts */}
-        <link
-          rel="preload"
-          href="/_next/static/media/geist-sans-latin-400-normal.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/_next/static/media/geist-sans-latin-700-normal.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
+        {/* SECURITY FIX: Removed font preloading to eliminate 404 errors */}
+        {/* System fonts are used instead for Google Ads compliance */}
         {/* Security headers are served via middleware.ts with enhanced CSP */}
       
         {/* Critical CSS will be injected securely via client-side script */}
@@ -116,7 +89,7 @@ export default function RootLayout({
         {/* This eliminates the dangerouslySetInnerHTML script for Google Ads compliance */}
 </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className="antialiased font-system"
       >
         <SecureCSSLoader />
         {children}
