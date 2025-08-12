@@ -50,10 +50,15 @@ export function middleware(request: NextRequest) {
   // SECURITY FIX: Permissions Policy for Google Ads compliance (removed 'speaker' feature)
   response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=()')
 
-  // Content Security Policy (SECURITY FIX: Removed Google Fonts for compliance)
-  const csp = [
+  // Content Security Policy
+  // Development allows inline/eval for React refresh; Production removes them for Google Ads compliance
+  const isDev = process.env.NODE_ENV !== 'production'
+  const cspDirectives: string[] = [
     "default-src 'self'",
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://maps.googleapis.com https://maps.gstatic.com",
+    isDev
+      ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://maps.googleapis.com https://maps.gstatic.com"
+      : "script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://maps.googleapis.com https://maps.gstatic.com",
+    // Note: We keep 'unsafe-inline' for styles because critical CSS is injected via a style tag
     "style-src 'self' 'unsafe-inline' https://maps.gstatic.com",
     "img-src 'self' data: blob: https://www.google-analytics.com https://maps.gstatic.com https://maps.googleapis.com https://photos.app.goo.gl",
     "font-src 'self'",
@@ -63,8 +68,8 @@ export function middleware(request: NextRequest) {
     "base-uri 'self'",
     "form-action 'self'",
     "upgrade-insecure-requests"
-  ].join('; ')
-  response.headers.set('Content-Security-Policy', csp)
+  ]
+  response.headers.set('Content-Security-Policy', cspDirectives.join('; '))
 
   // Rate limiting headers
   response.headers.set('X-RateLimit-Limit', '1000')
