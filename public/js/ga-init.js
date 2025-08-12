@@ -14,4 +14,3 @@
     // console.error('GA init failed', e);
   }
 })();
-

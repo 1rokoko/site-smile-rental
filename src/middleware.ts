@@ -51,14 +51,13 @@ export function middleware(request: NextRequest) {
   response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=()')
 
   // Content Security Policy
-  // Development allows inline/eval for React refresh; Production removes them for Google Ads compliance
+  // Allow necessary inline scripts for Next.js functionality while maintaining security
   const isDev = process.env.NODE_ENV !== 'production'
   const cspDirectives: string[] = [
     "default-src 'self'",
-    isDev
-      ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://maps.googleapis.com https://maps.gstatic.com"
-      : "script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://maps.googleapis.com https://maps.gstatic.com",
-    // Note: We keep 'unsafe-inline' for styles because critical CSS is injected via a style tag
+    // Allow inline scripts for Next.js hydration and Google Analytics
+    "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://maps.googleapis.com https://maps.gstatic.com",
+    // Keep 'unsafe-inline' for styles because critical CSS is injected via style tags
     "style-src 'self' 'unsafe-inline' https://maps.gstatic.com",
     "img-src 'self' data: blob: https://www.google-analytics.com https://maps.gstatic.com https://maps.googleapis.com https://photos.app.goo.gl",
     "font-src 'self'",
