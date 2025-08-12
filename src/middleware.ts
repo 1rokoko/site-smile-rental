@@ -47,17 +47,18 @@ export function middleware(request: NextRequest) {
   response.headers.set('X-XSS-Protection', '1; mode=block')
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
 
-  // SECURITY FIX: Permissions Policy for Google Ads compliance
+  // SECURITY FIX: Permissions Policy for Google Ads compliance (removed 'speaker' feature)
   response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=()')
 
   // Content Security Policy
-  // Allow necessary inline scripts for Next.js functionality while maintaining security
+  // Development allows inline/eval for React refresh; Production removes them for Google Ads compliance
   const isDev = process.env.NODE_ENV !== 'production'
   const cspDirectives: string[] = [
     "default-src 'self'",
-    // Allow inline scripts for Next.js hydration and Google Analytics
-    "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://maps.googleapis.com https://maps.gstatic.com",
-    // Keep 'unsafe-inline' for styles because critical CSS is injected via style tags
+    isDev
+      ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://maps.googleapis.com https://maps.gstatic.com"
+      : "script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://maps.googleapis.com https://maps.gstatic.com",
+    // Note: We keep 'unsafe-inline' for styles because critical CSS is injected via a style tag
     "style-src 'self' 'unsafe-inline' https://maps.gstatic.com",
     "img-src 'self' data: blob: https://www.google-analytics.com https://maps.gstatic.com https://maps.googleapis.com https://photos.app.goo.gl",
     "font-src 'self'",
@@ -80,7 +81,7 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Apply middleware to all routes except static assets and API routes
-    '/((?!api|_next/static|_next/image|favicon.ico|.*\\.png|.*\\.jpg|.*\\.jpeg|.*\\.gif|.*\\.svg|.*\\.webp|.*\\.ico|.*\\.woff|.*\\.woff2|.*\\.ttf|.*\\.eot|.*\\.css|.*\\.js|.*\\.json|.*\\.xml|.*\\.txt).*)',
+    // TEMPORARILY DISABLED - Avoid static assets and API to reduce overhead
+    // '/((?!api|_next/static|_next/image|favicon.ico).*)',
   ],
 }

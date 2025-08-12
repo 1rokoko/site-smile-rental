@@ -26,7 +26,10 @@ const securityHeaders = [
     key: 'Referrer-Policy',
     value: 'strict-origin-when-cross-origin'
   },
-  // Permissions-Policy is now set in middleware.ts to avoid conflicts
+  {
+    key: 'Permissions-Policy',
+    value: 'camera=(), microphone=(), geolocation=(), payment=()'
+  },
   // CSP header is set dynamically in src/middleware.ts (dev vs prod). Removed here to avoid duplicates/conflicts.
   {
     key: 'Cross-Origin-Embedder-Policy',
@@ -59,38 +62,51 @@ const nextConfig: NextConfig = {
     strictNextHead: true,
   },
 
-  // Webpack optimizations for Google Ads compliance - minimize chunk count
+  // Webpack optimizations for better performance
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
-      // GOOGLE ADS FIX: Reduce chunk splitting to minimize suspicious patterns
+      // Optimize chunks for better caching and loading
       config.optimization = {
         ...config.optimization,
         splitChunks: {
           chunks: 'all',
-          minSize: 50000, // Larger chunks = fewer files
-          maxSize: 500000, // Allow larger chunks
+          minSize: 20000,
+          maxSize: 244000,
           cacheGroups: {
-            // Combine all vendor code into single chunk
             vendor: {
               test: /[\\/]node_modules[\\/]/,
               name: 'vendors',
               chunks: 'all',
               priority: 10,
-              enforce: true, // Force single vendor chunk
+              maxSize: 244000,
             },
-            // Minimize additional chunks
-            default: {
+            common: {
+              name: 'common',
               minChunks: 2,
-              priority: -20,
+              chunks: 'all',
+              priority: 5,
               reuseExistingChunk: true,
+              maxSize: 244000,
+            },
+            framerMotion: {
+              test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
+              name: 'framer-motion',
+              chunks: 'all',
+              priority: 20,
+              maxSize: 244000,
+            },
+            lucideReact: {
+              test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
+              name: 'lucide-react',
+              chunks: 'all',
+              priority: 20,
+              maxSize: 244000,
             },
           },
         },
-        // SECURITY FIX: Clean code for automated scanners
+        // SECURITY FIX: Minimize bundle size and potential security issues
         usedExports: true,
         sideEffects: false,
-        // Minimize runtime complexity
-        runtimeChunk: false, // Inline runtime instead of separate chunk
       };
     }
     return config;

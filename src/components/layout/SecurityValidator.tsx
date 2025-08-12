@@ -9,12 +9,12 @@ import { validateGoogleAdsCompliance } from '@/utils/security-validator';
  */
 export function SecurityValidator() {
   useEffect(() => {
-    // GOOGLE ADS FIX: Only run in development mode to avoid suspicious DOM scanning in production
+    // Only run in development mode
     if (process.env.NODE_ENV === 'development') {
       // Wait for DOM to be fully loaded
       const timer = setTimeout(() => {
         const isCompliant = validateGoogleAdsCompliance();
-
+        
         if (isCompliant) {
           console.log('🎉 Google Ads Compliance: PASSED');
         } else {
@@ -24,7 +24,6 @@ export function SecurityValidator() {
 
       return () => clearTimeout(timer);
     }
-    // In production: do nothing to avoid triggering security scanners
   }, []);
 
   // This component doesn't render anything
