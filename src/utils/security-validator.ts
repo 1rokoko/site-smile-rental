@@ -18,28 +18,29 @@ export function validatePageSecurity(): SecurityReport {
   const warnings: string[] = [];
   const recommendations: string[] = [];
 
-  // Check for dangerous patterns in the DOM
+  // Check for dangerous patterns in the DOM (heuristics tuned to avoid false positives in Next.js dev)
   if (typeof window !== 'undefined') {
-    // Check for dangerouslySetInnerHTML in HTML
+    const isDev = process.env.NODE_ENV === 'development';
+
+    // Note: React props like dangerouslySetInnerHTML never appear in the DOM.
+    // Scanning for that substring in HTML yields false positives from framework internals.
+    // Therefore we intentionally DO NOT check for it here.
+
+    // Check for document.write in live DOM only (rare and truly dangerous)
     const htmlContent = document.documentElement.outerHTML;
-    
-    if (htmlContent.includes('dangerouslySetInnerHTML')) {
-      issues.push('dangerouslySetInnerHTML found in DOM');
-    }
-
-    // Check for eval usage
-    if (htmlContent.includes('eval(')) {
-      issues.push('eval() usage detected');
-    }
-
-    // Check for Function constructor
-    if (htmlContent.includes('Function(')) {
-      issues.push('Function() constructor usage detected');
-    }
-
-    // Check for document.write
     if (htmlContent.includes('document.write')) {
       issues.push('document.write usage detected');
+    }
+
+    // In development, Next.js may include eval/Function in its dev overlay/runtime.
+    // Avoid flagging these in dev; only flag in production builds.
+    if (!isDev) {
+      if (htmlContent.includes('eval(')) {
+        issues.push('eval() usage detected');
+      }
+      if (htmlContent.includes('Function(')) {
+        issues.push('Function() constructor usage detected');
+      }
     }
 
     // Check for inline event handlers

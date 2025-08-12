@@ -74,8 +74,7 @@ export default function RootLayout({
         {/* Google Site Verification */}
         <meta name="google-site-verification" content="YxLY-d5B7WPjkgGfePklJ_tu64TDvkj_xQy2RW8SajM" />
 
-        {/* SECURITY FIX: Content Security Policy for Google Ads compliance */}
-        <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https: http:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com; frame-src 'self' https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self';" />
+        {/* CSP is now set via headers in middleware.ts; removed meta tag to avoid duplicate/conflicting policies and to eliminate 'unsafe-*' in production */}
 
         {/* Critical resource hints for external domains - SECURITY FIX: Removed Google Fonts */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />

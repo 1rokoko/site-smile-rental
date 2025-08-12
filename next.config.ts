@@ -30,24 +30,7 @@ const securityHeaders = [
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=(), payment=()'
   },
-  {
-    key: 'Content-Security-Policy',
-    value: [
-      "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com",
-      "style-src 'self' 'unsafe-inline'",
-      "font-src 'self' data:",
-      "img-src 'self' data: blob: https: http:",
-      "media-src 'self' data: blob:",
-      "connect-src 'self' https://www.google-analytics.com https://cloudflareinsights.com https://api.whatsapp.com",
-      "frame-src 'self' https://www.google.com",
-      "object-src 'none'",
-      "base-uri 'self'",
-      "form-action 'self'",
-      "frame-ancestors 'self'",
-      "upgrade-insecure-requests"
-    ].join('; ')
-  },
+  // CSP header is set dynamically in src/middleware.ts (dev vs prod). Removed here to avoid duplicates/conflicts.
   {
     key: 'Cross-Origin-Embedder-Policy',
     value: 'unsafe-none'
