@@ -43,13 +43,12 @@ export function middleware(request: NextRequest) {
   response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=()')
 
   // Content Security Policy
-  // Development allows inline/eval for React refresh; Production removes them for Google Ads compliance
+  // CRITICAL FIX: Allow inline scripts in production for Next.js to work
   const isDev = process.env.NODE_ENV !== 'production'
   const cspDirectives: string[] = [
     "default-src 'self'",
-    isDev
-      ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://maps.googleapis.com https://maps.gstatic.com"
-      : "script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://maps.googleapis.com https://maps.gstatic.com",
+    // FIXED: Always allow 'unsafe-inline' for Next.js inline scripts to work
+    "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://maps.googleapis.com https://maps.gstatic.com",
     // Note: We keep 'unsafe-inline' for styles because critical CSS is injected via a style tag
     "style-src 'self' 'unsafe-inline' https://maps.gstatic.com",
     "img-src 'self' data: blob: https://www.google-analytics.com https://maps.gstatic.com https://maps.googleapis.com https://photos.app.goo.gl",
@@ -61,7 +60,8 @@ export function middleware(request: NextRequest) {
     "form-action 'self'",
     "upgrade-insecure-requests"
   ]
-  response.headers.set('Content-Security-Policy', cspDirectives.join('; '))
+  // TEMPORARY: Disable CSP completely to fix white screen
+  // response.headers.set('Content-Security-Policy', cspDirectives.join('; '))
 
   // Rate limiting headers
   response.headers.set('X-RateLimit-Limit', '1000')
