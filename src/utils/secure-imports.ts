@@ -4,6 +4,7 @@
  * Google Ads compliant implementation
  */
 
+import React from 'react';
 import dynamic from 'next/dynamic';
 import { ComponentType, ReactElement } from 'react';
 
@@ -62,9 +63,17 @@ export function createSecureDynamicComponent<T extends ComponentType<unknown>>(
     {
       ssr,
       loading: loading || (() => {
-        // GOOGLE ADS FIX: Return null instead of creating DOM elements
+        // GOOGLE ADS FIX: Return simple div instead of null to prevent blank page
         console.log('Loading component...');
-        return null;
+        return React.createElement('div', {
+          style: {
+            minHeight: '100px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            opacity: 0.5
+          }
+        }, 'Loading...');
       })
     }
   );
@@ -123,9 +132,11 @@ export const SecureDynamicComponents = {
     {
       ssr: true,
       loading: () => {
-        // GOOGLE ADS FIX: Return null instead of creating DOM elements
+        // GOOGLE ADS FIX: Return simple loading div
         console.log('Loading ScooterGridWithPromo component...');
-        return null;
+        return React.createElement('div', {
+          style: { minHeight: '200px', textAlign: 'center', padding: '2rem' }
+        }, 'Loading scooters...');
       }
     }
   ),
@@ -138,9 +149,11 @@ export const SecureDynamicComponents = {
     {
       ssr: true,
       loading: () => {
-        // GOOGLE ADS FIX: Return null instead of creating DOM elements
+        // GOOGLE ADS FIX: Return simple loading div
         console.log('Loading ScamWarning component...');
-        return null;
+        return React.createElement('div', {
+          style: { minHeight: '100px', textAlign: 'center', padding: '1rem' }
+        }, 'Loading warning...');
       }
     }
   ),
@@ -153,9 +166,11 @@ export const SecureDynamicComponents = {
     {
       ssr: true,
       loading: () => {
-        // GOOGLE ADS FIX: Return null instead of creating DOM elements
+        // GOOGLE ADS FIX: Return simple loading div
         console.log('Loading OwnerTestimonial component...');
-        return null;
+        return React.createElement('div', {
+          style: { minHeight: '150px', textAlign: 'center', padding: '1rem' }
+        }, 'Loading testimonial...');
       }
     }
   ),
@@ -179,9 +194,11 @@ export const SecureDynamicComponents = {
     {
       ssr: true,
       loading: () => {
-        // GOOGLE ADS FIX: Return null instead of creating DOM elements
+        // GOOGLE ADS FIX: Return simple loading div
         console.log('Loading Footer component...');
-        return null;
+        return React.createElement('div', {
+          style: { minHeight: '100px', textAlign: 'center', padding: '1rem' }
+        }, 'Loading footer...');
       }
     }
   )

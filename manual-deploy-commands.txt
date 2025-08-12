@@ -1,0 +1,72 @@
+🚀 MANUAL DEPLOYMENT COMMANDS FOR GOOGLE ADS COMPLIANCE FIXES
+================================================================
+
+STEP 1: Connect to server
+ssh root@38.180.122.239
+
+STEP 2: Navigate to project directory
+cd /var/www/smilerentalphuket.com/site-smile-rental
+
+STEP 3: Pull latest changes from GitHub
+git fetch origin
+git reset --hard origin/main
+
+STEP 4: Show latest commit to verify
+git log --oneline -1
+
+STEP 5: Clean up deleted files
+rm -f src/components/layout/SecureCSSLoader.tsx
+rm -f public/js/secure-init.js
+
+STEP 6: Install dependencies
+npm ci --production
+
+STEP 7: Build application with Google Ads fixes
+export NODE_OPTIONS='--max-old-space-size=4096'
+npm run build
+
+STEP 8: Restart PM2 process
+pm2 restart smile-rental
+
+STEP 9: Check PM2 status
+pm2 status
+
+STEP 10: Check port status
+netstat -tlnp | grep :3000
+
+STEP 11: Test localhost
+curl -I http://localhost:3000
+
+STEP 12: Verify Google Ads compliance
+page_content=$(curl -s http://localhost:3000)
+
+# Check for removed patterns
+echo "Checking for dangerouslySetInnerHTML..."
+if echo "$page_content" | grep -q "dangerouslySetInnerHTML"; then
+    echo "❌ dangerouslySetInnerHTML still found"
+else
+    echo "✅ dangerouslySetInnerHTML successfully removed"
+fi
+
+echo "Checking for createElement..."
+if echo "$page_content" | grep -q "createElement"; then
+    echo "❌ createElement still found"
+else
+    echo "✅ createElement successfully removed"
+fi
+
+echo "Checking for SecureCSSLoader..."
+if echo "$page_content" | grep -q "SecureCSSLoader"; then
+    echo "❌ SecureCSSLoader still found"
+else
+    echo "✅ SecureCSSLoader successfully removed"
+fi
+
+STEP 13: Final verification
+echo "🎯 Deployment completed!"
+echo "Website: https://smilerentalphuket.com"
+echo "Status: Ready for Google Ads re-submission"
+
+================================================================
+COPY AND PASTE THESE COMMANDS ONE BY ONE INTO SSH SESSION
+================================================================
