@@ -47,7 +47,7 @@ export function middleware(request: NextRequest) {
   response.headers.set('X-XSS-Protection', '1; mode=block')
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
 
-  // SECURITY FIX: Permissions Policy for Google Ads compliance (removed 'speaker' feature)
+  // SECURITY FIX: Permissions Policy for Google Ads compliance
   response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=()')
 
   // Content Security Policy
@@ -81,7 +81,7 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // TEMPORARILY DISABLED - Avoid static assets and API to reduce overhead
-    // '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    // Apply middleware to all routes except static assets and API routes
+    '/((?!api|_next/static|_next/image|favicon.ico|.*\\.png|.*\\.jpg|.*\\.jpeg|.*\\.gif|.*\\.svg|.*\\.webp|.*\\.ico|.*\\.woff|.*\\.woff2|.*\\.ttf|.*\\.eot|.*\\.css|.*\\.js|.*\\.json|.*\\.xml|.*\\.txt).*)',
   ],
 }

@@ -26,10 +26,7 @@ const securityHeaders = [
     key: 'Referrer-Policy',
     value: 'strict-origin-when-cross-origin'
   },
-  {
-    key: 'Permissions-Policy',
-    value: 'camera=(), microphone=(), geolocation=(), payment=()'
-  },
+  // Permissions-Policy is now set in middleware.ts to avoid conflicts
   // CSP header is set dynamically in src/middleware.ts (dev vs prod). Removed here to avoid duplicates/conflicts.
   {
     key: 'Cross-Origin-Embedder-Policy',
