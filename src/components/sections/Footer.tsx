@@ -8,7 +8,7 @@ import { EXACT_CONTENT } from '@/data/exact-content';
 import { CONTACT_INFO } from '@/lib/constants';
 import { MessageCircle, Phone, MapPin } from 'lucide-react';
 import { animations } from '@/lib/animations';
-import { safeWindowOpen } from '@/utils/cn';
+import { handleContactClick } from '@/utils/secure-window';
 
 export const Footer: React.FC = () => {
   const { contact, investment, adventures } = EXACT_CONTENT;
@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
                 <button
                   className="flex items-center justify-center space-x-2 bg-green-500 hover:bg-green-600 px-6 py-3 rounded-lg text-lg font-medium transition-colors duration-200"
                   style={{ color: 'white' }}
-                  onClick={() => safeWindowOpen(CONTACT_INFO.whatsapp, '_blank')}
+                  onClick={() => handleContactClick('whatsapp', CONTACT_INFO.whatsapp)}
                 >
                   <Phone className="w-5 h-5" style={{ color: 'white' }} />
                   <span style={{ color: 'white' }}>{investment.actions[0]}</span>
@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
                 <button
                   className="flex items-center justify-center space-x-2 bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg text-lg font-medium transition-colors duration-200"
                   style={{ color: 'white' }}
-                  onClick={() => safeWindowOpen(CONTACT_INFO.telegram, '_blank')}
+                  onClick={() => handleContactClick('telegram', CONTACT_INFO.telegram)}
                 >
                   <MessageCircle className="w-5 h-5" style={{ color: 'white' }} />
                   <span style={{ color: 'white' }}>{investment.actions[1]}</span>
@@ -106,7 +106,7 @@ export const Footer: React.FC = () => {
                   <div className="flex items-center space-x-3">
                     <Phone className="w-5 h-5 text-success" />
                     <a
-                      href="https://api.whatsapp.com/send/?phone=66626823973&text&type=phone_number&app_absent=0"
+                      href="https://wa.me/66626823973?text=Hi-Want-rent-scooter"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-300 hover:text-white transition-colors"

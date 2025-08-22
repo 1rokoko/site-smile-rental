@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { Card, CardContent, Badge, BodySmall } from '@/components/ui';
 import { ScooterModel } from '@/types';
 import { Star, ExternalLink, Award } from 'lucide-react';
-import { safeWindowOpen } from '@/utils/cn';
+import { secureWindowOpen } from '@/utils/secure-window';
 
 interface ScooterCardProps {
   scooter: ScooterModel;
@@ -109,7 +109,7 @@ export const ScooterCard: React.FC<ScooterCardProps> = ({ scooter, delay = 0 }) 
             <button
               className="w-full bg-blue-500 hover:bg-blue-600 py-2 px-4 rounded-lg text-sm font-medium transition-colors duration-200 flex items-center justify-center space-x-1"
               style={{ color: 'white' }}
-              onClick={() => safeWindowOpen(scooter.photoLink, '_blank')}
+              onClick={() => secureWindowOpen(scooter.photoLink, '_blank')}
             >
               <span style={{ color: 'white' }}>All photos</span>
               <ExternalLink className="w-3 h-3" style={{ color: 'white' }} />
