@@ -1,0 +1,146 @@
+{
+  "timestamp": "2025-08-22T19:35:19.299Z",
+  "documentation": {
+    "documentation": {
+      "emergency_procedures": {
+        "exists": true,
+        "size": 6985,
+        "modified": "2025-08-22T19:33:28.072Z",
+        "description": "Emergency rollback procedures",
+        "status": "AVAILABLE",
+        "required": true
+      },
+      "backup_documentation": {
+        "exists": true,
+        "size": 6028,
+        "modified": "2025-08-22T19:05:30.634Z",
+        "description": "Backup locations documentation",
+        "status": "AVAILABLE",
+        "required": true
+      },
+      "infrastructure_verification": {
+        "exists": true,
+        "size": 495,
+        "modified": "2025-08-22T19:20:11.184Z",
+        "description": "Infrastructure verification",
+        "status": "AVAILABLE",
+        "required": true
+      },
+      "deployment_comparison": {
+        "exists": true,
+        "size": 1352,
+        "modified": "2025-08-22T19:12:24.563Z",
+        "description": "Deployment comparison report",
+        "status": "AVAILABLE",
+        "required": true
+      },
+      "final_backup_summary": {
+        "exists": true,
+        "size": 1803,
+        "modified": "2025-08-22T19:06:24.818Z",
+        "description": "Final backup summary",
+        "status": "AVAILABLE",
+        "required": true
+      }
+    },
+    "available_count": 5,
+    "required_count": 5,
+    "total_count": 5,
+    "readiness_percentage": 100
+  },
+  "scripts": {
+    "scripts": {
+      "emergency_rollback": {
+        "exists": true,
+        "size": 8603,
+        "modified": "2025-08-22T19:34:13.802Z",
+        "description": "Emergency rollback script",
+        "status": "AVAILABLE",
+        "required": true
+      },
+      "production_backup": {
+        "exists": true,
+        "size": 4481,
+        "modified": "2025-08-22T18:50:48.767Z",
+        "description": "Production backup script",
+        "status": "AVAILABLE",
+        "required": true
+      },
+      "verification_script": {
+        "exists": true,
+        "size": 14714,
+        "modified": "2025-08-22T19:35:10.442Z",
+        "description": "Rollback verification script",
+        "status": "AVAILABLE",
+        "required": false
+      }
+    },
+    "available_count": 3,
+    "required_count": 2,
+    "total_count": 3,
+    "readiness_percentage": 150
+  },
+  "backup_systems": {
+    "backup_components": {
+      "vercel_backup_manifest": {
+        "exists": true,
+        "size": 1378,
+        "modified": "2025-08-22T18:58:53.717Z",
+        "description": "Vercel backup manifest",
+        "status": "AVAILABLE",
+        "required": true
+      },
+      "vercel_content": {
+        "exists": true,
+        "size": 95316,
+        "modified": "2025-08-22T18:58:52.426Z",
+        "description": "Vercel content backup",
+        "status": "AVAILABLE",
+        "required": true
+      },
+      "production_content": {
+        "exists": true,
+        "size": 95316,
+        "modified": "2025-08-22T18:58:53.707Z",
+        "description": "Production content backup",
+        "status": "AVAILABLE",
+        "required": true
+      },
+      "deployment_comparison": {
+        "exists": true,
+        "size": 6021,
+        "modified": "2025-08-22T18:58:53.716Z",
+        "description": "Deployment comparison data",
+        "status": "AVAILABLE",
+        "required": true
+      },
+      "backup_verification": {
+        "exists": true,
+        "size": 2649,
+        "modified": "2025-08-22T19:06:24.811Z",
+        "description": "Backup verification report",
+        "status": "AVAILABLE",
+        "required": true
+      }
+    },
+    "available_count": 5,
+    "required_count": 5,
+    "total_count": 5,
+    "readiness_percentage": 100
+  },
+  "recovery_procedures": {
+    "procedures": {
+      "emergency_procedures_documented": true,
+      "rollback_scripts_available": true,
+      "backup_verification_complete": true,
+      "infrastructure_verified": true,
+      "deployment_pipeline_tested": true
+    },
+    "ready_count": 5,
+    "total_count": 5,
+    "readiness_percentage": 100
+  },
+  "overall_status": "FULLY_READY",
+  "readiness_score": 113,
+  "migration_safety": "SAFE_TO_PROCEED"
+}
