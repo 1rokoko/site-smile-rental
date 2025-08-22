@@ -1,0 +1,132 @@
+{
+  "timestamp": "2025-08-22T19:04:48.050Z",
+  "overall_status": "PARTIAL_SUCCESS",
+  "backups": {
+    "production_script": {
+      "name": "Production Backup Script",
+      "file": "./create-migration-backup.sh",
+      "status": "READY",
+      "details": {
+        "exists": true,
+        "size": 4481,
+        "modified": "2025-08-22T18:50:48.767Z",
+        "readable": 4
+      },
+      "hash": "da8cca1c6e68da0c214a9fc456ee7db832167e43bc7bc52ad2e28a14cff643ec"
+    },
+    "vercel_backup": {
+      "name": "Vercel Deployment Backup",
+      "directory": "./vercel-deployment-backup",
+      "status": "COMPLETE",
+      "details": {
+        "path": "./vercel-deployment-backup",
+        "exists": true,
+        "files": [
+          {
+            "name": "analysis",
+            "type": "directory",
+            "size": 0,
+            "hash": null
+          },
+          {
+            "name": "BACKUP_SUMMARY.md",
+            "type": "file",
+            "size": 1110,
+            "hash": "16d47012507229b4defcf73f76cdfc7d5c0ccc061fb2e8cdbfd32fabb5c8a42b"
+          },
+          {
+            "name": "comparison",
+            "type": "directory",
+            "size": 0,
+            "hash": null
+          },
+          {
+            "name": "content",
+            "type": "directory",
+            "size": 0,
+            "hash": null
+          },
+          {
+            "name": "VERCEL_BACKUP_MANIFEST.json",
+            "type": "file",
+            "size": 1378,
+            "hash": "10addf5bfd87d746b43d8f05ba3f0f4ad6cf88a72de4dcdc5b9be5af59b21079"
+          }
+        ],
+        "missing_files": [],
+        "total_size": 2488
+      }
+    },
+    "content_files": {
+      "name": "Content Backup Files",
+      "files": [
+        {
+          "path": "./vercel-deployment-backup/content/vercel-content.html",
+          "status": "VERIFIED",
+          "details": {
+            "exists": true,
+            "size": 95316,
+            "modified": "2025-08-22T18:58:52.426Z",
+            "readable": 4
+          },
+          "hash": "578b329c245469bbb7a2fcc12140329681d69d666b777d7be6ae7d7e15eb4b45"
+        },
+        {
+          "path": "./vercel-deployment-backup/content/production-content.html",
+          "status": "VERIFIED",
+          "details": {
+            "exists": true,
+            "size": 95316,
+            "modified": "2025-08-22T18:58:53.707Z",
+            "readable": 4
+          },
+          "hash": "0f70fd179a8e5a8b53c78ced7396e4b10d332fb2995f4ab6c254eb1d4ef358d5"
+        }
+      ]
+    },
+    "analysis_files": {
+      "name": "Analysis and Comparison Files",
+      "files": [
+        {
+          "path": "./vercel-deployment-backup/analysis/vercel-analysis.json",
+          "status": "VERIFIED",
+          "details": {
+            "exists": true,
+            "size": 2698,
+            "modified": "2025-08-22T18:58:53.714Z",
+            "readable": 4
+          },
+          "hash": "2f2b6d17732a3c4d85d11a8cdc5d73560ce2cc75e91742a04e4ef1d63d454e17"
+        },
+        {
+          "path": "./vercel-deployment-backup/analysis/production-analysis.json",
+          "status": "VERIFIED",
+          "details": {
+            "exists": true,
+            "size": 2695,
+            "modified": "2025-08-22T18:58:53.715Z",
+            "readable": 4
+          },
+          "hash": "ab8b170b26fb263c70bf7ee602111d7d3f68ffc52958ffd7931c67a8ef1908e2"
+        },
+        {
+          "path": "./vercel-deployment-backup/comparison/deployment-comparison.json",
+          "status": "VERIFIED",
+          "details": {
+            "exists": true,
+            "size": 6021,
+            "modified": "2025-08-22T18:58:53.716Z",
+            "readable": 4
+          },
+          "hash": "4d5c686d3e058ddb8761adf8440ee42ca8142a691c57477e5e77ebd4268ff722"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "total_backups": 4,
+    "successful_backups": 2,
+    "failed_backups": 2,
+    "total_backup_size": 204534
+  }
+}

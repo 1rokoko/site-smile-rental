@@ -1,0 +1,86 @@
+{
+  "verification_date": "2025-08-22T19:06:24.776Z",
+  "summary": {
+    "total_components": 8,
+    "verified_components": 8,
+    "missing_components": 0,
+    "total_backup_size": 209015,
+    "verification_percentage": 100
+  },
+  "components": {
+    "production_backup_script": {
+      "name": "Production Backup Script",
+      "file": "./create-migration-backup.sh",
+      "required": true,
+      "status": "VERIFIED",
+      "size": 4481,
+      "modified": "2025-08-22T18:50:48.767Z"
+    },
+    "vercel_content": {
+      "name": "Vercel Content Backup",
+      "file": "./vercel-deployment-backup/content/vercel-content.html",
+      "required": true,
+      "status": "VERIFIED",
+      "size": 95316,
+      "modified": "2025-08-22T18:58:52.426Z"
+    },
+    "production_content": {
+      "name": "Production Content Backup",
+      "file": "./vercel-deployment-backup/content/production-content.html",
+      "required": true,
+      "status": "VERIFIED",
+      "size": 95316,
+      "modified": "2025-08-22T18:58:53.707Z"
+    },
+    "vercel_analysis": {
+      "name": "Vercel Analysis",
+      "file": "./vercel-deployment-backup/analysis/vercel-analysis.json",
+      "required": true,
+      "status": "VERIFIED",
+      "size": 2698,
+      "modified": "2025-08-22T18:58:53.714Z"
+    },
+    "production_analysis": {
+      "name": "Production Analysis",
+      "file": "./vercel-deployment-backup/analysis/production-analysis.json",
+      "required": true,
+      "status": "VERIFIED",
+      "size": 2695,
+      "modified": "2025-08-22T18:58:53.715Z"
+    },
+    "deployment_comparison": {
+      "name": "Deployment Comparison",
+      "file": "./vercel-deployment-backup/comparison/deployment-comparison.json",
+      "required": true,
+      "status": "VERIFIED",
+      "size": 6021,
+      "modified": "2025-08-22T18:58:53.716Z"
+    },
+    "backup_manifest": {
+      "name": "Backup Manifest",
+      "file": "./vercel-deployment-backup/VERCEL_BACKUP_MANIFEST.json",
+      "required": true,
+      "status": "VERIFIED",
+      "size": 1378,
+      "modified": "2025-08-22T18:58:53.717Z"
+    },
+    "backup_summary": {
+      "name": "Backup Summary",
+      "file": "./vercel-deployment-backup/BACKUP_SUMMARY.md",
+      "required": true,
+      "status": "VERIFIED",
+      "size": 1110,
+      "modified": "2025-08-22T18:58:53.718Z"
+    },
+    "content_analysis": {
+      "vercel_size": 95099,
+      "production_size": 95099,
+      "size_difference": 0,
+      "title_match": true,
+      "meta_description_match": true,
+      "recommendation": "SAFE_TO_MIGRATE - Content appears identical"
+    }
+  },
+  "overall_status": "ALL_VERIFIED",
+  "migration_readiness": "READY"
+}
