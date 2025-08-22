@@ -29,18 +29,10 @@ export function secureWindowOpen(url: string, target: string = '_blank'): boolea
       'popup=yes'
     ].join(',');
 
-    // Open the URL in a new window with security features
-    const newWindow = window.open(url, target, windowFeatures);
-
-    if (newWindow) {
-      // Additional security: Clear opener reference
-      newWindow.opener = null;
-      console.log(`✅ Successfully opened URL: ${url}`);
-      return true;
-    } else {
-      console.warn('Failed to open window - popup blocked or other issue');
-      return false;
-    }
+    // GOOGLE ADS FIX: Disabled window.open() to prevent suspicious behavior flags
+    console.warn('⚠️ Window opening disabled for Google Ads compliance');
+    console.log(`Attempted to open URL: ${url} (blocked for compliance)`);
+    return false;
   } catch (error) {
     console.error('Error in secureWindowOpen:', error);
     return false;
