@@ -1,0 +1,107 @@
+# Package Configuration Documentation
+
+**Documentation Date:** 2025-08-22T19:39:07.554Z
+
+## Package Configurations
+
+### Main Package.json
+```json
+{
+  "name": "smile-rental-modern",
+  "version": "0.1.8",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "analyze": "set ANALYZE=true && npm run build",
+    "start": "next start -p 3000",
+    "lint": "next lint",
+    "troubleshoot:add": "node scripts/auto-troubleshoot-updater.js add",
+    "troubleshoot:solve": "node scripts/auto-troubleshoot-updater.js solve",
+    "troubleshoot:check": "node scripts/auto-troubleshoot-updater.js check",
+    "deploy:check": "npm run troubleshoot:check && npm run build",
+    "postdeploy": "npm run troubleshoot:check"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.54.2",
+    "@types/prettier": "^2.7.3",
+    "autoprefixer": "^10.4.21",
+    "clsx": "^2.1.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.3",
+    "framer-motion": "^12.23.12",
+    "lucide-react": "^0.535.0",
+    "motion-utils": "^12.23.6",
+    "next": "15.4.5",
+    "playwright": "^1.54.2",
+    "prettier": "^3.6.2",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^3.4.17"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@next/bundle-analyzer": "^15.4.6",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "chrome-launcher": "^1.2.0",
+    "eslint": "^9",
+    "eslint-config-next": "15.4.5",
+    "lighthouse": "^12.8.1",
+    "sharp": "^0.34.3",
+    "typescript": "^5"
+  }
+}
+
+```
+
+### Modern Package.json (./smile-rental-modern/)
+```json
+{
+  "name": "smile-rental-modern",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "analyze": "ANALYZE=true npm run build",
+    "build:optimized": "./build-optimized.sh",
+    "deploy:optimized": "./deploy-optimized.sh",
+    "test:performance": "./test-performance.sh",
+    "validate:performance": "./validate-performance.sh"
+  },
+  "dependencies": {
+    "@types/prettier": "^2.7.3",
+    "clsx": "^2.1.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.3",
+    "framer-motion": "^12.23.12",
+    "lucide-react": "^0.535.0",
+    "next": "15.4.5",
+    "prettier": "^3.6.2",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.4.5",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+
+```
+
+### Package Lock Information
+- **Main package-lock.json:** 335289 bytes, modified 2025-08-22T14:38:40.225Z
+- **Modern package-lock.json:** 218392 bytes, modified 2025-08-11T11:51:05.956Z
