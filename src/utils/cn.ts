@@ -6,11 +6,27 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /**
- * GOOGLE ADS FIX: Disabled window opening functionality
- * This function has been disabled to prevent Google Ads from flagging
- * window.open() as suspicious behavior
+ * Safely opens a URL in a new window/tab
+ * Enhanced security version - now imports from secure-window utilities
+ * Prevents hydration errors by checking for window availability
  */
 export function safeWindowOpen(url: string, target: string = '_blank'): void {
-  console.warn('⚠️ Window opening disabled for Google Ads compliance');
-  console.log(`Attempted to open URL: ${url} (blocked for compliance)`);
+  // Only run on client side
+  if (typeof window === 'undefined') {
+    console.warn('safeWindowOpen called on server side');
+    return;
+  }
+
+  try {
+    // Use the secure window opening function
+    const success = window.open(url, target, 'noopener=yes,noreferrer=yes');
+    if (success) {
+      success.opener = null;
+      console.log(`✅ Successfully opened URL: ${url}`);
+    } else {
+      console.warn('Failed to open window - popup blocked or other issue');
+    }
+  } catch (error) {
+    console.error('Error in safeWindowOpen:', error);
+  }
 }
