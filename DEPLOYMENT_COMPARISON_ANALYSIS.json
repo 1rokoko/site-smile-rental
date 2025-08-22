@@ -1,0 +1,139 @@
+{
+  "analysis_date": "2025-08-22T19:12:24.502Z",
+  "source_data": {
+    "vercel_url": "https://scooter-mauve.vercel.app",
+    "production_url": "https://smilerentalphuket.com",
+    "comparison_timestamp": "2025-08-22T18-58-50-756Z"
+  },
+  "content_analysis": {
+    "size_comparison": {
+      "vercel": 95099,
+      "production": 95099,
+      "difference": 0,
+      "percentage_difference": 0
+    },
+    "metadata_comparison": {
+      "title_match": true,
+      "meta_description_match": true,
+      "title_vercel": "Smile Rental Phuket - №1 Scooter Rental for Safety and Comfort",
+      "title_production": "Smile Rental Phuket - №1 Scooter Rental for Safety and Comfort",
+      "meta_description_vercel": "Premium scooter rental in Phuket with video recorder protection, insurance coverage, and no hidden fees. From 250฿/day with 6000฿ bonus.",
+      "meta_description_production": "Premium scooter rental in Phuket with video recorder protection, insurance coverage, and no hidden fees. From 250฿/day with 6000฿ bonus."
+    },
+    "assets_comparison": {
+      "scripts": {
+        "total_vercel": 9,
+        "total_production": 9,
+        "identical_scripts": [
+          "/_next/static/chunks/4bd1b696-cf72ae8a39fa05aa.js",
+          "/_next/static/chunks/964-e5f5bf07ef48f1a6.js",
+          "/_next/static/chunks/676-fbf60130c4da5e6e.js",
+          "/_next/static/chunks/341-09512f7ca7ca8e68.js",
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+          "/_next/static/chunks/webpack-ba968033cb281636.js"
+        ],
+        "different_scripts": [
+          {
+            "vercel": "/_next/static/chunks/main-app-0f20f4d91de0a5c5.js",
+            "production": "/_next/static/chunks/main-app-cc7ca937ed43f507.js",
+            "base_name": "/_next/static/chunks/main-app.js"
+          },
+          {
+            "vercel": "/_next/static/chunks/app/layout-48ee44d4ef2dd58b.js",
+            "production": "/_next/static/chunks/app/layout-406648e056f61d7c.js",
+            "base_name": "/_next/static/chunks/app/layout.js"
+          },
+          {
+            "vercel": "/_next/static/chunks/app/page-37db91b695b2fbee.js",
+            "production": "/_next/static/chunks/app/page-860fbe60cfb50b6e.js",
+            "base_name": "/_next/static/chunks/app/page.js"
+          }
+        ],
+        "vercel_only": [],
+        "production_only": []
+      },
+      "stylesheets": {
+        "vercel_count": 1,
+        "production_count": 1,
+        "identical": true,
+        "vercel_stylesheets": [
+          "/_next/static/css/259e0bcd9d2da40a.css"
+        ],
+        "production_stylesheets": [
+          "/_next/static/css/259e0bcd9d2da40a.css"
+        ]
+      },
+      "images": {
+        "vercel_count": 19,
+        "production_count": 19,
+        "identical": true,
+        "vercel_images": [
+          "/images/owner/alex.jpg",
+          "/images/scooters/bestseller1.jpg",
+          "/images/scooters/bestseller2.jpg",
+          "/images/scooters/bestseller3.jpg",
+          "/images/scooters/bestseller4.jpg",
+          "/images/scooters/bestseller5.jpg",
+          "/images/scooters/bestseller6.jpg",
+          "/images/scooters/filano.jpg",
+          "/images/scooters/gpx150.jpg",
+          "/images/scooters/gt270-premium.jpg",
+          "/images/scooters/gt270.jpg",
+          "/images/scooters/helmet.jpg",
+          "/images/scooters/helmet.jpg",
+          "/images/scooters/nmax-abs.jpg",
+          "/images/scooters/nmax.jpg",
+          "/images/scooters/nmax2.jpg",
+          "/images/scooters/xmax300.jpg",
+          "/images/trustpilot-reviews.png",
+          "/images/trustpilot-reviews.png"
+        ],
+        "production_images": [
+          "/images/owner/alex.jpg",
+          "/images/scooters/bestseller1.jpg",
+          "/images/scooters/bestseller2.jpg",
+          "/images/scooters/bestseller3.jpg",
+          "/images/scooters/bestseller4.jpg",
+          "/images/scooters/bestseller5.jpg",
+          "/images/scooters/bestseller6.jpg",
+          "/images/scooters/filano.jpg",
+          "/images/scooters/gpx150.jpg",
+          "/images/scooters/gt270-premium.jpg",
+          "/images/scooters/gt270.jpg",
+          "/images/scooters/helmet.jpg",
+          "/images/scooters/helmet.jpg",
+          "/images/scooters/nmax-abs.jpg",
+          "/images/scooters/nmax.jpg",
+          "/images/scooters/nmax2.jpg",
+          "/images/scooters/xmax300.jpg",
+          "/images/trustpilot-reviews.png",
+          "/images/trustpilot-reviews.png"
+        ]
+      }
+    },
+    "text_content_comparison": {
+      "vercel_length": 1000,
+      "production_length": 1000,
+      "identical": true
+    }
+  },
+  "risk_assessment": {
+    "risk_level": "LOW",
+    "risks": [],
+    "benefits": [
+      "Identical content size - no data loss risk",
+      "Identical page titles",
+      "Identical meta descriptions",
+      "3 scripts with updated hashes (normal for builds)",
+      "Identical stylesheets",
+      "Identical image assets",
+      "Identical text content"
+    ],
+    "recommendation": "SAFE_TO_MIGRATE"
+  },
+  "migration_decision": {
+    "recommended_action": "SAFE_TO_MIGRATE",
+    "confidence_level": "HIGH",
+    "migration_safety": "SAFE"
+  }
+}
