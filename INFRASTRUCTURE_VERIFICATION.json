@@ -1,0 +1,141 @@
+{
+  "timestamp": "2025-08-22T19:20:11.068Z",
+  "deployment_scripts": {
+    "scripts": {
+      "production_backup": {
+        "exists": true,
+        "size": 4481,
+        "modified": "2025-08-22T18:50:48.767Z",
+        "description": "Production backup script",
+        "status": "AVAILABLE"
+      },
+      "github_workflow": {
+        "exists": true,
+        "size": 4841,
+        "modified": "2025-08-12T19:47:28.371Z",
+        "description": "GitHub Actions workflow",
+        "status": "AVAILABLE"
+      },
+      "ecosystem_config": {
+        "exists": true,
+        "size": 446,
+        "modified": "2025-08-12T19:47:29.152Z",
+        "description": "PM2 ecosystem configuration",
+        "status": "AVAILABLE"
+      },
+      "package_json": {
+        "exists": true,
+        "size": 1509,
+        "modified": "2025-08-12T19:47:29.813Z",
+        "description": "Package configuration",
+        "status": "AVAILABLE"
+      },
+      "next_config": {
+        "exists": true,
+        "size": 5856,
+        "modified": "2025-08-22T17:25:44.627Z",
+        "description": "Next.js configuration",
+        "status": "AVAILABLE"
+      },
+      "modern_ecosystem": {
+        "exists": true,
+        "size": 1453,
+        "modified": "2025-08-11T13:26:10.483Z",
+        "description": "Modern ecosystem config",
+        "status": "AVAILABLE"
+      },
+      "modern_package": {
+        "exists": true,
+        "size": 1093,
+        "modified": "2025-08-11T11:46:39.375Z",
+        "description": "Modern package config",
+        "status": "AVAILABLE"
+      }
+    },
+    "available_count": 7,
+    "total_count": 7,
+    "readiness_percentage": 100
+  },
+  "github_workflow": {
+    "status": "READY",
+    "details": {
+      "has_trigger": true,
+      "has_push_trigger": true,
+      "has_main_branch": true,
+      "has_workflow_dispatch": true,
+      "has_ssh_action": true,
+      "has_deployment_steps": true
+    },
+    "passed_checks": 6,
+    "total_checks": 6,
+    "content_size": 4566
+  },
+  "package_configurations": {
+    "configurations": [
+      {
+        "file": "./package.json",
+        "name": "smile-rental-modern",
+        "version": "0.1.8",
+        "has_build_script": true,
+        "has_start_script": true,
+        "has_dependencies": true,
+        "status": "VALID"
+      },
+      {
+        "file": "./smile-rental-modern/package.json",
+        "name": "smile-rental-modern",
+        "version": "0.1.0",
+        "has_build_script": true,
+        "has_start_script": true,
+        "has_dependencies": true,
+        "status": "VALID"
+      }
+    ],
+    "valid_configs": 2,
+    "total_configs": 2
+  },
+  "backup_readiness": {
+    "components": {
+      "production_script": {
+        "exists": true,
+        "size": 4481,
+        "modified": "2025-08-22T18:50:48.767Z",
+        "description": "Production backup script",
+        "status": "AVAILABLE"
+      },
+      "vercel_backup": {
+        "exists": true,
+        "size": 1378,
+        "modified": "2025-08-22T18:58:53.717Z",
+        "description": "Vercel backup manifest",
+        "status": "AVAILABLE"
+      },
+      "backup_verification": {
+        "exists": true,
+        "size": 2649,
+        "modified": "2025-08-22T19:06:24.811Z",
+        "description": "Backup verification report",
+        "status": "AVAILABLE"
+      },
+      "comparison_analysis": {
+        "exists": true,
+        "size": 5193,
+        "modified": "2025-08-22T19:12:24.558Z",
+        "description": "Deployment comparison",
+        "status": "AVAILABLE"
+      },
+      "backup_documentation": {
+        "exists": true,
+        "size": 6028,
+        "modified": "2025-08-22T19:05:30.634Z",
+        "description": "Backup documentation",
+        "status": "AVAILABLE"
+      }
+    },
+    "ready_count": 5,
+    "total_count": 5,
+    "readiness_percentage": 100
+  },
+  "overall_status": "READY",
+  "readiness_score": 100
+}
