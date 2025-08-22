@@ -1,0 +1,21 @@
+{
+  "timestamp": "2025-08-22T18-54-06-561Z",
+  "source_url": "https://scooter-mauve.vercel.app",
+  "backup_date": "2025-08-22T18:54:07.666Z",
+  "content": {
+    "main_page": "index.html",
+    "assets_downloaded": 0,
+    "total_assets_found": 0
+  },
+  "verification": {
+    "main_page_size": 15,
+    "assets_count": 0,
+    "backup_complete": true
+  },
+  "restoration_notes": [
+    "This backup contains the static content from Vercel deployment",
+    "Main page content is in index.html",
+    "Assets are in the assets/ directory",
+    "This represents the current state to be deployed to production"
+  ]
+}
