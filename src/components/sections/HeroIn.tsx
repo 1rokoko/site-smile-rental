@@ -1,0 +1,103 @@
+﻿'use client';
+
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Container, Section } from '@/components/layout';
+import { H1, H2, Body, FadeInView } from '@/components/ui';
+import { EXACT_CONTENT_IN } from '@/data/exact-content-in';
+import { Shield, Video, AlertTriangle } from 'lucide-react';
+import { animations } from '@/lib/animations';
+
+export const HeroIn: React.FC = () => {
+  const { hero, features } = EXACT_CONTENT_IN;
+  const [pricePrefixRaw, priceBonusRaw] = hero.priceText.split('+');
+  const pricePrefix = (pricePrefixRaw ?? '').trim();
+  const priceBonus = (priceBonusRaw ?? '').trim();
+
+  return (
+    <Section padding="md" background="surface">
+      <Container>
+        <div className="text-center max-w-4xl mx-auto transform-gpu">
+          <H1 className="mb-6">
+            <span className="text-black">{hero.mainHeadline}</span>
+          </H1>
+
+          <FadeInView animation="fadeInUp" delay={0.1}>
+            <div className="mb-8">
+              <H2 className="text-black mb-2">
+                {pricePrefix}{priceBonus && ' '}
+                {priceBonus && (
+                  <a
+                    href="#bonus-section"
+                    className="text-orange-500 hover:text-orange-600 underline cursor-pointer"
+                  >
+                    +{priceBonus}
+                  </a>
+                )}
+              </H2>
+            </div>
+          </FadeInView>
+
+          <FadeInView animation="scaleIn" delay={0.2}>
+            <div className="bg-warning/10 border border-warning/20 rounded-xl p-6 mb-6">
+              <div className="flex items-start space-x-3">
+                <AlertTriangle className="w-6 h-6 text-warning flex-shrink-0 mt-1" />
+                <div className="text-left">
+                  <Body className="text-black font-medium">
+                    {hero.warningText}{' '}
+                    <a
+                      href="#scam-warning-section"
+                      className="text-orange-500 hover:text-orange-600 underline cursor-pointer"
+                    >
+                      फुकेत रोड स्कैम: बचाव मार्गदर्शिका
+                    </a>
+                  </Body>
+                </div>
+              </div>
+            </div>
+          </FadeInView>
+
+          <FadeInView animation="fadeInUp" delay={0.3}>
+            <div className="mb-1">
+              <H2 className="mb-8 text-black">
+                {features.title}
+              </H2>
+
+              <motion.div
+                variants={animations.staggerContainer}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true, margin: '-50px 0px' }}
+                className="grid grid-cols-1 md:grid-cols-2 gap-6"
+              >
+                {features.items.map((feature, index) => {
+                  const icons = [
+                    <Video key="video" className="w-6 h-6" />,
+                    <Shield key="shield" className="w-6 h-6" />,
+                    <Shield key="insurance" className="w-6 h-6" />,
+                    <Shield key="breakdown" className="w-6 h-6" />,
+                  ];
+
+                  return (
+                    <motion.div
+                      key={feature}
+                      variants={animations.staggerItem}
+                      className="flex items-center space-x-4 p-4 bg-surface-elevated rounded-xl border border-border-light"
+                    >
+                      <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                        {icons[index]}
+                      </div>
+                      <Body className="text-left font-medium text-black">
+                        {feature}
+                      </Body>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+            </div>
+          </FadeInView>
+        </div>
+      </Container>
+    </Section>
+  );
+};
